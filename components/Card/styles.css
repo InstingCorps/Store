@@ -1,4 +1,8 @@
 
 .ComCard{
-  background-color: rgb(43, 226, 64);
+  background-color: #252f45;
+}
+
+.btn-card {
+  color: #ff962d;
 }

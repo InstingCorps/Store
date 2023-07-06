@@ -16,7 +16,7 @@ export default function ComponentNavbar() {
           src="https://icon-library.com/images/react-icon/react-icon-29.jpg"
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Flowbite React
+          RoziStore
         </span>
       </Navbar.Brand>
       <div className="flex md:order-2">

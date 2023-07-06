@@ -13,8 +13,8 @@ export default function ComponentFooter() {
           <div>
             <Footer.Brand
               alt="Flowbite Logo"
-              href="https://flowbite.com"
-              name="Flowbite"
+              href="#"
+              name="RoziStore"
               src="https://flowbite.com/docs/images/logo.svg"
             />
           </div>
@@ -23,10 +23,10 @@ export default function ComponentFooter() {
               <Footer.Title title="about" />
               <Footer.LinkGroup col>
                 <Footer.Link href="#">
-                  Flowbite
+                  About US
                 </Footer.Link>
-                <Footer.Link href="#">
-                  Tailwind CSS
+                <Footer.Link href="https://fahrurrozi.vercel.app/">
+                  My Portfolio
                 </Footer.Link>
               </Footer.LinkGroup>
             </div>
