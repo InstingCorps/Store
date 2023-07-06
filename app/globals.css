@@ -3,119 +3,20 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&family=League+Spartan:wght@300;800&family=Quicksand:wght@300;500;700&family=Righteous&display=swap");
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 240,248,255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
-
-#app {
-  height: 100%;
-}
-
-
-.swiper {
-  width: 960px;
-  height: 350px;
-  text-align: center;
-  margin-top: 50px;
-  border-radius: 20px;
-}
-
-.swiper-slide{
-  background: #fff;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  transition: .5s linear;
-  border-radius: 20px;
-
-}
-
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.autoplay-progress {
-  position: absolute;
-  right: 16px;
-  bottom: 16px;
-  z-index: 10;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: var(--biruu);
-}
-
-.autoplay-progress svg {
-  --progress: 0;
-  position: absolute;
-  left: 0;
-  top: 0px;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  stroke-width: 4px;
-  stroke: var(--swiper-theme-color);
-  fill: none;
-  stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
-  stroke-dasharray: 125.6;
-  transform: rotate(-90deg);
-}
-
-
-:root {
-  --white : #fff;
-  --dark-blue : #2d2039;
-
-  --agakpink:#FDF4F5;
-  --pink : #E8A0BF;
-  --ungu: #BA90C6;
-  --biruu: #4299e1;
+html {
+    background-color: blueviolet;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "League Spartan", sans-serif;
-}
-
-body {
-  color: var(--white);
-  background: var(--dark-blue);
-
-}
-@media screen and (max-width:724px) {
-  .swiper {
-     width: 100%;
-     margin: 6.5rem;
-     height: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
   }
-  .swiper-slide img {
-     width: 100%;
-     
-  }}
+  
+  h1,
+  h2,
+  h3 {
+    font-family: "League Spartan", sans-serif;
+  }
   

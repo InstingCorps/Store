@@ -1,8 +1,8 @@
 
-
 'use client'
-// Import Swiper React components
+
 import React, { useRef, useState } from 'react';
+// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -15,18 +15,18 @@ import './styles.css';
 // import required modules
 import { Autoplay, Pagination, Navigation , EffectCards } from 'swiper/modules';
 
-export default function Swipers() {
-  const progressCircle =  useRef<SVGSVGElement>(null);
-  const progressContent = useRef<HTMLDivElement>(null);
-  const onAutoplayTimeLeft = (s : any, time : number, progress : number) => {
-    if (progressCircle.current) {
-        progressCircle.current.style.setProperty('--progress', String(1 - progress));
-        
-    }
-    if (progressContent.current) {
-        progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-    }
-  };
+export default function Testing() {
+    const progressCircle =  useRef<SVGSVGElement>(null);
+    const progressContent = useRef<HTMLDivElement>(null);
+    const onAutoplayTimeLeft = (s : any, time : number, progress : number) => {
+      if (progressCircle.current) {
+          progressCircle.current.style.setProperty('--progress', String(1 - progress));
+          
+      }
+      if (progressContent.current) {
+          progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+      }
+    };
   return (
     <>
       <Swiper
@@ -50,6 +50,8 @@ export default function Swipers() {
         <SwiperSlide><img src="https://webtopup-3.vercel.app/img/slider-5.webp" alt="" /></SwiperSlide>
         <SwiperSlide><img src="https://webtopup-3.vercel.app/img/stretched-1920-1080-1123246.jpg" alt="" /></SwiperSlide>
 
+
+        
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>

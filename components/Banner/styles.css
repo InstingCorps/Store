@@ -1,23 +1,7 @@
-
 #app {
     height: 100%;
   }
-  html,
-  body {
-    height: 100%;
-    overflow: hidden;
-  } 
-  
-  body {
-    background: #eee;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-  }
-  
-  
+
   .swiper {
     width: 960px;
     height: 350px;
@@ -27,17 +11,16 @@
   
   }
   
-  .swiper-slide{
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
     background: #fff;
+  
+    /* Center slide text vertically */
     display: flex;
-    align-items: center;
-    flex-direction: column;
     justify-content: center;
-    transition: .5s linear;
-    border-radius: 20px;
-  
+    align-items: center;
   }
-  
   
   .swiper-slide img {
     display: block;
@@ -57,7 +40,7 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: var(--biruu);
+    color: var(--swiper-theme-color);
   }
   
   .autoplay-progress svg {
@@ -76,13 +59,13 @@
     transform: rotate(-90deg);
   }
 
-  /* @media screen and (max-width:724px) {
+  @media screen and (max-width:724px) {
     .swiper {
        width: 100%;
-       margin: 6.5rem;
+       /* margin: 6.5rem; */
        height: auto;
     }
     .swiper-slide img {
        width: 100%;
-       
-    }} */
+    }}
+  
