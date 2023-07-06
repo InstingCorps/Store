@@ -8,6 +8,7 @@ export default function ButtonPills() {
   return (
     <div className="mt-10 grid grid-cols-3 md:grid-cols-8 gap-4 m-9">
       <Button
+      // height={100}
         color="warning"
         pill
       >
@@ -20,7 +21,7 @@ export default function ButtonPills() {
         pill
       >
         <p>
-          Warning
+          Warning2
         </p>
       </Button>
       <Button
@@ -28,7 +29,7 @@ export default function ButtonPills() {
         pill
       >
         <p>
-          Warning
+          Warning3
         </p>
       </Button>
       <Button
@@ -36,7 +37,7 @@ export default function ButtonPills() {
         pill
       >
         <p>
-          Warning
+          Warning4
         </p>
       </Button>
       <Button
@@ -44,7 +45,7 @@ export default function ButtonPills() {
         pill
       >
         <p>
-          Warning
+          Warning5
         </p>
       </Button>
       <Button
@@ -52,7 +53,7 @@ export default function ButtonPills() {
         pill
       >
         <p>
-          Warning
+          Warning6
         </p>
       </Button>
       <Button
@@ -60,7 +61,7 @@ export default function ButtonPills() {
         pill
       >
         <p>
-          Warning
+          Warning7
         </p>
       </Button>
       <Button
@@ -68,7 +69,7 @@ export default function ButtonPills() {
         pill
       >
         <p>
-          Warning
+          Warning8
         </p>
       </Button>
       <Button
@@ -76,7 +77,7 @@ export default function ButtonPills() {
         pill
       >
         <p>
-          Warning
+          Warning9
         </p>
       </Button>
       <Button
@@ -84,7 +85,7 @@ export default function ButtonPills() {
         pill
       >
         <p>
-          Warning
+          Warning10
         </p>
       </Button>
     </div>

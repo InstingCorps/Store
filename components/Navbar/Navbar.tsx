@@ -2,10 +2,11 @@
 'use client';
 
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
+import "./styles.css"
 
 export default function ComponentNavbar() {
   return (
-    <Navbar
+    <Navbar className="ComNavbar"
       fluid
       rounded
     >
