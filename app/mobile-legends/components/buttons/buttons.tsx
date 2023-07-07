@@ -37,11 +37,12 @@ function ButtonPills(): JSX.Element {
   };
 
   return( 
-  <Card className='m-2 rounded-3xl'>
+  <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center'>Pilih DM</div>
   <div className="grid grid-cols-3 md:grid-cols-8 gap-2">
     {renderButtons()}
   </div>
+  <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae asperiores vitae fugit fugiat quaerat repellendus amet distinctio nam ipsa eligendi.</div>
   </Card>
   )
 }

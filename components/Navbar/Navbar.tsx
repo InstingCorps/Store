@@ -6,7 +6,7 @@ import "./styles.css"
 
 export default function ComponentNavbar() {
   return (
-    <Navbar className="ComNavbar"
+    <Navbar className="ComNavbar mb-5"
       fluid
       rounded
     >
