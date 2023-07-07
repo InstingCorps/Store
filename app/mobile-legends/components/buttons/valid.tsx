@@ -1,17 +1,6 @@
 
 'use client'
 
-// function Valid(props:any) {
-//     console.log("Valid",props);
-    
-//     return(
-//         <div>{props[0]} hallo
-//         </div>
-//     )
-// }
-
-// export default Valid;
-
 import React, { useState, useEffect } from 'react';
 
 const Valid = (): JSX.Element => {
