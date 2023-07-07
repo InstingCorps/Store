@@ -12,9 +12,10 @@ function ButtonPills(): JSX.Element {
   useEffect(() => {
   }, [buttonValues]);
 
-  const handleClick = (value: string) => () => {
+  const handleClick = (value: string , Price : any) => () => {
     setButtonValues([value]);
-    localStorage.setItem('buttonValues', value);
+    sessionStorage.setItem('buttonValues', value);
+    sessionStorage.setItem('Price', Price);
 
   };
 
@@ -28,7 +29,7 @@ function ButtonPills(): JSX.Element {
       pill
       href="/about"
       value={button.value}
-      onClick={handleClick(button.value)}
+      onClick={handleClick(button.value , button.price)}
       >
         {button.label}
       </Button>

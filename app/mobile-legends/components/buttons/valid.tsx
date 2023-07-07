@@ -4,23 +4,28 @@
 import React, { useState, useEffect } from 'react';
 
 const Valid = (): JSX.Element => {
-  const [buttonValue, setButtonValue] = useState('');
+  const [Value, setValue] = useState('');
+  const [PriceValue, setPriceValue] = useState('');
 
   useEffect(() => {
-    const storedButtonValue = localStorage.getItem('buttonValues');
-    if (storedButtonValue) {
-      setButtonValue(storedButtonValue);
-    }
-  }, []);
-  console.log(buttonValue);
-  
-  if (buttonValue == '2 diamond') {
-    console.log("Benar");
-    
-    
-  }
+    const getValue = sessionStorage.getItem('buttonValues');
+    const getPrice = sessionStorage.getItem('Price');
 
-  return <div className='font-bold text-center text-white'>{buttonValue}</div>;
+    if (getValue) {
+      setValue(getValue);
+    }
+
+    if (getPrice) {
+      setPriceValue(getPrice);
+    }
+
+
+  }, []);
+
+  return <div className='font-bold text-center text-white'>
+    <div>Jumlah DM {Value}</div>
+    <div>Harga Rp.{PriceValue}</div>
+  </div>;
 };
 
 export default Valid;
