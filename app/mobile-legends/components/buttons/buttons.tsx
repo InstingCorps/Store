@@ -3,7 +3,7 @@
 'use client';
 
   import React, { useState, useEffect } from 'react';
-  import { Button } from 'flowbite-react';
+  import { Button, Card } from 'flowbite-react';
   import DataMobileLegends from '@/data/mobile-legends/values/values';
 
 function ButtonPills(): JSX.Element {
@@ -36,8 +36,14 @@ function ButtonPills(): JSX.Element {
     ));
   };
 
-  return <div className="mt-10 grid grid-cols-3 md:grid-cols-8 gap-2 m-5"
-  >{renderButtons()}</div>;
+  return( 
+  <Card className='m-2 rounded-3xl'>
+    <div className='text-center'>Pilih DM</div>
+  <div className="grid grid-cols-3 md:grid-cols-8 gap-2">
+    {renderButtons()}
+  </div>
+  </Card>
+  )
 }
 
 export default ButtonPills;
