@@ -8,7 +8,7 @@ import "./styles.css"
 
 export default function ComponentFooter() {
   return (
-    <Footer container className="com-footer">
+    <Footer bgDark container >
       <div className="w-full">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>
