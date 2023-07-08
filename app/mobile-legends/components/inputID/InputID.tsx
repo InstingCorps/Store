@@ -29,7 +29,7 @@ export default function InputID() {
 
   const Nickname = `Your NickName : Masih Dalam Proses `
   return (
-    <Card className='m-2 mb-10 md:ml-60 md:mr-60'>
+    <Card className='m-2 mb-10 md:ml-60 md:mr-60 bg-slate-800 text-white'>
       <div>Masukkan Detail Akun</div>
       <div>Masukkan User ID</div>
         <div className="grid grid-cols-2 md:grid-cols-2 gap-5">
@@ -46,7 +46,7 @@ export default function InputID() {
           />
           <TextInput
             id="email1"
-            placeholder="     ( Zone ID )"
+            placeholder="    ( Zone ID )"
             required
             pattern='[0-9]*'
             type="text"
@@ -64,8 +64,9 @@ export default function InputID() {
             type="text"
           />
         </div>
+        <div className="text-right mr-5 font-extrabold font-sans text-xl">Your Server : ID</div>
 
-        <div className='mt-5'>
+        <div className='mt-3 text-center'>
         Untuk mengetahui User ID Anda, silakan klik menu profile dibagian kiri atas pada menu utama game. User ID akan terlihat dibagian bawah Nama Karakter Game Anda. Silakan masukkan User ID Anda untuk menyelesaikan transaksi. Contoh : 12345678(1234).
         </div>
       

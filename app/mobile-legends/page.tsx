@@ -15,6 +15,7 @@ return(
     <main>
         <ComponentNavbar />
         <Test />
+        <div className="text-center text-white mt-10 text-4xl font-extrabold font-sans">Mobile Legends</div>
         <Cards />
         <Card className="font-bold ml-2 m-5 mt-10">Langkah 1. Masukkan ID Game Anda.</Card>
         <InputID />
