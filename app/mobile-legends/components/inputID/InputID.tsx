@@ -2,31 +2,56 @@
 
 'use client';
 
-import { Card,TextInput } from 'flowbite-react';
+import { Card , TextInput } from 'flowbite-react';
+import { useState } from 'react';
 
-export default function CardWithFormInputs() {
+export default function InputID() {
+
+    const [PlayerID , setID ] = useState<string[]>([]);
+    const [ZoneID , setZoneID ] = useState<string[]>([]);
+
+    const SetPlayerID = (event :any) => {
+        const { value } = event.target;
+        sessionStorage.setItem('PlayerID', value)
+        setID([value]); // Anda mengasumsikan menggunakan state hook React
+      };
+
+    const SetPlayerZoneID = (event :any) => {
+        const { value } = event.target;
+        sessionStorage.setItem('ZoneID', value)
+        setZoneID([value]);
+    };
+    //   useEffect(() => {
+    //     const a = sessionStorage.getItem('ZoneID')
+
+    //     console.log(a,"session");
+    //   },[PlayerID])
+
   const Nickname = `Your NickName : Masih Dalam Proses `
   return (
-    <Card className='m-2'>
+    <Card className='m-2 mb-10 md:ml-60 md:mr-60'>
       <div>Masukkan Detail Akun</div>
       <div>Masukkan User ID</div>
         <div className="grid grid-cols-2 md:grid-cols-2 gap-5">
 
           <TextInput
             id="email1"
-            placeholder="Game ID"
+            placeholder="User ID"
             required
             pattern='[0-9]*'
             type="text"
+            value={PlayerID}
+            onChange={SetPlayerID}
 
           />
           <TextInput
-          //  className="w-10"
             id="email1"
-            placeholder="   ( Zone ID )"
+            placeholder="     ( Zone ID )"
             required
             pattern='[0-9]*'
             type="text"
+            value={ZoneID}
+            onChange={SetPlayerZoneID}
           />
         </div>
         <div>

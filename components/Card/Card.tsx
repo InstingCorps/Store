@@ -4,11 +4,17 @@ import { Button, Card } from "flowbite-react"
 import "./styles.css"
 
 export default function ComponentCard() {
+    const TypeGame = (Game : any) => {
+        sessionStorage.setItem('TypeGame' , Game)
+        
+    }
     return(
         <div className="grid grid-cols-3 md:grid-cols-8 gap-4 m-3 btn-card ComCard mt-5">
         <Card className="h-auto max-w-sm rounded-xl ComCard"
+        
          imgAlt=""
          href="/mobile-legends"
+         onClick={() => TypeGame("Mobile Legends")}
          imgSrc="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/ID_MLBB-M4-Codacash-tile.jpg"
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
