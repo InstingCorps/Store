@@ -1,10 +1,10 @@
 
 
-/* 
+
 .text-container {
     width: 100%;
     overflow: hidden;
-  } */
+  }
   
   .marquee {
     display: inline-block;
@@ -18,6 +18,17 @@
     }
     100% {
       transform: translateX(-100%);
+    }
+  }
+
+  @media (max-width:480px) {
+    @keyframes marquee {
+      0% {
+        transform: translateX(25%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
   }
   

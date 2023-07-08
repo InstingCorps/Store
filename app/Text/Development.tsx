@@ -17,7 +17,7 @@ import { Alert } from "flowbite-react";
 
 function Development() {
   return (
-    <Alert>
+    <Alert className='text-container'>
       <div className="marquee font-bold">
         <span className='text-gray-900'>Website Ini Masih Dalam Prosess Pengembangan Mohon Untuk Kerjasama Nya Jika Anda Menemukan Bug Atau Error Silahkan Hubungi Admin @FahrurRozi Atau Admin Lainnya! Selamat Berbelanja! 👌👍</span>
       </div>
