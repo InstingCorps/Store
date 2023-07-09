@@ -24,10 +24,10 @@ function ButtonPills(): JSX.Element {
 
     return buttonData.map((button, index) => (
       <Button
+      className="hover:bg-slate-800 font-bold focus:bg-slate-800 bg-unipin"
       key={index}
-      color="warning"
+      color=""
       pill
-      href="/about"
       value={button.value}
       onClick={handleClick(button.value , button.price)}
       >

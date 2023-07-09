@@ -6,7 +6,7 @@ import "./styles.css"
 
 export default function ComponentNavbar() {
   return (
-    <Navbar className="bg-slate-800 mb-5 text-orange-400"
+    <Navbar className="bg-slate-800 mb-5"
       fluid
       rounded
     >
@@ -16,7 +16,7 @@ export default function ComponentNavbar() {
           className="mr-3 h-6 sm:h-9"
           src="https://icon-library.com/images/react-icon/react-icon-29.jpg"
         />
-        <span className="self-center whitespace-nowrap text-xl font-semibold">
+        <span className="self-center whitespace-nowrap text-2xl font-extrabold text-lime-400">
           RoziStore
         </span>
       </Navbar.Brand>
