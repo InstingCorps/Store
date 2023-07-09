@@ -8,8 +8,14 @@
 
 function ButtonPills(): JSX.Element {
   const [buttonValues, setButtonValues] = useState<string[]>([]);
+  const [Price , setPrice] = useState('')
 
   useEffect(() => {
+  const getPrice = sessionStorage.getItem('Price')
+
+  if (getPrice) {
+    setPrice(getPrice)
+  }
   }, [buttonValues]);
 
   const handleClick = (value: string , Price : any) => () => {
@@ -19,7 +25,6 @@ function ButtonPills(): JSX.Element {
 
   };
 
-  const Price = sessionStorage.getItem('Price')
 
 
   const renderButtons = () => {
