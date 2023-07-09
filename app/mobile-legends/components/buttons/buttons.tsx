@@ -51,7 +51,8 @@ function ButtonPills(): JSX.Element {
   <div className="grid grid-cols-3 md:grid-cols-8 gap-2">
     {renderButtons()}
   </div>
-  <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae asperiores vitae fugit fugiat quaerat repellendus amet distinctio nam ipsa eligendi.</div>
+    <div className="text-center font-bold">!!  HARAP DI BACA  !!</div>
+    <div className="text-center font-bold">JIKA JUMLAH DI ATAS TIDAK SESUAI DENGAN PILIHAN ANDA. SILAHKAN CONTACT ADMIN UNTUK MENAMBAHKAN LAGI!</div>
   </Card>
   )
 }

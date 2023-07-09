@@ -1,6 +1,7 @@
 
 'use client'
 
+import Development from '@/app/Text/Development';
 import { Button, Card } from 'flowbite-react';
 import React, { useState, useEffect } from 'react';
 
@@ -45,7 +46,7 @@ const Valid = (): JSX.Element => {
   %0A   %0A
   %0A Type Game :${TypeGame}
   %0A User ID :${UserID}
-  %0A ZoneID :${ZoneID}
+  %0A ZoneID : ( ${ZoneID} )
   %0A jumlah :"${Value}"
   %0A Seharga : ${PriceValue}
   %0A
@@ -58,11 +59,14 @@ const Valid = (): JSX.Element => {
   %0A
   %0A   %0A SYARAT DAN KETENTUAN BERLAKU`
 
-  return <Card className='font-bold text-center text-black'>
+  return(
+    <div>
+      <Development />
+  <Card className='font-bold text-center text-black mt-10'>
     <div>Type Game : {TypeGame}</div>
     <div>User ID =  {UserID}</div>
-    <div>Zone ID =  {ZoneID}</div>
-    <div>Jumlah DM {Value}</div>
+    <div>Zone ID = &#40; {ZoneID} &#41;</div>
+    <div>Jumlah DM : {Value}</div>
     <div>Harga Rp.{PriceValue}</div>
     <Button
     className='font-bold'
@@ -70,7 +74,9 @@ const Valid = (): JSX.Element => {
     >
     Bayar Sekarang!!
     </Button>
-  </Card>;
+  </Card>
+    </div>
+  ) ;
 };
 
 export default Valid;
