@@ -1,12 +1,12 @@
 
 'use client';
 
-import { Avatar, Dropdown, Navbar } from 'flowbite-react';
+import { Navbar } from 'flowbite-react';
 import "./styles.css"
 
 export default function ComponentNavbar() {
   return (
-    <Navbar className="bg-slate-800 mb-5"
+    <Navbar className="bg-slate-800 mb-5 inset-x-0 fixed z-30 mt-0"
       fluid
       rounded
     >

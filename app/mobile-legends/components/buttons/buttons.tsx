@@ -19,6 +19,9 @@ function ButtonPills(): JSX.Element {
 
   };
 
+  const Price = sessionStorage.getItem('Price')
+
+
   const renderButtons = () => {
     const buttonData = DataMobileLegends
 
@@ -39,6 +42,7 @@ function ButtonPills(): JSX.Element {
   return( 
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center font-extrabold'>Pilih Nominal Topup</div>
+    <div className="font-sans text-xl font-bold text-right mr-5">Harga : Rp.{Price}</div>
   <div className="grid grid-cols-3 md:grid-cols-8 gap-2">
     {renderButtons()}
   </div>
