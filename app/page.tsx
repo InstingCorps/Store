@@ -3,8 +3,8 @@ import ComponentCard from "@/components/Card/Card";
 import ComponentNavbar from "@/components/Navbar/Navbar";
 import ComponentFooter from "@/components/footer/footer";
 import Development from "./Text/Development";
-import Null from "@/Contact/Callme";
 import Subscribe from "@/Contact/subscribe";
+import DukunganPelanggan from "@/Contact/Callme";
 
 
 
@@ -19,9 +19,8 @@ export default function Home() {
     <ComponentBanner />
     <ComponentCard />
     <Subscribe />
-    <div className="text-orange-400 text-xl text-center font-serif mt-36 font-bold">Dukungan Pelanggan</div>
-    <div className="text-2xl font-extrabold text-white text-center">Hubungi Kami</div>
-    <Null />
+ 
+    <DukunganPelanggan />
 
     <footer>
       <ComponentFooter />

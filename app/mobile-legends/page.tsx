@@ -8,6 +8,7 @@ import InputID from "./components/inputID/InputID";
 import { Card } from "flowbite-react";
 import Cards from "./components/card/Card";
 import PaymentMethod from "@/payment/paymentsMethod";
+import DukunganPelanggan from "@/Contact/Callme";
 
 
 
@@ -26,6 +27,7 @@ return(
         <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
 
         <PaymentMethod />
+        <DukunganPelanggan />
 
         <footer>
             <ComponentFooter />

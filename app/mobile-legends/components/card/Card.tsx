@@ -18,12 +18,12 @@ export default function Cards() {
     <Card>
     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         <div>
-          Noteworthy technology acquisitions 2021
+          Proses Cepat dan Aman:
         </div>
       </h5>
       <div className="font-normal text-gray-700 dark:text-gray-400">
         <div>
-          Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+           Kami memprioritaskan kecepatan dan keamanan dalam setiap transaksi. Pengisian ulang diamonds hanya membutuhkan beberapa langkah mudah, dan semua informasi pribadi dan pembayaranmu dijaga kerahasiaannya.
         </div>
       </div>
     </Card>

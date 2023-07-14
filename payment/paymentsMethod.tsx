@@ -10,11 +10,17 @@ export default function PaymentMethod() {
             <div>Payment Method Masih Dalam Proses</div>
            
         </Card>
+        <Card className="mt-2">
+    
+            <div className="text-center font-medium">untuk sementara waktu semua pembelian kamu akan di arahkan ke whatsapp admin!</div>
+        
+        
+        </Card>
 
         <Card className="mt-10">
         <Button
             href={Link}
-            >Buy Now</Button>
+            >Check Out Now</Button>
         </Card>
 
         </div>
