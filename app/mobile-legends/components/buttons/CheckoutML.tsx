@@ -2,10 +2,11 @@
 'use client'
 
 import Development from '@/app/Text/Development';
+import ComponentNavbar from '@/components/Navbar/Navbar';
 import { Button, Card } from 'flowbite-react';
 import React, { useState, useEffect } from 'react';
 
-const Valid = (): JSX.Element => {
+const CheckoutML = (): JSX.Element => {
   const [TypeGame , setTypeGame] = useState('')
   const [Value, setValue] = useState('');
   const [PriceValue, setPriceValue] = useState('');
@@ -61,6 +62,7 @@ const Valid = (): JSX.Element => {
 
   return(
     <div>
+      <ComponentNavbar />
       <Development />
   <Card className='font-bold text-center text-black mt-10'>
     <div>Type Game : {TypeGame}</div>
@@ -79,6 +81,6 @@ const Valid = (): JSX.Element => {
   ) ;
 };
 
-export default Valid;
+export default CheckoutML;
 
 

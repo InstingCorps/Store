@@ -3,7 +3,7 @@
 import { Button, Card } from "flowbite-react";
 
 export default function PaymentMethod() {
-    const Link = "/about"
+    const Link = "/checkout"
     return(
         <div>
         <Card>
