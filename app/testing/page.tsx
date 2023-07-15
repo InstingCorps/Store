@@ -1,18 +1,12 @@
 import ComponentNavbar from "@/components/Navbar/Navbar";
-import HorizontalCard from "./carding";
-import CardWithFormInputs from "./form";
-import CardTest2 from "./cardtest2";
-import TestFetch from "./fetchdata";
+import TabsWithIcons from "./tabs";
 
 
 export default function Testing() {
     return(
         <main>
-        <ComponentNavbar />
-        <CardTest2 />
-        <TestFetch />
-        <HorizontalCard />
-        <CardWithFormInputs />
+        {/* <ComponentNavbar /> */}
+        <TabsWithIcons />
         
         </main>
     )
