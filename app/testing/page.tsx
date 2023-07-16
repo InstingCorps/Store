@@ -3,6 +3,7 @@ import ComponentNavbar from "@/components/Navbar/Navbar";
 // import TabsWithIcons from "./tabs";
 // import Footer from "./footer";
 import React, { useState } from 'react';
+import Maths from "./math";
 
 export default function Testing() {
 
@@ -16,7 +17,7 @@ export default function Testing() {
         {/* <ComponentNavbar /> */}
         {/* <TabsWithIcons /> */}
         <button onClick={handleClick}>test</button>
-        <div></div>
+        <Maths />
         {/* {showFooter && <Footer />} */}
         </main>
     )
