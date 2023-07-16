@@ -8,11 +8,14 @@
   import { FaGem , FaUserPlus } from 'react-icons/fa';
   import { BsThreeDots } from 'react-icons/bs';
   import { AiOutlineCalendar } from 'react-icons/ai';
-import WeeklyMobileLegends from '@/data/mobile-legends/Weekly';
+  import WeeklyMobileLegends from '@/data/mobile-legends/Weekly';
+  import BuyNow from '@/payment/Confirm';
 
 function ButtonPills(): JSX.Element {
   const [buttonValues, setButtonValues] = useState<string[]>([]);
   const [Price , setPrice] = useState('')
+  const [showFooter, setShowFooter] = useState(false);
+
 
   useEffect(() => {
   const getPrice = sessionStorage.getItem('Price')
@@ -24,8 +27,10 @@ function ButtonPills(): JSX.Element {
 
   const handleClick = (value: string , Price : any) => () => {
     setButtonValues([value]);
+    setShowFooter(true);
     sessionStorage.setItem('buttonValues', value);
     sessionStorage.setItem('Price', Price);
+
 
   };
 
@@ -67,6 +72,9 @@ function ButtonPills(): JSX.Element {
   };
 
   return( 
+    <div>
+
+
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center font-extrabold'>Pilih Nominal Topup</div>
     <div className="font-sans text-xl font-bold text-right mr-5">Harga : Rp.{Price}</div>
@@ -108,6 +116,9 @@ function ButtonPills(): JSX.Element {
     <div className="text-center font-bold">!!  HARAP DI BACA  !!</div>
     <div className="text-center font-bold">JIKA JUMLAH DI ATAS TIDAK SESUAI DENGAN PILIHAN ANDA. SILAHKAN CONTACT ADMIN UNTUK MENAMBAHKAN LAGI!</div>
   </Card>
+
+  {showFooter && <BuyNow />}
+  </div>
   )
 }
 
