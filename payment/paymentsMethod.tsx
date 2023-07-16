@@ -14,13 +14,10 @@ export default function PaymentMethod() {
     
             <div className="text-center font-medium">untuk sementara waktu semua pembelian kamu akan di arahkan ke whatsapp admin!</div>
         
-        
         </Card>
-
-        <Card className="mt-10">
-        <Button
-            href={Link}
-            >Check Out Now</Button>
+        <Card className="mt-5">
+            
+            <img src="https://cdn1.codashop.com/S/content/common/images/mno/QRIS_ID_CHNL_LOGO.png" alt="" />
         </Card>
 
         </div>

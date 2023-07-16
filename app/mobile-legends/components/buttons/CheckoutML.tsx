@@ -27,7 +27,7 @@ const CheckoutML = (): JSX.Element => {
     if (getValue) {
       setValue(getValue);
     }
-
+    
     if (getPrice) {
       setPriceValue(getPrice);
     }
