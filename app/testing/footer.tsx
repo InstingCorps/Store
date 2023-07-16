@@ -11,7 +11,7 @@ const Footer = () => {
     <Card className="fixed bottom-0 w-full text-center z-40 rounded-xl" horizontal>
         <div className="flex">
             <div className="">hallo</div>
-            <div>test</div>
+            <div>testkllj</div>
 
         <Button className="ml-auto font-bold" pill color="success" size="lg"
         >Bayar Sekarang</Button>
