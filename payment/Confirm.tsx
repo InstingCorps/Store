@@ -14,7 +14,7 @@ const BuyNow = (): JSX.Element => {
   const getPayment = sessionStorage.getItem('Payment');
 
 
-  let Payment = getPayment !== null ? getPayment : 'Pilih Pembayaran';
+  // let Payment = getPayment !== null ? getPayment : 'Pilih Pembayaran';
 
 
 
@@ -24,7 +24,7 @@ const BuyNow = (): JSX.Element => {
         <div className="flex">
             <div>
               <div>{getValue}.</div>
-                <div>{Payment}</div>
+                <div>{getPayment}</div>
                 <div className="font-bold">Rp.{getPrice}</div>
             </div>
           

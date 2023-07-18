@@ -10,11 +10,14 @@
   import { AiOutlineCalendar } from 'react-icons/ai';
   import WeeklyMobileLegends from '@/data/mobile-legends/Weekly';
   import BuyNow from '@/payment/Confirm';
+import Test from './tes';
+import PaymentMethod from '@/payment/paymentsMethod';
 
 function ButtonPills(): JSX.Element {
   const [buttonValues, setButtonValues] = useState<string[]>([]);
   const [Price , setPrice] = useState('')
   const [showFooter, setShowFooter] = useState(false);
+  const [showPayment , setShowPayment] = useState(false);
 
 
   useEffect(() => {
@@ -30,9 +33,10 @@ function ButtonPills(): JSX.Element {
     setShowFooter(true);
     sessionStorage.setItem('buttonValues', value);
     sessionStorage.setItem('Price', Price);
+    // sessionStorage.setItem('Payment', "Pilih Pembayaran");
 
-
-  };
+    Test(2)
+  };  
 
 
 
@@ -118,6 +122,8 @@ function ButtonPills(): JSX.Element {
   </Card>
 
   {showFooter && <BuyNow />}
+  <Button>Lihat Metode Pembayaran</Button>
+  {<PaymentMethod />}
   </div>
   )
 }

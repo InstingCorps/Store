@@ -1,18 +1,19 @@
 'use client'
 
 import ComponentNavbar from "@/components/Navbar/Navbar";
-import ButtonPills from "@/app/mobile-legends/components/buttons/buttons";
+import ButtonPills from "@/app/mobile-legends/components/buttons/Diamonds";
 import ComponentFooter from "@/components/footer/footer";
 import Test from "../Text/Development";
 import InputID from "./components/inputID/InputID";
 import { Card } from "flowbite-react";
 import Cards from "./components/card/Card";
-import PaymentMethod from "@/payment/paymentsMethod";
 import DukunganPelanggan from "@/Contact/Callme";
+import React from "react";
 
 
 
 export default function MobileLegends() {
+
 return(
     <main>
         <ComponentNavbar />
@@ -25,8 +26,6 @@ return(
 
         <ButtonPills />
         <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
-
-        <PaymentMethod />
         <DukunganPelanggan />
 
         <footer>
