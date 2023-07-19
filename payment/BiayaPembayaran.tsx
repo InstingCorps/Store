@@ -1,7 +1,6 @@
 'use client' 
-import React from "react"
 
-export default function BiayaPembayaran(value : any) {
+const BiayaPembayaran = (value : any) => {
 
         let toString
         const getPrice = sessionStorage.getItem('Price')
@@ -20,3 +19,4 @@ export default function BiayaPembayaran(value : any) {
     const resultAsString = result.toString();
         return resultAsString;
 }
+export default BiayaPembayaran;
