@@ -4,6 +4,7 @@ import BiayaPembayaran from "@/payment/BiayaPembayaran";
 import { Card } from "flowbite-react";
 import { useState , useEffect } from "react";
 import React from 'react';
+import BuyNow from "./Confirm";
 
 const PaymentMethod = (): JSX.Element => {
 
@@ -17,6 +18,7 @@ const PaymentMethod = (): JSX.Element => {
     const handleClick = (value: string) => () => {
         sessionStorage.setItem('Payment', value);
         console.log(value);
+        BuyNow()
         };
     return (
         <Card className="bg-gray-800 mt-10">
@@ -29,7 +31,7 @@ const PaymentMethod = (): JSX.Element => {
             <div className="text-center font-medium">untuk sementara waktu semua pembelian kamu akan di arahkan ke whatsapp admin!</div>
         
         </Card>
-        <Card className="mt-5"onClick={handleClick("WhatsApp")}>
+        <Card className="mt-5 hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800" onClick={handleClick("WhatsApp")}>
             <div className="flex">
             <img src="https://www.citypng.com/public/uploads/preview/-41601346950a0kcvtszk3.png" alt="" style={{ width: '60%' }} />
                 <div className="ml-4">
@@ -39,14 +41,14 @@ const PaymentMethod = (): JSX.Element => {
             </div>
             
         </Card>
-        <Card className="mt-5"onClick={handleClick("QRIS")}>
+        <Card className="mt-5 hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800" onClick={handleClick("QRIS")}>
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/QRIS_ID_CHNL_LOGO.png" alt="" style={{ width: '60%' }} />
             <div className="font-semibold ml-4">Rp.{Qris}</div>
             </div>
             
         </Card>
-        <Card className="mt-5">
+        <Card className="mt-5 hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800">
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/GO_PAY_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
             <div className="ml-4">
@@ -55,7 +57,7 @@ const PaymentMethod = (): JSX.Element => {
             </div>
             
         </Card>
-        <Card className="mt-5">
+        <Card className="mt-5 hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800">
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/DANA_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
             <div className="ml-4">
@@ -64,7 +66,7 @@ const PaymentMethod = (): JSX.Element => {
             </div>
             
         </Card>
-        <Card className="mt-5">
+        <Card className="mt-5 hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800">
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/OVO_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
             <div className="ml-4">
@@ -73,7 +75,7 @@ const PaymentMethod = (): JSX.Element => {
             </div>
             
         </Card>
-        <Card className="mt-5">
+        <Card className="mt-5 hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800">
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/SHOPEE_PAY_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
             <div className="ml-4">
