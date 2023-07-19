@@ -6,8 +6,8 @@ import { useState , useEffect } from "react";
 import React from 'react';
 
 const PaymentMethod = (): JSX.Element => {
-  const getPrice = sessionStorage.getItem('Price');
 
+  const WhatsApp = BiayaPembayaran(0)
     const Qris = BiayaPembayaran(1.5)
     const Gopay = BiayaPembayaran(1.8) //dalam hitungan persen
     const Dana = BiayaPembayaran(2.5)
@@ -34,7 +34,7 @@ const PaymentMethod = (): JSX.Element => {
             <img src="https://www.citypng.com/public/uploads/preview/-41601346950a0kcvtszk3.png" alt="" style={{ width: '60%' }} />
                 <div className="ml-4">
                     <div className="ml-4 font-sans font-bold text-gray-700">Harga</div>
-                    <div className="font-semibold">Rp.{getPrice}</div>
+                    <div className="font-semibold">Rp.{WhatsApp}</div>
                 </div>
             </div>
             
