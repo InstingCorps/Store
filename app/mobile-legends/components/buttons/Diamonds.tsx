@@ -10,8 +10,8 @@
   import { AiOutlineCalendar } from 'react-icons/ai';
   import WeeklyMobileLegends from '@/data/mobile-legends/Weekly';
   import BuyNow from '@/payment/Confirm';
-import Test from './tes';
-import PaymentMethod from '@/payment/paymentsMethod';
+  import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
+  import PaymentMethod from '@/payment/paymentsMethod';
 
 function ButtonPills(): JSX.Element {
   const [buttonValues, setButtonValues] = useState<string[]>([]);
@@ -22,6 +22,7 @@ function ButtonPills(): JSX.Element {
 
   useEffect(() => {
   const getPrice = sessionStorage.getItem('Price')
+  
 
   if (getPrice) {
     setPrice(getPrice)
@@ -33,12 +34,11 @@ function ButtonPills(): JSX.Element {
     setShowFooter(true);
     sessionStorage.setItem('buttonValues', value);
     sessionStorage.setItem('Price', Price);
-    // sessionStorage.setItem('Payment', "Pilih Pembayaran");
+  };
 
-    Test(2)
-  };  
-
-
+  const ShowPayments = () => () => {
+    setShowPayment(!showPayment);
+  }
 
   const renderButtons = () => {
     const buttonData = DataMobileLegends
@@ -77,8 +77,6 @@ function ButtonPills(): JSX.Element {
 
   return( 
     <div>
-
-
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center font-extrabold'>Pilih Nominal Topup</div>
     <div className="font-sans text-xl font-bold text-right mr-5">Harga : Rp.{Price}</div>
@@ -122,8 +120,13 @@ function ButtonPills(): JSX.Element {
   </Card>
 
   {showFooter && <BuyNow />}
-  <Button>Lihat Metode Pembayaran</Button>
-  {<PaymentMethod />}
+  <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
+  <div className="flex justify-center items-center mt-10">
+  <Button onClick={ShowPayments()} size="lg" gradientDuoTone="greenToBlue">
+    {showPayment ? 'Sembunyikan Metode Pembayaran' : 'Pilih Metode Pembayaran'}  <HiOutlineArrowRight className="ml-2 h-5 w-5" /></Button>
+
+  </div>
+  {showPayment && <PaymentMethod />}
   </div>
   )
 }

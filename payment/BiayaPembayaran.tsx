@@ -1,7 +1,7 @@
 'use client' 
 import React from "react"
 
-export default function Test(value : any) {
+export default function BiayaPembayaran(value : any) {
 
         let toString
         const getPrice = sessionStorage.getItem('Price')
@@ -18,7 +18,5 @@ export default function Test(value : any) {
     
     const result = Prices + TotalPersen
     const resultAsString = result.toString();
-    sessionStorage.setItem('Payment' , resultAsString)
-    console.log(resultAsString , "From tes");
-
+        return resultAsString;
 }

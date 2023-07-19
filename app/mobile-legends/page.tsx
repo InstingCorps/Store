@@ -25,7 +25,6 @@ return(
         <Card className="font-bold ml-2 m-5">Langkah 2. Pilih Jumlah Diamond.</Card>
 
         <ButtonPills />
-        <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
         <DukunganPelanggan />
 
         <footer>

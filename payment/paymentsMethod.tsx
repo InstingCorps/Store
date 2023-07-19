@@ -1,44 +1,23 @@
 'use client'
 
+import BiayaPembayaran from "@/payment/BiayaPembayaran";
 import { Card } from "flowbite-react";
 import { useState , useEffect } from "react";
 import React from 'react';
 
-
-
 const PaymentMethod = (): JSX.Element => {
   const getPrice = sessionStorage.getItem('Price');
 
+    const Qris = BiayaPembayaran(1.5)
+    const Gopay = BiayaPembayaran(1.8) //dalam hitungan persen
+    const Dana = BiayaPembayaran(2.5)
+    const OVO = BiayaPembayaran(1.9)
+    const ShopeePay = BiayaPembayaran(1.7)
     
     const handleClick = (value: string) => () => {
         sessionStorage.setItem('Payment', value);
         console.log(value);
-        
-      };
-    
-    // const Payments = (persen : number) => {
-
-    //     let toString
-    //     const getPrice = sessionStorage.getItem('Price')
-        
-    //     if (getPrice !== null) {
-    //         toString = parseFloat(getPrice);
-    //       } else {
-    //         toString = 0
-    //         console.log('Nilai tidak tersedia');
-    //       }
-        
-    // const Price = toString
-    // const Persen = persen;
-    // const TotalPersen = (Price * Persen) / 100;
-
-    // const result = Price + TotalPersen
-    // const resultAsString = result.toString();
-
-    
-    // setFinalResult(result);
-    // };
-
+        };
     return (
         <Card className="bg-gray-800 mt-10">
         <Card className="">
@@ -55,7 +34,7 @@ const PaymentMethod = (): JSX.Element => {
             <img src="https://www.citypng.com/public/uploads/preview/-41601346950a0kcvtszk3.png" alt="" style={{ width: '60%' }} />
                 <div className="ml-4">
                     <div className="ml-4 font-sans font-bold text-gray-700">Harga</div>
-                    <div className="font-semibold">Rp.{}</div>
+                    <div className="font-semibold">Rp.{getPrice}</div>
                 </div>
             </div>
             
@@ -63,38 +42,43 @@ const PaymentMethod = (): JSX.Element => {
         <Card className="mt-5"onClick={handleClick("QRIS")}>
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/QRIS_ID_CHNL_LOGO.png" alt="" style={{ width: '60%' }} />
-                <div className="mt-2 font-semibold">Rp.{}</div>
+            <div className="font-semibold ml-4">Rp.{Qris}</div>
             </div>
             
         </Card>
         <Card className="mt-5">
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/GO_PAY_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
-                <div>tes</div>
+            <div className="ml-4">
+                    <div className="font-semibold ml-6">Rp.{Gopay}</div>
+            </div>
             </div>
             
         </Card>
         <Card className="mt-5">
             <div className="flex">
-
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/DANA_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
-                <div>tes</div>
+            <div className="ml-4">
+                    <div className="font-semibold ml-6">Rp.{Dana}</div>
+            </div>
             </div>
             
         </Card>
         <Card className="mt-5">
             <div className="flex">
-
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/OVO_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
-                <div>tes</div>
+            <div className="ml-4">
+                    <div className="font-semibold ml-6">Rp.{OVO}</div>
+            </div>
             </div>
             
         </Card>
         <Card className="mt-5">
             <div className="flex">
-
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/SHOPEE_PAY_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
-                <div>tes</div>
+            <div className="ml-4">
+                    <div className="font-semibold ml-6">Rp.{ShopeePay}</div>
+            </div>
             </div>
             
         </Card>
