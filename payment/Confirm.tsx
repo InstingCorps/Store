@@ -1,8 +1,5 @@
 'use client'
 
-
-
-
 import { Button, Card } from 'flowbite-react';
 import React from 'react';
 

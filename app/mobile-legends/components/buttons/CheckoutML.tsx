@@ -2,6 +2,7 @@
 'use client'
 
 import Development from '@/app/Text/Development';
+import Countdown from '@/components/CountDown/Countdown';
 import ComponentNavbar from '@/components/Navbar/Navbar';
 import { Button, Card } from 'flowbite-react';
 import React, { useState, useEffect } from 'react';
@@ -64,6 +65,7 @@ const CheckoutML = (): JSX.Element => {
     <div>
       <ComponentNavbar />
       <Development />
+      <Countdown />
   <Card className='font-bold text-center text-black mt-10'>
     <div>Type Game : {TypeGame}</div>
     <div>User ID =  {UserID}</div>

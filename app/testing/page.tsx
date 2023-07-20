@@ -1,4 +1,5 @@
 'use client'
+import Countdown from "@/components/CountDown/Countdown";
 import ComponentNavbar from "@/components/Navbar/Navbar";
 // import TabsWithIcons from "./tabs";
 // import Footer from "./footer";
@@ -16,6 +17,7 @@ export default function Testing() {
         {/* <ComponentNavbar /> */}
         {/* <TabsWithIcons /> */}
         <button onClick={handleClick}>test</button>
+        <Countdown />
         {/* {showFooter && <Footer />} */}
         </main>
     )
