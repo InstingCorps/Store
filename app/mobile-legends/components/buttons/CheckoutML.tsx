@@ -44,22 +44,22 @@ const CheckoutML = (): JSX.Element => {
 
   }, []);
 
-  const link = `http://wa.me/6288221574494?text= Hallo Admin Saya ingin membeli items sebagai berikut:
+  const link = `http://wa.me/6288221574494?text=RL09BvC %0A %0A *ROZISTORE* %0A Hallo Kak Saya ingin membeli items sebagai berikut:
   %0A   %0A
-  %0A Type Game :${TypeGame}
-  %0A User ID :${UserID}
-  %0A ZoneID : ( ${ZoneID} )
-  %0A jumlah :"${Value}"
-  %0A Seharga : ${PriceValue}
+  %0A *Type Game :${TypeGame}*
+  %0A *User ID :${UserID}*
+  %0A *ZoneID : ( ${ZoneID} )*
+  %0A *jumlah :"${Value}"*
+  %0A *Seharga : ${PriceValue}*
   %0A
-  %0A     !!  MOHON DI BACA  !!
+  %0A     *!!  MOHON DI BACA  !!*
   %0A
   %0A  !! ADMIN AKAN MENGIRIM DIAMOND MAXIMAL DALAM WAKTU 1 JAM , JIKA MELEBIHI WAKTU TERSEBUT UANG GARANSI KEMBALI 100 PERSEN !!
   %0A  %0A  !! JIKA KAMI TELAH MENGIRIM ITEMS NYA MAKA KAMI AKAN MENGIRIM NOTIFIKASI KE NOMER INI !!
   %0A
   %0A !! PASTIKAN ANDA MENGECEK ID ANDA BENAR! DAN JANGAN SESEKALI MENGGANTI HARGA ATAU JUMLAH DIAMOND DI ATAS !!
   %0A
-  %0A   %0A SYARAT DAN KETENTUAN BERLAKU`
+  %0A   %0A _*SYARAT DAN KETENTUAN BERLAKU*_`
 
   return(
     <div>
