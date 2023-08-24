@@ -1,7 +1,5 @@
 
-
 'use client';
-
 import { Card , TextInput } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 
