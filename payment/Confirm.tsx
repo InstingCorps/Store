@@ -1,12 +1,11 @@
 'use client'
 
 import { Button, Card } from 'flowbite-react';
-import React from 'react';
 
-const BuyNow = (): JSX.Element => {
+const BuyNow = () => {
   
   const getPrice = sessionStorage.getItem('Price');
-  const getValue = sessionStorage.getItem('buttonValues');
+  const getValue = sessionStorage.getItem('product');
   const getPayment = sessionStorage.getItem('Payment');
 
   let Payment = getPayment !== null ? getPayment : 'Pilih Pembayaran';

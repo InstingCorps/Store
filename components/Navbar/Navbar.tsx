@@ -1,6 +1,5 @@
 
 'use client';
-
 import { Navbar } from 'flowbite-react';
 import "./styles.css"
 
