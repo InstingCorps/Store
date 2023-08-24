@@ -16,7 +16,7 @@ const CheckoutML = (): JSX.Element => {
 
   useEffect(() => {
     const getTypeGame = sessionStorage.getItem('TypeGame')
-    const getValue = sessionStorage.getItem('buttonValues');
+    const getValue = sessionStorage.getItem('product');
     const getPrice = sessionStorage.getItem('Price');
     const getUserID = sessionStorage.getItem('PlayerID')
     const getZoneID = sessionStorage.getItem('ZoneID')

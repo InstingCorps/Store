@@ -42,7 +42,7 @@ export default function Checkout() {
 
    } else {
     return(
-        <div className="text-center font-bold text-white mt-10 text-xl">Tunggu Sebentar...</div>
+        <div className="text-center font-bold text-white mt-10 text-xl">Ada yang salah 😁 silahkan ulangi lagi proses nya dari awal ya <a className="bg-white text-center" href="/">Ulangi Topup</a></div>
     )
    }
 }

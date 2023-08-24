@@ -9,20 +9,17 @@
   import WeeklyMobileLegends from '@/data/mobile-legends/Weekly';
   import { HiOutlineArrowRight } from 'react-icons/hi';
   import PaymentMethod from '@/payment/paymentsMethod';
+  import { useRouter } from 'next/navigation';
+import PopUpModal from '@/components/modal/verificationID';
 
 
-  interface Product {
-    product_name: string;
-    category: string;
-    brand: string;
-    buyer_sku_code: string;
-    price: number;
-    // ... informasi lainnya
-  }
-function ButtonPills({data}:any) {
+function DiamondsList({data}:any) {
   const [Price , setPrice] = useState('')
   const [showFooter, setShowFooter] = useState(false);
   const [showPayment , setShowPayment] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const router = useRouter()
 
   useEffect(() => {
   const getPrice = sessionStorage.getItem('Price')
@@ -35,30 +32,62 @@ function ButtonPills({data}:any) {
   const handleClick = (value: string , Price : any , skuCode: any) => () => {
     setPrice(Price)
     setShowFooter(true);
-    console.log(skuCode);
+    sessionStorage.setItem('SKUCode' , skuCode);
     sessionStorage.setItem('product', value);
     sessionStorage.setItem('Price', Price);
   };
+
+  const OnClicks = () => {
+
+    const verifedID = sessionStorage.getItem("PlayerID")
+
+    if (verifedID) {
+      console.log("OK");
+      router.push("/checkout")
+    } else {
+      alert('User ID harus diisi terlebih dahulu.');
+       setModalVisible(true);
+    }
+  }
 
   const ShowPayments = () => () => {
     setShowPayment(!showPayment);
   }
 
   const Diamonds = () => {
-    const buttonData = data
-    return (buttonData).map((product:Product) => (
-      <Card
-      imgSrc='https://shorturl.at/jlqPY'
-      className="hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
-      key={product.product_name}
-      color=""
-      // value={product.buyer_sku_code}
-      onClick={handleClick(product.product_name , product.price , product.buyer_sku_code)}
-      >
-        {product.product_name}
-      </Card>
-    ));
+
+    // Fungsi untuk mengambil angka dari string
+const extractNumber = (str : any) => {
+  const matches = str.match(/\d+/);
+  return matches ? parseInt(matches[0]) : 0;
+};
+
+// Urutkan data berdasarkan product_name yang mengandung angka
+const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) - extractNumber(b.product_name));
+
+    return sortedData.map((product : any) => {
+      // Menghitung harga baru dengan menambahkan 5%
+      const keuntungan = 0.13 // persen
+
+      const ProductPriceWithComma = product.price * (1 + keuntungan) + 1000
+      const ProductPrice = Math.ceil(ProductPriceWithComma)
+      
+      return (
+        <Card
+          imgSrc="https://shorturl.at/jlqPY"
+          className="hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
+          key={product.product_name}
+          color=""
+          onClick={
+            handleClick(product.product_name, ProductPrice, product.buyer_sku_code)
+          }
+        >
+          {product.product_name}
+        </Card>
+      );
+    });
   };
+  
 
 
   const WeeklyPass = () => {
@@ -131,8 +160,12 @@ function ButtonPills({data}:any) {
                 <div className="font-bold">Rp.{Price}</div>
             </div>
           
-        <Button className="ml-auto font-bold mt-4" pill color="success" size="md" href= "/ok"
+        <Button className="ml-auto font-bold mt-4" pill color="success" size="md" onClick={OnClicks}
         >Bayar Sekarang</Button>
+          
+        {isModalVisible && (
+        <PopUpModal />
+      )}
         </div>
     </Card>}
   <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
@@ -146,6 +179,6 @@ function ButtonPills({data}:any) {
   )
 }
 
-export default ButtonPills;
+export default DiamondsList;
 
 
