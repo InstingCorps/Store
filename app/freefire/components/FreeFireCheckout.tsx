@@ -7,7 +7,12 @@ import ComponentNavbar from '@/components/Navbar/Navbar';
 import { Button, Card } from 'flowbite-react';
 import React, { useState, useEffect } from 'react';
 
+interface CardProps {
+  isVisible: boolean; // Properti untuk mengontrol visibilitas card
+}
+
 const CheckoutFF = (): JSX.Element => {
+  const [isCardVisible, setIsCardVisible] = useState(true);
   const [TypeGame , setTypeGame] = useState('')
   const [Value, setValue] = useState('');
   const [PriceValue, setPriceValue] = useState('');
@@ -39,6 +44,9 @@ const CheckoutFF = (): JSX.Element => {
 
   }, []);
 
+  const handleHideCard = () => {
+    setIsCardVisible(false); // Panggil ini ketika countdown selesai untuk menyembunyikan card
+  };
   const link = `http://wa.me/6288221574494?text= Hallo Admin Saya ingin membeli items sebagai berikut:
   %0A   %0A
   %0A Type Game :${TypeGame}
@@ -59,7 +67,7 @@ const CheckoutFF = (): JSX.Element => {
     <div>
         <ComponentNavbar />
         <Development />
-        <Countdown />
+        <Countdown onHideCard={handleHideCard} />
   <Card className='font-bold text-center text-black mt-10'>
     <div>Type Game : {TypeGame}</div>
     <div>User ID =  {UserID}</div>
