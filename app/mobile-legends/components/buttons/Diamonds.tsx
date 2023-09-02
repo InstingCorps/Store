@@ -30,13 +30,16 @@ function DiamondsList({data}:any) {
   }
   }, [Price]);
 
-  const handleClick = (value: string , Price : any , skuCode: any) => () => {
+  const handleClick = (product_name: string , Price : any , buyer_sku_code: any , category:any , seller_name:any , seller_price: any) => () => {
     setPrice(Price)
-    setProduct(value)
+    setProduct(product_name)
     setShowFooter(true);
-    sessionStorage.setItem('SKUCode' , skuCode);
-    sessionStorage.setItem('product', value);
+    sessionStorage.setItem('product_name', product_name);
+    sessionStorage.setItem('category' , category);
+    sessionStorage.setItem('seller_name' , seller_name);
+    sessionStorage.setItem('buyer_sku_code' , buyer_sku_code);
     sessionStorage.setItem('Price', Price);
+    sessionStorage.setItem('seller_price', seller_price);
   };
 
   const OnClicks = () => {
@@ -81,7 +84,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
           key={product.product_name}
           color=""
           onClick={
-            handleClick(product.product_name, ProductPrice, product.buyer_sku_code)
+            handleClick(product.product_name, ProductPrice, product.buyer_sku_code , product.category , product.seller_name , product.price)
           }
         >
           {product.product_name}
@@ -102,7 +105,6 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
       key={index}
       color=""
       // value={button.value}
-      onClick={handleClick(button.value , button.price , button.value)}
       >
         {button.label}
       </Card>

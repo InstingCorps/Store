@@ -15,21 +15,61 @@ interface CardProps {
   isVisible: boolean; // Properti untuk mengontrol visibilitas card
 }
 
+interface CheckoutData {
+  product_name: string;
+  category: string;
+  brand: string;
+  seller_name: string;
+  buyer_sku_code: string;
+  price: string;
+  Orders: string;
+  UserID: string;
+  ZoneID: string;
+  seller_price: string;
+}
+
 
 
 const CheckoutML = () => {
   const [isCardVisible, setIsCardVisible] = useState(true);
 
-  const [TypeGame , setTypeGame] = useState('')
-  const [Value, setValue] = useState('');
-  const [PriceValue, setPriceValue] = useState('');
-  const [Orders, SetOrders] = useState('');
-  const [UserID , setUserID] = useState('')
-  const [ZoneID , setZoneID] = useState('')
+  const [checkoutData, setCheckoutData] = useState<CheckoutData>({
+    brand: '',
+    product_name: '',
+    category: '',
+    price: '',
+    seller_name: '',
+    buyer_sku_code: '',
+    Orders: '',
+    UserID: '',
+    ZoneID: '',
+    seller_price: '',
+  });
+
   
   const handleHideCard = () => {
     setIsCardVisible(false); // Panggil ini ketika countdown selesai untuk menyembunyikan card
   };
+
+
+  useEffect(() => {
+    const storedData: CheckoutData = {
+      product_name: sessionStorage.getItem('product_name') || '',
+      category: sessionStorage.getItem('category') || '',
+      brand: sessionStorage.getItem('TypeGame') || '',
+      price: sessionStorage.getItem('Price') || '',
+      seller_name: sessionStorage.getItem('seller_name') || '',
+      buyer_sku_code: sessionStorage.getItem('buyer_sku_code') || '',
+      Orders: sessionStorage.getItem('Orders') || '',
+      UserID: sessionStorage.getItem('PlayerID') || '',
+      ZoneID: sessionStorage.getItem('ZoneID') || '',
+      seller_price: sessionStorage.getItem('seller_price') || '',
+    };
+
+    setCheckoutData((prevData) => ({ ...prevData, ...storedData }));
+  }, []);
+
+
 
   const RequestOrder = async (e:SyntheticEvent) => {
     e.preventDefault()
@@ -40,53 +80,26 @@ const CheckoutML = () => {
     const ref = `${uuidRef}_${currentTime}`;
 
     await axios.post('/api/orderWITHemail' , {
-      orderid: ref,
-      id: UserID,
-      zodeid: ZoneID,
-      typegame: TypeGame,
-
+      id: checkoutData.UserID,
+      zoneid: checkoutData.ZoneID,
+      product_name: checkoutData.product_name,
+      category: checkoutData.category,
+      brand: checkoutData.brand,
+      price: checkoutData.price,
+      seller_name: checkoutData.seller_name,
+      buyer_sku_code: checkoutData.buyer_sku_code,
+      seller_price: checkoutData.seller_price,
+      
     })
     };
 
-  useEffect(() => {
-    const getTypeGame = sessionStorage.getItem('TypeGame')
-    const getValue = sessionStorage.getItem('product');
-    const getPrice = sessionStorage.getItem('Price');
-    const getUserID = sessionStorage.getItem('PlayerID')
-    const getZoneID = sessionStorage.getItem('ZoneID')
-
-    if (getTypeGame) {
-      setTypeGame(getTypeGame)
-      
-    }
-    if (getValue) {
-      setValue(getValue);
-    }
-    
-    if (getPrice) {
-      setPriceValue(getPrice);
-    }
-
-    if (getUserID) {
-      setUserID(getUserID)
-    }
-
-    if (getZoneID) {
-      setZoneID(getZoneID)
-    }
-
-
-  }, []);
-
-
-
   const link = `http://wa.me/6288221574494?text=RL09BvC %0A %0A *ROZISTORE* %0A Hallo Kak Saya ingin membeli items sebagai berikut:
   %0A   %0A
-  %0A *Type Game :${TypeGame}*
-  %0A *User ID :${UserID}*
-  %0A *ZoneID : ( ${ZoneID} )*
-  %0A *jumlah :"${Value}"*
-  %0A *Seharga : ${PriceValue}*
+  %0A *Type Game :${checkoutData.brand}*
+  %0A *User ID :${checkoutData.UserID}*
+  %0A *ZoneID : ( ${checkoutData.ZoneID} )*
+  %0A *jumlah :"${checkoutData.product_name}"*
+  %0A *Seharga : ${checkoutData.price}*
   %0A
   %0A     *!!  MOHON DI BACA  !!*
   %0A
@@ -102,11 +115,11 @@ const CheckoutML = () => {
       <div>
         {isVisible && (
       <Card className='font-bold text-center text-black mt-10'>
-      <div>Type Game : {TypeGame}</div>
-      <div>User ID =  {UserID}</div>
-      <div>Zone ID = &#40; {ZoneID} &#41;</div>
-      <div>Jumlah DM : {Value}</div>
-      <div>Harga Rp.{PriceValue}</div>
+      <div>Type Game : {checkoutData.brand}</div>
+      <div>User ID =  {checkoutData.UserID}</div>
+      <div>Zone ID = &#40; {checkoutData.ZoneID} &#41;</div>
+      <div>Jumlah DM : {checkoutData.product_name}</div>
+      <div>Harga Rp.{checkoutData.price}</div>
       <Button
       className='font-bold'
       // href={link}

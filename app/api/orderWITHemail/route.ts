@@ -6,12 +6,18 @@ import nodemailer from 'nodemailer';
 
 export async function POST (request : Request) {
 
-  const {id  , name} = await request.json()
+  const { id , zoneid , product_name , category , brand , price , seller_name , buyer_sku_code , seller_price} = await request.json()
 
   const data: any = {
-    name: 'fahrur',
-    umur: 24,
-    hobi: 'main bola',
+    id,
+    zoneid,
+    product_name,
+    category,
+    brand,
+    price,
+    seller_name,
+    buyer_sku_code,
+    seller_price,
   };
 
   const encryptionKey = 'fahrurrozi25012006Rozistore25126'
@@ -35,10 +41,17 @@ export async function POST (request : Request) {
 
   const emailContent = `
   <p>Hello,</p>
-  <p>Please take action on the order:</p>
-  <p>With Order:</p>
+  <h1>Please take action on the order:</h1>
+  <h2>With Order:</h2>
   <p>ID : ${id}</p>
-  <p>Zone ID :( ${encrypt} )</p>
+  <p>Zone ID :( ${zoneid} )</p>
+  <p>category : ${category} </p>
+  <p>Brand : ${brand} </p>
+  <p>Product : ${product_name} </p>
+  <p>Price : ${price} </p>
+  <p>Seller Price : ${seller_price} </p>
+  <p>Seller : ${seller_name} </p>
+  <p>SKU Code : ${buyer_sku_code} </p>
   <p>Decrypted Data: ${JSON.stringify(decryptedData)}</p>
   <p>Nama : ${decryptedData.name}</p>
   
@@ -53,6 +66,10 @@ export async function POST (request : Request) {
       Decline
     </button>
   </a>
+
+  <footer>
+  <div>ROZISTORE ALL RIGHTREVERSED</div>
+  </footer>
 `;
 
   const mailOptions = {
