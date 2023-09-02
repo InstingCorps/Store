@@ -53,20 +53,23 @@ const CheckoutML = () => {
 
 
   useEffect(() => {
-    const storedData: CheckoutData = {
-      product_name: sessionStorage.getItem('product_name') || '',
-      category: sessionStorage.getItem('category') || '',
-      brand: sessionStorage.getItem('TypeGame') || '',
-      price: sessionStorage.getItem('Price') || '',
-      seller_name: sessionStorage.getItem('seller_name') || '',
-      buyer_sku_code: sessionStorage.getItem('buyer_sku_code') || '',
-      Orders: sessionStorage.getItem('Orders') || '',
-      UserID: sessionStorage.getItem('PlayerID') || '',
-      ZoneID: sessionStorage.getItem('ZoneID') || '',
-      seller_price: sessionStorage.getItem('seller_price') || '',
-    };
-
-    setCheckoutData((prevData) => ({ ...prevData, ...storedData }));
+    if (typeof window !== 'undefined') {
+      
+      const storedData: CheckoutData = {
+        product_name: sessionStorage.getItem('product_name') || '',
+        category: sessionStorage.getItem('category') || '',
+        brand: sessionStorage.getItem('TypeGame') || '',
+        price: sessionStorage.getItem('Price') || '',
+        seller_name: sessionStorage.getItem('seller_name') || '',
+        buyer_sku_code: sessionStorage.getItem('buyer_sku_code') || '',
+        Orders: sessionStorage.getItem('Orders') || '',
+        UserID: sessionStorage.getItem('PlayerID') || '',
+        ZoneID: sessionStorage.getItem('ZoneID') || '',
+        seller_price: sessionStorage.getItem('seller_price') || '',
+      };
+  
+      setCheckoutData((prevData) => ({ ...prevData, ...storedData }));
+    }
   }, []);
 
 
@@ -89,7 +92,7 @@ const CheckoutML = () => {
       seller_name: checkoutData.seller_name,
       buyer_sku_code: checkoutData.buyer_sku_code,
       seller_price: checkoutData.seller_price,
-      
+
     })
     };
 
