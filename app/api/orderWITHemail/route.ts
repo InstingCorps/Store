@@ -13,7 +13,7 @@ export async function POST (request : Request) {
     hobi: 'main bola',
   };
 
-  const encryptionKey = process.env.APP_ENCRYPTION_KEY
+  const encryptionKey = process.env.APP_ENCRYPTION_KEY || ""
 
   const encrypt = Encrypt(data , encryptionKey)
   const decryptedData = Decrypt(encrypt, encryptionKey);
