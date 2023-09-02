@@ -2,7 +2,7 @@
 import ComponentNavbar from "@/components/Navbar/Navbar";
 import ComponentFooter from "@/components/footer/footer";
 import { DarkThemeToggle, Flowbite } from 'flowbite-react';
-import Valid from "../mobile-legends/components/buttons/CheckoutML";
+import Valid from "../mobile-legends/components/CheckoutML";
 
 
 export default function About() {
