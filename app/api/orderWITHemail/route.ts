@@ -1,6 +1,7 @@
 
 
 import { Decrypt, Encrypt } from '@/crypto/encrypt';
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST (request : Request) {
@@ -13,7 +14,8 @@ export async function POST (request : Request) {
     hobi: 'main bola',
   };
 
-  const encryptionKey = process.env.APP_ENCRYPTION_KEY || ""
+  const encryptionKey = 'fahrurrozi25012006Rozistore25126'
+  
 
   const encrypt = Encrypt(data , encryptionKey)
   const decryptedData = Decrypt(encrypt, encryptionKey);
@@ -61,5 +63,6 @@ export async function POST (request : Request) {
   };
 
   await transporter.sendMail(mailOptions);
+  return NextResponse.json("Email Has been sent!")
 
 }

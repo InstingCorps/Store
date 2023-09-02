@@ -11,16 +11,25 @@ import axios from 'axios';
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 
-import { useRouter } from 'next/navigation';
+interface CardProps {
+  isVisible: boolean; // Properti untuk mengontrol visibilitas card
+}
 
 
-const CheckoutML = (): JSX.Element => {
+
+const CheckoutML = () => {
+  const [isCardVisible, setIsCardVisible] = useState(true);
+
   const [TypeGame , setTypeGame] = useState('')
   const [Value, setValue] = useState('');
   const [PriceValue, setPriceValue] = useState('');
   const [Orders, SetOrders] = useState('');
   const [UserID , setUserID] = useState('')
   const [ZoneID , setZoneID] = useState('')
+  
+  const handleHideCard = () => {
+    setIsCardVisible(false); // Panggil ini ketika countdown selesai untuk menyembunyikan card
+  };
 
   const RequestOrder = async (e:SyntheticEvent) => {
     e.preventDefault()
@@ -88,25 +97,37 @@ const CheckoutML = (): JSX.Element => {
   %0A
   %0A   %0A _*SYARAT DAN KETENTUAN BERLAKU*_`
 
+  const Cards: React.FC<CardProps>  = ({ isVisible }) => {
+    return (
+      <div>
+        {isVisible && (
+      <Card className='font-bold text-center text-black mt-10'>
+      <div>Type Game : {TypeGame}</div>
+      <div>User ID =  {UserID}</div>
+      <div>Zone ID = &#40; {ZoneID} &#41;</div>
+      <div>Jumlah DM : {Value}</div>
+      <div>Harga Rp.{PriceValue}</div>
+      <Button
+      className='font-bold'
+      // href={link}
+      onClick={RequestOrder}
+      >
+      Bayar Sekarang!!
+      </Button>
+    </Card>
+        )}
+        </div>
+    )
+  }
+
   return (
     <div>
+      
       <ComponentNavbar />
       <Development />
-      <Countdown />
-  <Card className='font-bold text-center text-black mt-10'>
-    <div>Type Game : {TypeGame}</div>
-    <div>User ID =  {UserID}</div>
-    <div>Zone ID = &#40; {ZoneID} &#41;</div>
-    <div>Jumlah DM : {Value}</div>
-    <div>Harga Rp.{PriceValue}</div>
-    <Button
-    className='font-bold'
-    // href={link}
-    onClick={RequestOrder}
-    >
-    Bayar Sekarang!!
-    </Button>
-  </Card>
+      <Countdown onHideCard={handleHideCard} />
+      <Cards isVisible={isCardVisible} />
+
     </div>
   ) ;
 };
