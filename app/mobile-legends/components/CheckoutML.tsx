@@ -2,17 +2,42 @@
 'use client'
 
 import Development from '@/app/Text/Development';
+import { OrderDigiflazz } from '@/app/services/orders/ordersDigiflazz';
 import Countdown from '@/components/CountDown/Countdown';
 import ComponentNavbar from '@/components/Navbar/Navbar';
 import { Button, Card } from 'flowbite-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, SyntheticEvent } from 'react';
+import axios from 'axios';
+import { v4 as uuidv4 } from "uuid";
+import moment from "moment";
+
+import { useRouter } from 'next/navigation';
+
 
 const CheckoutML = (): JSX.Element => {
   const [TypeGame , setTypeGame] = useState('')
   const [Value, setValue] = useState('');
   const [PriceValue, setPriceValue] = useState('');
+  const [Orders, SetOrders] = useState('');
   const [UserID , setUserID] = useState('')
   const [ZoneID , setZoneID] = useState('')
+
+  const RequestOrder = async (e:SyntheticEvent) => {
+    e.preventDefault()
+    const uuidRef = uuidv4();
+    // Membuat waktu saat ini dalam format tertentu
+    const currentTime = moment().format('YYYYMMDDHHmmss');
+    // Menggabungkan UUID dan waktu saat ini untuk membuat ref_id
+    const ref = `${uuidRef}_${currentTime}`;
+
+    await axios.post('/api/orderWITHemail' , {
+      orderid: ref,
+      id: UserID,
+      zodeid: ZoneID,
+      typegame: TypeGame,
+
+    })
+    };
 
   useEffect(() => {
     const getTypeGame = sessionStorage.getItem('TypeGame')
@@ -44,6 +69,8 @@ const CheckoutML = (): JSX.Element => {
 
   }, []);
 
+
+
   const link = `http://wa.me/6288221574494?text=RL09BvC %0A %0A *ROZISTORE* %0A Hallo Kak Saya ingin membeli items sebagai berikut:
   %0A   %0A
   %0A *Type Game :${TypeGame}*
@@ -61,7 +88,7 @@ const CheckoutML = (): JSX.Element => {
   %0A
   %0A   %0A _*SYARAT DAN KETENTUAN BERLAKU*_`
 
-  return(
+  return (
     <div>
       <ComponentNavbar />
       <Development />
@@ -74,7 +101,8 @@ const CheckoutML = (): JSX.Element => {
     <div>Harga Rp.{PriceValue}</div>
     <Button
     className='font-bold'
-    href={link}
+    // href={link}
+    onClick={RequestOrder}
     >
     Bayar Sekarang!!
     </Button>

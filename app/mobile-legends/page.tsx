@@ -1,6 +1,6 @@
 
 import ComponentNavbar from "@/components/Navbar/Navbar";
-import ButtonPills from "@/app/mobile-legends/components/buttons/Diamonds";
+import DiamondList from "@/app/mobile-legends/components/buttons/Diamonds";
 import ComponentFooter from "@/components/footer/footer";
 import Test from "../Text/Development";
 import InputID from "./components/inputID/InputID";
@@ -8,7 +8,8 @@ import Cards from "./components/card/Card";
 import DukunganPelanggan from "@/Contact/Callme";
 import React from "react";
 import { GetApi } from "../services/getproductDigiflazz";
-import { OrderDigiflazz } from "../services/orders/ordersDigiflazz";
+
+export const dynamic = "force-dynamic"
 
 export default async function MobileLegends() {
 
@@ -29,7 +30,7 @@ return (
         <InputID />
         {/* <Card className="font-bold ml-2 m-5">Langkah 2. Pilih Jumlah Diamond.</Card> */}
 
-        <ButtonPills data = {data}/>
+        <DiamondList data = {data}/>
         <DukunganPelanggan />
 
         <footer>

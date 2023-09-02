@@ -10,11 +10,12 @@
   import { HiOutlineArrowRight } from 'react-icons/hi';
   import PaymentMethod from '@/payment/paymentsMethod';
   import { useRouter } from 'next/navigation';
-import PopUpModal from '@/components/modal/verificationID';
+  import PopUpModal from '@/components/modal/verificationID';
 
 
 function DiamondsList({data}:any) {
   const [Price , setPrice] = useState('')
+  const [Product , setProduct] = useState('')
   const [showFooter, setShowFooter] = useState(false);
   const [showPayment , setShowPayment] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
@@ -31,6 +32,7 @@ function DiamondsList({data}:any) {
 
   const handleClick = (value: string , Price : any , skuCode: any) => () => {
     setPrice(Price)
+    setProduct(value)
     setShowFooter(true);
     sessionStorage.setItem('SKUCode' , skuCode);
     sessionStorage.setItem('product', value);
@@ -40,12 +42,12 @@ function DiamondsList({data}:any) {
   const OnClicks = () => {
 
     const verifedID = sessionStorage.getItem("PlayerID")
+    const verifedZoneID = sessionStorage.getItem("ZoneID")
 
-    if (verifedID) {
-      console.log("OK");
+    if (verifedID && verifedZoneID) {
       router.push("/checkout")
     } else {
-      alert('User ID harus diisi terlebih dahulu.');
+      alert('User ID dan zone ID harus diisi terlebih dahulu.');
        setModalVisible(true);
     }
   }
@@ -155,8 +157,8 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
  <Card className="fixed bottom-0 w-full text-center z-40 rounded-xl" horizontal>
         <div className="flex">
             <div>
-              <div>jnjj.</div>
-                <div>okk</div>
+              <div></div>
+                <div>{Product}</div>
                 <div className="font-bold">Rp.{Price}</div>
             </div>
           

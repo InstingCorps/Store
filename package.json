@@ -21,6 +21,7 @@
     "flowbite-react": "^0.4.10",
     "moment": "^2.29.4",
     "next": "^13.4.9-canary.3",
+    "nodemailer": "^6.9.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "swiper": "^10.0.3",
@@ -28,6 +29,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/nodemailer": "^6.4.9",
     "@types/uuid": "^9.0.2",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.24",
