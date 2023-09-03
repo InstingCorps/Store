@@ -9,7 +9,7 @@
   import WeeklyMobileLegends from '@/data/mobile-legends/Weekly';
   import { HiOutlineArrowRight } from 'react-icons/hi';
   import PaymentMethod from '@/payment/paymentsMethod';
-  import { useRouter } from 'next/navigation';
+  import OrdersModal from '@/components/modal/orders';
 
 
 function DiamondsList({data}:any) {
@@ -17,9 +17,12 @@ function DiamondsList({data}:any) {
   const [Product , setProduct] = useState('')
   const [showFooter, setShowFooter] = useState(false);
   const [showPayment , setShowPayment] = useState(false);
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  const router = useRouter()
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [productInfo, setProductInfo] = useState({
+    product_name: '',
+    Price: null,
+    buyer_sku_code: null,
+  });
 
   useEffect(() => {
   const getPrice = sessionStorage.getItem('Price')
@@ -30,6 +33,11 @@ function DiamondsList({data}:any) {
   }, [Price]);
 
   const handleClick = (product_name: string , Price : any , buyer_sku_code: any , category:any , seller_name:any , seller_price: any) => () => {
+    setProductInfo({
+      product_name,
+      Price,
+      buyer_sku_code,
+    });
     setPrice(Price)
     setProduct(product_name)
     setShowFooter(true);
@@ -47,7 +55,7 @@ function DiamondsList({data}:any) {
     const verifedZoneID = sessionStorage.getItem("ZoneID")
 
     if (verifedID && verifedZoneID) {
-      router.push("/checkout")
+      setModalVisible(true);
     } else {
       alert('User ID dan zone ID harus diisi terlebih dahulu.');
        setModalVisible(true);
@@ -165,7 +173,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
           
         <Button className="ml-auto font-bold mt-4" pill color="success" size="md" onClick={OnClicks}
         >Bayar Sekarang</Button>
-          
+          <OrdersModal open={modalVisible} onClose={() => setModalVisible(false)} productInfo={productInfo} />
         </div>
     </Card>}
   <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
