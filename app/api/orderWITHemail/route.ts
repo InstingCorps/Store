@@ -34,9 +34,9 @@ export async function POST (request : Request) {
     },
   });
 
-  const orderId = '123';
+  const orderId = encrypt;
 
-  const confirmOrderLink = `https://example.com/order/${orderId}/confirm`;
+  const confirmOrderLink = `https://webtopup.vercel.app/order/${orderId}/confirm`;
   const declineOrderLink = `https://example.com/order/${orderId}/decline`;
 
   const emailContent = `
@@ -80,6 +80,6 @@ export async function POST (request : Request) {
   };
 
   await transporter.sendMail(mailOptions);
-  return NextResponse.json("Email Has been sent!")
+  return NextResponse.json("Email Telah Terkirim , Tunggu Admin Untuk Memprosesnya..!")
 
 }

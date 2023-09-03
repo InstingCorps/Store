@@ -2,14 +2,13 @@
 'use client'
 
 import Development from '@/app/Text/Development';
-import { OrderDigiflazz } from '@/app/services/orders/ordersDigiflazz';
 import Countdown from '@/components/CountDown/Countdown';
 import ComponentNavbar from '@/components/Navbar/Navbar';
-import { Button, Card } from 'flowbite-react';
+import { Alert, Button, Card } from 'flowbite-react';
 import React, { useState, useEffect, SyntheticEvent } from 'react';
 import axios from 'axios';
-import { v4 as uuidv4 } from "uuid";
-import moment from "moment";
+import { AiOutlineLoading } from 'react-icons/ai';
+import { HiInformationCircle } from 'react-icons/hi';
 
 interface CardProps {
   isVisible: boolean; // Properti untuk mengontrol visibilitas card
@@ -29,9 +28,11 @@ interface CheckoutData {
 }
 
 
-
 const CheckoutML = () => {
   const [isCardVisible, setIsCardVisible] = useState(true);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertColor, setAlertColor] = useState('info');
 
   const [checkoutData, setCheckoutData] = useState<CheckoutData>({
     brand: '',
@@ -75,25 +76,39 @@ const CheckoutML = () => {
 
 
   const RequestOrder = async (e:SyntheticEvent) => {
+    setIsProcessing(true);
     e.preventDefault()
-    const uuidRef = uuidv4();
-    // Membuat waktu saat ini dalam format tertentu
-    const currentTime = moment().format('YYYYMMDDHHmmss');
-    // Menggabungkan UUID dan waktu saat ini untuk membuat ref_id
-    const ref = `${uuidRef}_${currentTime}`;
 
-    await axios.post('/api/orderWITHemail' , {
-      id: checkoutData.UserID,
-      zoneid: checkoutData.ZoneID,
-      product_name: checkoutData.product_name,
-      category: checkoutData.category,
-      brand: checkoutData.brand,
-      price: checkoutData.price,
-      seller_name: checkoutData.seller_name,
-      buyer_sku_code: checkoutData.buyer_sku_code,
-      seller_price: checkoutData.seller_price,
+    try {
+      const response = await axios.post('/api/orderWITHemail' , {
+        id: checkoutData.UserID,
+        zoneid: checkoutData.ZoneID,
+        product_name: checkoutData.product_name,
+        category: checkoutData.category,
+        brand: checkoutData.brand,
+        price: checkoutData.price,
+        seller_name: checkoutData.seller_name,
+        buyer_sku_code: checkoutData.buyer_sku_code,
+        seller_price: checkoutData.seller_price,
+      });
 
-    })
+       // Setelah permintaan Axios selesai, atur isProcessing kembali menjadi false
+       setIsProcessing(false);
+       setAlertMessage('Berhasil: ' + JSON.stringify(response.data));
+       setAlertColor('success')
+
+       setTimeout(() => {
+        setAlertMessage('');
+      }, 5000);
+
+    } catch (error: any) {
+          // Handle kesalahan jika diperlukan
+          console.error('Error:', error);
+          setIsProcessing(false); 
+          setAlertMessage('Gagal: ' + error.message);
+          setAlertColor('failure');
+    }
+
     };
 
   const link = `http://wa.me/6288221574494?text=RL09BvC %0A %0A *ROZISTORE* %0A Hallo Kak Saya ingin membeli items sebagai berikut:
@@ -125,11 +140,16 @@ const CheckoutML = () => {
       <div>Harga Rp.{checkoutData.price}</div>
       <Button
       className='font-bold'
-      // href={link}
+      isProcessing={isProcessing}
+      processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}
+      size="md"
       onClick={RequestOrder}
-      >
-      Bayar Sekarang!!
-      </Button>
+      disabled={isProcessing} // Disable tombol selama proses
+    >
+      <p>
+        {isProcessing ? 'Memproses...' : 'Click me!'}
+      </p>
+    </Button>
     </Card>
         )}
         </div>
@@ -141,6 +161,11 @@ const CheckoutML = () => {
       
       <ComponentNavbar />
       <Development />
+      {alertMessage && (
+        <Alert className="mt-5" color={alertColor} icon={HiInformationCircle}>
+          {alertMessage}
+        </Alert>
+      )}
       <Countdown onHideCard={handleHideCard} />
       <Cards isVisible={isCardVisible} />
 
