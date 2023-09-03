@@ -10,7 +10,6 @@
   import { HiOutlineArrowRight } from 'react-icons/hi';
   import PaymentMethod from '@/payment/paymentsMethod';
   import { useRouter } from 'next/navigation';
-  import PopUpModal from '@/components/modal/verificationID';
 
 
 function DiamondsList({data}:any) {
@@ -167,9 +166,6 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
         <Button className="ml-auto font-bold mt-4" pill color="success" size="md" onClick={OnClicks}
         >Bayar Sekarang</Button>
           
-        {isModalVisible && (
-        <PopUpModal />
-      )}
         </div>
     </Card>}
   <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
