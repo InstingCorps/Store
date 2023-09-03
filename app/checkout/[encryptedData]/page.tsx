@@ -39,7 +39,6 @@ const EncryptedData = ({params} : {params: {encryptedData: string}}) => {
           <DukunganPelanggan />
           <ComponentFooter />
           <div>
-      ok {JSON.stringify(decryptedData)}
     </div>
       </div>
   )
