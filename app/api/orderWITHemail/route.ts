@@ -6,7 +6,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST (request : Request) {
 
-  const verify = process.env.APP_VERIFICATION_ORDER
+  const verify = "25012006RoziStore_FahrurRozi_001"
 
   const { id , zoneid , product_name , category , brand , price , seller_name , buyer_sku_code , seller_price} = await request.json()
 
@@ -25,8 +25,8 @@ export async function POST (request : Request) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.EMAILUSER_ADMIN,
-      pass: process.env.EMAILPASSWORD_ADMIN,
+      user:'games25legends@gmail.com',
+      pass: 'ermwseyrpyivteww',
     },
   });
 
