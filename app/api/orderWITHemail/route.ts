@@ -18,7 +18,7 @@ export async function POST (request : Request) {
 
   const encryptionKey = process.env.ENCRYPTION_KEY || ""
   
-
+  
   const encrypt = Encrypt(data , encryptionKey)
   const decryptedData = Decrypt(encrypt, encryptionKey);
   
