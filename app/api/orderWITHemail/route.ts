@@ -16,7 +16,7 @@ export async function POST (request : Request) {
     buyer_sku_code,
   };
 
-  const encryptionKey = process.env.APP_ENCRYPTION_KEY
+  const encryptionKey = process.env.APP_ENCRYPTION_KEY || ""
   
 
   const encrypt = Encrypt(data , encryptionKey)
