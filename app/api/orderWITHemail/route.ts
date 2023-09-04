@@ -16,9 +16,9 @@ export async function POST (request : Request) {
     buyer_sku_code,
   };
 
-  const encryptionKey = process.env.ENCRYPTION_KEY || ""
+  const encryptionKey = 'fahrurrozi25012006Rozistore25126'
   
-  
+
   const encrypt = Encrypt(data , encryptionKey)
   const decryptedData = Decrypt(encrypt, encryptionKey);
   
