@@ -1,29 +1,26 @@
+
 import axios from "axios";
-import { hashData } from "../data/dataToHash";
-import { ref_id } from "../data/ref_idGenerator";
 import { config } from "dotenv";
 config();
 
-export const OrderDigiflazz = async (skuCode: string, customer: string): Promise<any> => {
-    const refID = ref_id();
-    const hashing = await hashData(refID);
-
-    const url = `${process.env.APP_URL_DIGIFLAZZ}/transaction`;
+export const OrderDigiflazz = async (encryptedData: string, password: string): Promise<any> => {
+    // const encryptionKey = process.env.APP_ENCRYPTION_KEY
+    // const decryptedData = Decrypt(encryptedData , encryptionKey)
+    const url = `/api/ordersDigiflazz/ORDER`;
     const data = {
-        username: process.env.APP_USERNAME_DIGIFLAZZ,
-        buyer_sku_code: skuCode,
-        customer_no: customer,
-        ref_id: refID,
-        testing: true,
-        sign: hashing
+        data: encryptedData,
     };
-
-    try {
-        const response = await axios.post(url, data);
-        const resData = response.data.data;
-        console.log(resData);
-        return resData;
-    } catch (error:any) {
-        return { error: "error", message: error.message };
+    const passwords = "250106"
+    
+    if (password === passwords) {
+        try {
+            const response = await axios.post(url, data);
+            const resData = response.data
+            return resData;
+        } catch (error:any) {
+            return { error: "error", message: error.message };
+        }
+    } else {
+        return "PASSWORD SALAH"
     }
 };

@@ -8,6 +8,7 @@ import Cards from "./components/card/Card";
 import DukunganPelanggan from "@/Contact/Callme";
 import React from "react";
 import { GetApi } from "../services/getproductDigiflazz";
+import { OrderDigiflazz } from "../services/orders/ordersDigiflazz";
 
 export const dynamic = "force-dynamic"
 

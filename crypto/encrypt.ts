@@ -1,14 +1,7 @@
 
 import crypto from 'crypto';
 
-interface Data {
-    name: string;
-    umur: number;
-    hobi: string;
-  }
-
-
-export function Encrypt(data: Data, key: string): string {
+export function Encrypt(data: any, key: string): string {
     if (key.length !== 32) {
         throw new Error('Invalid key length. Key should be 32 bytes (256 bits).');
       }
@@ -21,7 +14,7 @@ export function Encrypt(data: Data, key: string): string {
   }
 
 
-  export function Decrypt(text: string, key: string): Data {
+  export function Decrypt(text: string, key: string): any {
     if (key.length !== 32) {
       throw new Error('Invalid key length. Key should be 32 bytes (256 bits).');
     }
@@ -33,4 +26,11 @@ export function Encrypt(data: Data, key: string): string {
     let decrypted = decipher.update(encryptedText);
     decrypted = Buffer.concat([decrypted, decipher.final()]);
     return JSON.parse(decrypted.toString());
+  }
+
+
+  export const DecryptAutomated = (Data: string) => {
+    const encryptionKey = process.env.APP_ENCRYPTION_KEY
+    const response = Decrypt(Data , encryptionKey)
+    return response
   }

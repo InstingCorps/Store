@@ -6,21 +6,17 @@ import nodemailer from 'nodemailer';
 
 export async function POST (request : Request) {
 
+  const verify = process.env.APP_VERIFICATION_ORDER
+
   const { id , zoneid , product_name , category , brand , price , seller_name , buyer_sku_code , seller_price} = await request.json()
 
   const data: any = {
-    id,
-    zoneid,
-    product_name,
-    category,
-    brand,
-    price,
-    seller_name,
+    verify,
+    id: id+zoneid,
     buyer_sku_code,
-    seller_price,
   };
 
-  const encryptionKey = 'fahrurrozi25012006Rozistore25126'
+  const encryptionKey = process.env.APP_ENCRYPTION_KEY
   
 
   const encrypt = Encrypt(data , encryptionKey)
@@ -29,14 +25,15 @@ export async function POST (request : Request) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'games25legends@gmail.com',
-      pass: 'ermwseyrpyivteww',
+      user: process.env.APP_EMAILUSER_ADMIN,
+      pass: process.env.APP_EMAILPASSWORD_ADMIN,
     },
   });
 
   const orderId = encrypt;
+  
 
-  const confirmOrderLink = `https://webtopup.vercel.app/order/${orderId}/confirm`;
+  const confirmOrderLink = `https://webtopup.vercel.app/services/orders/acceptOrders/${orderId}`;
   const declineOrderLink = `https://example.com/order/${orderId}/decline`;
 
   const emailContent = `
@@ -75,7 +72,7 @@ export async function POST (request : Request) {
   const mailOptions = {
     from: 'rozistoreemail@gmail.com',
     to: 'akungamesaya123456@gmail.com', // Ganti dengan alamat admin yang sesuai
-    subject: "Testing...",
+    subject: "ORDER DETAIL",
     html: emailContent,
   };
 
