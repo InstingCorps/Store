@@ -16,7 +16,7 @@ export async function POST (request : Request) {
     buyer_sku_code,
   };
 
-  const encryptionKey = process.env.APP_ENCRYPTION_KEY
+  const encryptionKey = process.env.ENCRYPTION_KEY || ""
   
 
   const encrypt = Encrypt(data , encryptionKey)
@@ -25,8 +25,8 @@ export async function POST (request : Request) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.APP_EMAILUSER_ADMIN,
-      pass: process.env.APP_EMAILPASSWORD_ADMIN,
+      user: process.env.EMAILUSER_ADMIN,
+      pass: process.env.EMAILPASSWORD_ADMIN,
     },
   });
 

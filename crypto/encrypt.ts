@@ -30,7 +30,7 @@ export function Encrypt(data: any, key: string): string {
 
 
   export const DecryptAutomated = (Data: string) => {
-    const encryptionKey = process.env.APP_ENCRYPTION_KEY
+    const encryptionKey = process.env.ENCRYPTION_KEY
     const response = Decrypt(Data , encryptionKey)
     return response
   }
