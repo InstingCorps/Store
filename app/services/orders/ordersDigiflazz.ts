@@ -19,8 +19,9 @@ export const OrderDigiflazz = async (encryptedData: string, password: string , u
             const resData = response.data
             return resData;
         } catch (error:any) {
-            return { error: "error", message: error.message };
+            return { error: "error", message: error };
         }
+        
     } else {
         return "PASSWORD SALAH"
     }

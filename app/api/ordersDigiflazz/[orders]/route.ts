@@ -4,9 +4,19 @@ import { hashData } from "@/app/services/data/dataToHash";
 import { ref_id } from "@/app/services/data/ref_idGenerator";
 import { config } from "dotenv";
 import { DecryptAutomated } from "@/crypto/encrypt";
+import nodemailer from 'nodemailer';
+
 config();
 
 export const POST = async (request : Request) => {
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user:'games25legends@gmail.com',
+          pass: 'ermwseyrpyivteww',
+        },
+      });
+
 
     const body = await request.json()
     const Data = body.data
@@ -32,15 +42,28 @@ export const POST = async (request : Request) => {
     console.log(data);
     
     
-
     if (Verification === process.env.APP_VERIFICATION_ORDER) {
+        let hasil = null;
         try {
             const response = await axios.post(url, data);
-            const resData = response.data.data;
+            const resData = response.data;
             console.log(resData);
             return NextResponse.json(resData)
         } catch (error:any) {
-            return { error: "error", message: error.message };
+            console.log(error.response.data);
+            
+            hasil = error.response.data
+            const datas = `<p>ERROR Data: ${JSON.stringify(hasil)}</p>`
+            const mailOptions = {
+                from: 'rozistoreemail@gmail.com',
+                to: 'akungamesaya123456@gmail.com', // Ganti dengan alamat admin yang sesuai
+                subject: "ERROR REPORT!",
+                html: datas,
+              };
+            if (hasil !== null) {
+                await transporter.sendMail(mailOptions);
+            }
+            return { error: "error", message: error.response.data };
         }
     } else {
         return NextResponse.json("unauthorized!")
