@@ -34,7 +34,7 @@ export const POST = async (request : Request) => {
         buyer_sku_code: skuCode,
         customer_no: CostumerData,
         ref_id: refID,
-        testing: true,
+        // testing: true,
         sign: hashing
     };
 
@@ -45,6 +45,7 @@ export const POST = async (request : Request) => {
             const response = await axios.post(url, data);
             const resData = response.data.data;
             const datas = `
+            <p>ACCEPTED Data: ${JSON.stringify(resData)}</p>
             <p>ACCEPTED Data: ${resData.status}</p>
             <p>ACCEPTED Data: ${resData.buyer_last_saldo}</p>
             
