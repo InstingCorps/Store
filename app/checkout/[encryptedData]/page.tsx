@@ -23,7 +23,6 @@ useEffect(() => {
   try {
     const verify = decrpyt.verify
     if (URLvalidation(verify)) {
-        console.log("OK!");
         if (TypeGame == "Free Fire") {
             return (
               <div>

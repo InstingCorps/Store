@@ -6,8 +6,7 @@ config();
 export const OrderDigiflazz = async (encryptedData: string, password: string , urls:any): Promise<any> => {
 
     const url = `/api/ordersDigiflazz/${urls}`;
-    console.log(url);
-    
+
     const data = {
         data: encryptedData,
     };

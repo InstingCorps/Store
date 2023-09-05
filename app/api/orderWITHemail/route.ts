@@ -6,7 +6,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST (request : Request) {
 
-  const verify = "25012006RoziStore_FahrurRozi_001"
+  const verify = "25012006RoziStore_FahrurRozi_001_ORDERDISETUJUI"
 
   const { id , zoneid , product_name , category , brand , price , seller_name , buyer_sku_code , seller_price} = await request.json()
 

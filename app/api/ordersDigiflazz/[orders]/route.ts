@@ -27,7 +27,6 @@ export const POST = async (request : Request) => {
     const Verification = Decrypt.verify
     const CostumerData = Decrypt.id
     const skuCode = Decrypt.buyer_sku_code
-    console.log(CostumerData , skuCode);
     
     const url = `${process.env.APP_URL_DIGIFLAZZ}/transaction`;
     const data = {
@@ -39,19 +38,26 @@ export const POST = async (request : Request) => {
         sign: hashing
     };
 
-    console.log(data);
-    
     
     if (Verification === process.env.APP_VERIFICATION_ORDER) {
         let hasil = null;
         try {
             const response = await axios.post(url, data);
-            const resData = response.data;
-            console.log(resData);
+            const resData = response.data.data;
+            const datas = `
+            <p>ACCEPTED Data: ${resData.status}</p>
+            <p>ACCEPTED Data: ${resData.buyer_last_saldo}</p>
+            
+            `
+            const mailOptions = {
+                from: 'rozistoreemail@gmail.com',
+                to: 'akungamesaya123456@gmail.com', // Ganti dengan alamat admin yang sesuai
+                subject: "ORDER ACCEPTED!",
+                html: datas,
+              };
+              await transporter.sendMail(mailOptions);
             return NextResponse.json(resData)
         } catch (error:any) {
-            console.log(error.response.data);
-            
             hasil = error.response.data
             const datas = `<p>ERROR Data: ${JSON.stringify(hasil)}</p>`
             const mailOptions = {
@@ -63,7 +69,7 @@ export const POST = async (request : Request) => {
             if (hasil !== null) {
                 await transporter.sendMail(mailOptions);
             }
-            return { error: "error", message: error.response.data };
+            return { error: "error"};
         }
     } else {
         return NextResponse.json("unauthorized!")
