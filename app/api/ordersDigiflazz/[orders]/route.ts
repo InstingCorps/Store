@@ -34,7 +34,7 @@ export const POST = async (request : Request) => {
     if (Verification === process.env.APP_VERIFICATION_ORDER) {
         try {
             const response = await axios.post(url, data);
-            const resData = response.data.data;
+            const resData = response.data;
             console.log(resData);
             return NextResponse.json(resData)
         } catch (error:any) {
