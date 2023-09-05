@@ -32,14 +32,14 @@ export const POST = async (request : Request) => {
     
 
     if (Verification === process.env.APP_VERIFICATION_ORDER) {
-        try {
+        // try {
             const response = await axios.post(url, data);
             const resData = response.data;
             console.log(resData);
             return NextResponse.json(resData)
-        } catch (error:any) {
-            return { error: "error", message: error.message };
-        }
+        // } catch (error:any) {
+        //     return { error: "error", message: error.message };
+        // }
     } else {
         return NextResponse.json("unauthorized!")
     }
