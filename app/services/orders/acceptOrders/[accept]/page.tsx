@@ -4,6 +4,7 @@ import { OrderDigiflazz } from '../../ordersDigiflazz';
 
 const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
   const response = params.accept;
+  
   const data = response.replace(/%3A/g, ':');
 
   const correctPassword = '250106';
@@ -15,10 +16,10 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
   const handlePasswordInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredPassword(event.target.value);
   };
-
   const handleOrderClick = async () => {
     if (enteredPassword === correctPassword) {
-      const result = await OrderDigiflazz(data, enteredPassword);
+      const result = await OrderDigiflazz(data, enteredPassword , response);
+      console.log(result);
       setOrderResult("SUKSESS , ORDER SEDANG DI PROSSES");
     } else {
       setOrderResult('Password salah. Silakan coba lagi.');

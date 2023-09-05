@@ -3,10 +3,11 @@ import axios from "axios";
 import { config } from "dotenv";
 config();
 
-export const OrderDigiflazz = async (encryptedData: string, password: string): Promise<any> => {
-    // const encryptionKey = process.env.APP_ENCRYPTION_KEY
-    // const decryptedData = Decrypt(encryptedData , encryptionKey)
-    const url = `/api/ordersDigiflazz/ORDER`;
+export const OrderDigiflazz = async (encryptedData: string, password: string , urls:any): Promise<any> => {
+
+    const url = `/api/ordersDigiflazz/${urls}`;
+    console.log(url);
+    
     const data = {
         data: encryptedData,
     };

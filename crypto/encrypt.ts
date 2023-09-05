@@ -30,7 +30,25 @@ export function Encrypt(data: any, key: string): string {
 
 
   export const DecryptAutomated = (Data: string) => {
-    const encryptionKey = 'fahrurrozi25012006Rozistore25126'
-    const response = Decrypt(Data , encryptionKey)
-    return response
+    try {
+      const encryptionKey = 'fahrurrozi25012006Rozistore25126'
+      const response = Decrypt(Data , encryptionKey)
+      return response
+    } catch (error) {
+      console.error('Error: unable to decrypt data', error);
+      return null
+    }
+
+  }
+
+  export const EncryptAutomated = (Data: string) => {
+    try {
+      const encryptionKey = 'fahrurrozi25012006Rozistore25126'
+      const response = Encrypt(Data , encryptionKey)
+      return response
+    } catch (error) {
+      console.error('Error: unable to decrypt data', error);
+      return null
+    }
+
   }

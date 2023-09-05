@@ -19,6 +19,7 @@ function DiamondsList({data}:any) {
   const [showPayment , setShowPayment] = useState(false);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [productInfo, setProductInfo] = useState({
+    verify: "",
     product_name: '',
     Price: null,
     buyer_sku_code: null,
@@ -33,7 +34,9 @@ function DiamondsList({data}:any) {
   }, [Price]);
 
   const handleClick = (product_name: string , Price : any , buyer_sku_code: any , category:any , seller_name:any , seller_price: any) => () => {
+    const verify: string = "25012006RoziStore_FahrurRozi_001"
     setProductInfo({
+      verify,
       product_name,
       Price,
       buyer_sku_code,

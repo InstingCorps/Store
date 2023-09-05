@@ -3,7 +3,7 @@
 import { Modal, Button } from 'flowbite-react';
 import {HiShoppingCart } from 'react-icons/hi';
 import { useRouter } from 'next/navigation';
-import { Encrypt } from '@/crypto/encrypt';
+import { EncryptAutomated } from '@/crypto/encrypt';
 import { useState } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
 
@@ -12,6 +12,7 @@ interface ModalProps {
   open: boolean;
   onClose: () => void;
   productInfo: {
+    verify: any
     product_name: string;
     Price: any;
     buyer_sku_code: any;
@@ -21,16 +22,15 @@ interface ModalProps {
 const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
     const [isProcessing, setIsProcessing] = useState(false);
 
-    const encryptionKey = 'fahrurrozi25012006Rozistore25126'
     const {
-        product_name,
+      product_name,
         Price,
         buyer_sku_code
       } = productInfo;
-
+      
     const data: any = productInfo
 
-  const encrypt = Encrypt(data , encryptionKey)
+  const encrypt = EncryptAutomated(data)
 
     const router = useRouter()
     const accept  = () => {

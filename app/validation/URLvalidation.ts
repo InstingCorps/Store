@@ -1,0 +1,10 @@
+
+export const URLvalidation = (validation : any) => {
+    const validate = "25012006RoziStore_FahrurRozi_001"
+    if (validation === validate) {
+        return true
+    } else {
+        return false
+    }
+}
+

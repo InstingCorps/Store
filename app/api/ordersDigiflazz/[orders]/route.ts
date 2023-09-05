@@ -4,6 +4,7 @@ import { hashData } from "@/app/services/data/dataToHash";
 import { ref_id } from "@/app/services/data/ref_idGenerator";
 import { config } from "dotenv";
 import { DecryptAutomated } from "@/crypto/encrypt";
+import { URLvalidation } from "@/app/validation/URLvalidation";
 config();
 
 export const POST = async (request : Request) => {
@@ -11,7 +12,7 @@ export const POST = async (request : Request) => {
     const body = await request.json()
     const Data = body.data
     const Decrypt = DecryptAutomated(Data)
-    
+
     const refID = ref_id();
     const hashing = await hashData(refID);
     const Verification = Decrypt.verify
