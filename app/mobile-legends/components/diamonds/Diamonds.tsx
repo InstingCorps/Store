@@ -102,65 +102,15 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
       );
     });
   };
-  
-
-
-  const WeeklyPass = () => {
-    const buttonData = WeeklyMobileLegends
-
-    return buttonData.map((button, index) => (
-      <Card
-      className="hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
-      imgSrc="https://shorturl.at/jlqPY"
-      key={index}
-      color=""
-      // value={button.value}
-      >
-        {button.label}
-      </Card>
-    ));
-  };
 
   return (
     <div>
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center font-extrabold'>Pilih Nominal Topup</div>
     <div className="font-sans text-xl font-bold text-right mr-5">Harga : Rp.{Price}</div>
-    <Tabs.Group className="m-0 gap-1"
-      aria-label="Tabs with icons"
-      style="underline"
-    >
-        <Tabs.Item
-        active
-        icon={FaGem}
-        title="Diamonds"
-      >
-          <div className="grid grid-cols-2 md:grid-cols-8 gap-2 text-center">
-            {Diamonds()}
-          </div>
-      </Tabs.Item>
-      <Tabs.Item
-        icon={FaUserPlus}
-        title="WeeklyPass"
-      >
-         <div className="grid grid-cols-2 md:grid-cols-8 gap-2">
-            {WeeklyPass()}
-          </div>
-      </Tabs.Item>
-      <Tabs.Item
-        icon={AiOutlineCalendar}
-        title="Event"
-      >
-      <div>COMING SOON...</div>
-      </Tabs.Item>
-      <Tabs.Item
-        icon={BsThreeDots}
-        title="Items Lainnya"
-      >
-        <div>COMING SOON...</div>
-      </Tabs.Item>
-    </Tabs.Group>
-
+    <div className="grid grid-cols-2 md:grid-cols-8 gap-2 text-center">
+      {Diamonds()}
+    </div>
     <div className="text-center font-bold">!!  HARAP DI BACA  !!</div>
     <div className="text-center font-bold">JIKA JUMLAH DI ATAS TIDAK SESUAI DENGAN PILIHAN ANDA. SILAHKAN CONTACT ADMIN UNTUK MENAMBAHKAN LAGI!</div>
   </Card>

@@ -111,23 +111,6 @@ const CheckoutML = () => {
 
     };
 
-  const link = `http://wa.me/6288221574494?text=RL09BvC %0A %0A *ROZISTORE* %0A Hallo Kak Saya ingin membeli items sebagai berikut:
-  %0A   %0A
-  %0A *Type Game :${checkoutData.brand}*
-  %0A *User ID :${checkoutData.UserID}*
-  %0A *ZoneID : ( ${checkoutData.ZoneID} )*
-  %0A *jumlah :"${checkoutData.product_name}"*
-  %0A *Seharga : ${checkoutData.price}*
-  %0A
-  %0A     *!!  MOHON DI BACA  !!*
-  %0A
-  %0A  !! ADMIN AKAN MENGIRIM DIAMOND MAXIMAL DALAM WAKTU 1 JAM , JIKA MELEBIHI WAKTU TERSEBUT UANG GARANSI KEMBALI 100 PERSEN !!
-  %0A  %0A  !! JIKA KAMI TELAH MENGIRIM ITEMS NYA MAKA KAMI AKAN MENGIRIM NOTIFIKASI KE NOMER INI !!
-  %0A
-  %0A !! PASTIKAN ANDA MENGECEK ID ANDA BENAR! DAN JANGAN SESEKALI MENGGANTI HARGA ATAU JUMLAH DIAMOND DI ATAS !!
-  %0A
-  %0A   %0A _*SYARAT DAN KETENTUAN BERLAKU*_`
-
   const Cards: React.FC<CardProps>  = ({ isVisible }) => {
     return (
       <div>
@@ -135,7 +118,8 @@ const CheckoutML = () => {
       <Card className='font-bold text-center text-black mt-10'>
       <div>Type Game : {checkoutData.brand}</div>
       <div>User ID =  {checkoutData.UserID}</div>
-      <div>Zone ID = &#40; {checkoutData.ZoneID} &#41;</div>
+      {checkoutData.ZoneID !== "" &&
+      (<div>Zone ID = &#40; {checkoutData.ZoneID} &#41;</div>)}
       <div>Jumlah DM : {checkoutData.product_name}</div>
       <div>Harga Rp.{checkoutData.price}</div>
       <Button

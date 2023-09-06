@@ -14,7 +14,7 @@ export default function ComponentFooter() {
               alt="Flowbite Logo"
               href="#"
               name="RoziStore"
-              src="https://flowbite.com/docs/images/logo.svg"
+              src="/logoRS.png"
             />
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">

@@ -12,8 +12,8 @@ export default function ComponentNavbar() {
       <Navbar.Brand href="/">
         <img
           alt="Flowbite React Logo"
-          className="mr-3 h-6 sm:h-9"
-          src="https://icon-library.com/images/react-icon/react-icon-29.jpg"
+          className="mr-3 h-6 sm:h-9 rounded-md"
+          src="/logoRS.png"
         />
         <span className="self-center whitespace-nowrap text-2xl font-extrabold text-lime-400">
           RoziStore

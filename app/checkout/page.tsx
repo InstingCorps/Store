@@ -3,7 +3,7 @@
 
 import CheckoutFF from "../freefire/components/FreeFireCheckout"
 import React, { useState, useEffect } from 'react';
-import CheckoutML from "../mobile-legends/components/CheckoutML";
+import CheckoutML from "../mobile-legends/components/Checkout";
 import ComponentFooter from "@/components/footer/footer";
 import DukunganPelanggan from "@/Contact/Callme";
 
@@ -19,17 +19,7 @@ export default function Checkout() {
         if (getTypeGame) {
             setTypeGame(getTypeGame)}
     },[])
-
     
-   if (TypeGame == "Free Fire") {
-    return (
-        <div>
-            <CheckoutFF />
-            <DukunganPelanggan />
-            <ComponentFooter />
-        </div>
-    )
-   } else if (TypeGame == "Mobile Legends") {
     return(
         <div>
             <CheckoutML />
@@ -37,10 +27,4 @@ export default function Checkout() {
             <ComponentFooter />
         </div>
     )
-
-   } else {
-    return(
-        <div className="text-center font-bold text-white mt-10 text-xl">Ada yang salah 😁 silahkan ulangi lagi proses nya dari awal ya <a className="bg-white text-center" href="/">Ulangi Topup</a></div>
-    )
-   }
 }

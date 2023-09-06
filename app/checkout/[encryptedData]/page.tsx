@@ -1,6 +1,5 @@
 'use client'
-import CheckoutFF from "@/app/freefire/components/FreeFireCheckout";
-import CheckoutML from "@/app/mobile-legends/components/CheckoutML";
+import Checkout from "@/app/mobile-legends/components/Checkout";
 import { URLvalidation } from "@/app/validation/URLvalidation";
 import ComponentFooter from "@/components/footer/footer";
 import DukunganPelanggan from "@/Contact/Callme";
@@ -23,31 +22,19 @@ useEffect(() => {
   try {
     const verify = decrpyt.verify
     if (URLvalidation(verify)) {
-        if (TypeGame == "Free Fire") {
-            return (
-              <div>
-                  <CheckoutFF />
-                  <DukunganPelanggan />
-                  <ComponentFooter />
-              </div>
-            )
-            } else if (TypeGame == "Mobile Legends") {
-            return (
-              <div>
-                  <CheckoutML />
-                  <DukunganPelanggan />
-                  <ComponentFooter />
-                  <div>
-            </div>
-              </div>
-            )
-            
-            } else {
-            return (
-              <div className="text-center font-bold text-white mt-10 text-xl">TUNGGU SEBENTAR...<br />Ada yang salah 😁 silahkan ulangi lagi proses nya dari awal ya <a className="bg-white text-center text-black" href="/">Ulangi Topup</a></div>
-            )
-            }
-        
+      if (TypeGame !== "" || null) {
+        return (
+          <div>
+              <Checkout />
+              <DukunganPelanggan />
+              <ComponentFooter />
+          </div>
+      )
+      } else {
+        return (
+          <div>PASTIKAN LANGKAH ANDA BENAR!</div>
+        )
+      }
     } else {
         return (
             <div>VALIDASI GAGAL</div>
