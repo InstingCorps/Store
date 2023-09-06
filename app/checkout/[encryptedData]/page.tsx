@@ -1,5 +1,5 @@
 'use client'
-import Checkout from "@/app/mobile-legends/components/Checkout";
+import Checkout from "@/app/checkout/checkouts/Checkout";
 import { URLvalidation } from "@/app/validation/URLvalidation";
 import ComponentFooter from "@/components/footer/footer";
 import DukunganPelanggan from "@/Contact/Callme";

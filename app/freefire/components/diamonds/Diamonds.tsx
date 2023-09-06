@@ -53,12 +53,11 @@ function DiamondsList({data}:any) {
   const OnClicks = () => {
 
     const verifedID = sessionStorage.getItem("PlayerID")
-    const verifedZoneID = sessionStorage.getItem("ZoneID")
 
-    if (verifedID && verifedZoneID) {
+    if (verifedID) {
       setModalVisible(true);
     } else {
-       setModalError(true)
+      setModalError(true)
     }
   }
 
@@ -86,7 +85,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
       
       return (
         <Card
-          imgSrc="https://shorturl.at/jlqPY"
+          imgSrc="https://i.pinimg.com/originals/56/e6/45/56e6459b4fd270b88f7038c1f6f8dd4a.png"
           className="hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
           key={product.product_name}
           color=""
@@ -125,6 +124,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
         >Bayar Sekarang</Button>
           <OrdersModal open={modalVisible} onClose={() => setModalVisible(false)} productInfo={productInfo} />
           <ErrorID open={modalError} onClose={() => setModalError(false)}/>
+
         </div>
     </Card>}
   <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>

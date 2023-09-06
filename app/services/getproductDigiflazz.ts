@@ -17,6 +17,7 @@ export async function GetApi(category: string , brand: string) {
     try {
         const response = await axios.post(`${process.env.APP_URL_DIGIFLAZZ}/price-list` , datas)
         const dataRes: Product[] = await response.data.data
+        // console.log(dataRes); 
         
         const FilterData = dataRes.filter(product => 
             product.category === category && product.brand === brand)
