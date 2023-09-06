@@ -10,10 +10,11 @@ import React, {useState , useEffect} from 'react'
 const EncryptedData = ({params} : {params: {encryptedData: string}}) => {
     const [TypeGame , setTypeGame] = useState('')
 useEffect(() => {
+  if (typeof window !== 'undefined') {
     const getTypeGame = sessionStorage.getItem('TypeGame')
-  
     if (getTypeGame) {
         setTypeGame(getTypeGame)}
+  }
   },[])
 
     const response = params.encryptedData

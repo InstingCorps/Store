@@ -55,7 +55,6 @@ const CheckoutML = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      
       const storedData: CheckoutData = {
         product_name: sessionStorage.getItem('product_name') || '',
         category: sessionStorage.getItem('category') || '',
