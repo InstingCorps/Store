@@ -56,9 +56,9 @@ export default function ComponentFooter() {
         <Footer.Divider />
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright
-            by="Flowbite™"
+            by="RoziStore™"
             href="#"
-            year={2022}
+            year={2023}
           />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <Footer.Icon

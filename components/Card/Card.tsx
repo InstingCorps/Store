@@ -194,6 +194,29 @@ export default function ComponentCard() {
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
         </div>
+
+        {/* elemen selanjutnya */}
+
+        <div className="ml-4 text-orange-400 text-xl font-serif mt-10 font-bold">Pulsa</div>
+        <div className="text-2xl font-extrabold text-white ml-5 mb-10">Isi Pulsa Mu Di Sini!</div>
+        <div className="grid grid-cols-3 md:grid-cols-8 gap-4 m-3 btn-card ComCard mt-5">
+        <Card className="h-auto max-w-sm rounded-xl ComCard"
+         imgAlt=""
+         href="/pulsa/telkomsel"
+         onClick={() => TypeGame("Telkomsel")}
+         imgSrc="https://iconlogovector.com/uploads/images/2023/02/lg-71eeecf62194036fbf9a882f16a3e67913.jpg"
+         >
+         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
+        </Card>
+        <Card className="h-auto max-w-sm rounded-xl ComCard"
+         imgAlt=""
+         href="/pulsa/indosat"
+         onClick={() => TypeGame("Indosat")}
+         imgSrc="https://im3-img.indosatooredoo.com/indosatassets/images/icons/icon-512x512.png"
+         >
+         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
+        </Card>
+        </div>
         
       
         
