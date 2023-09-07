@@ -48,6 +48,7 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/genshin-impact"
+         onClick={() => TypeGame("PUBG M")}
          imgSrc="https://cdn.unipin.com/images/icon_product_pages/1578906433-icon-Game-icon-4.jpg"
          >
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
@@ -56,6 +57,7 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/genshin-impact"
+         onClick={() => TypeGame("Tower Of Fantasy")}
          imgSrc="https://cdn.unipin.com/images/icon_product_pages/1663645620-icon-1662619195-icon-1662082730-icon-Tower%20of%20Fantasy%20logo%20-%201%20jpg.jpg"
          >
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
@@ -64,6 +66,7 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/clashofclans"
+         onClick={() => TypeGame("Clash Of Clans")}
          imgSrc="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/ID_Clash-of-Clans-20%20(1).jpg"
          >
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
@@ -95,6 +98,7 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/clashofclans"
+         onClick={() => TypeGame("Clash Of Clans")}
          imgSrc="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/ID_Clash-of-Clans-20%20(1).jpg"
          >
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
@@ -103,6 +107,7 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/toweroffantasy"
+         onClick={() => TypeGame("Tower Of Fantasy")}
          imgSrc="https://cdn.unipin.com/images/icon_product_pages/1663645620-icon-1662619195-icon-1662082730-icon-Tower%20of%20Fantasy%20logo%20-%201%20jpg.jpg"
          >
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
@@ -111,6 +116,7 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/CODM"
+         onClick={() => TypeGame("Call Of Duty M")}
          imgSrc="https://cdn.unipin.com/images/icon_product_pages/1633599388-icon-Icon_1024.jpg"
          >
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
@@ -119,6 +125,7 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/undawn"
+         onClick={() => TypeGame("Undawn")}
          imgSrc="https://cdn.unipin.com/images/icon_product_pages/1689159121-icon-garena-undawn.jpg"
          >
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
@@ -127,6 +134,7 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/metalslug-awakening"
+         onClick={() => TypeGame("Metal Slug -Awakening")}
          imgSrc="https://cdn.unipin.com/images/icon_product_pages/1691644925-icon-App%20Icon%20200x200_11zon.jpg"
          >
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>

@@ -28,7 +28,7 @@ interface CheckoutData {
 }
 
 
-const CheckoutML = () => {
+const Checkout = () => {
   const [isCardVisible, setIsCardVisible] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
@@ -114,15 +114,30 @@ const CheckoutML = () => {
     return (
       <div>
         {isVisible && (
-      <Card className='font-bold text-center text-black mt-10'>
-      <div>Type Game : {checkoutData.brand}</div>
+      <div>
+      <Card className="mt-5 mx-7 rounded-xl">
+      <div className='text-center font-bold border-b-4 border-blue-500 rounded-xl'>Category : {checkoutData.brand}</div>
+      </Card>
+
+      <Card className='mt-6 font-bold text-center mx-12 rounded-3xl'>
+        <div className="font-extrabold font-sans text-xl border-b-4 border-blue-500 rounded-xl">Detail Produk!</div>
       <div>User ID =  {checkoutData.UserID}</div>
       {checkoutData.ZoneID !== "" &&
       (<div>Zone ID = &#40; {checkoutData.ZoneID} &#41;</div>)}
-      <div>Jumlah DM : {checkoutData.product_name}</div>
-      <div>Harga Rp.{checkoutData.price}</div>
+      </Card>
+      <Card className="font-bold">
+      <div>Produk : <p className="text-end">{checkoutData.product_name}</p></div>
+      <div className="flex justify-between">Harga : <p>Rp.{checkoutData.price}</p></div>
+      </Card>
+
+      <Card className="mt-10 font-bold rounded-2xl">
+        <div className="font-extrabold font-sans text-xl border-b-4 border-blue-500 rounded-xl">Detail Pembayaran!</div>
+      <div className="font-bold">Status transaksi : <div className=" border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">BELUM DI BAYAR</div></div>
+      <div>Metode Pembayaran: <div className=" border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">MEMBAYAR LANGSUNG</div></div>
+      <div>klik tombol di bawah ini untuk lanjut!</div>
       <Button
       className='font-bold'
+      color="success"
       isProcessing={isProcessing}
       processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}
       size="md"
@@ -130,12 +145,15 @@ const CheckoutML = () => {
       disabled={isProcessing} // Disable tombol selama proses
     >
       <p>
-        {isProcessing ? 'Memproses...' : 'Click me!'}
+        {isProcessing ? 'Memproses...' : 'Bayar Sekarang!'}
       </p>
     </Button>
-    </Card>
+      </Card>
+
+    </div>
+
         )}
-        </div>
+    </div>
     )
   }
 
@@ -156,6 +174,6 @@ const CheckoutML = () => {
   ) ;
 };
 
-export default CheckoutML;
+export default Checkout;
 
 

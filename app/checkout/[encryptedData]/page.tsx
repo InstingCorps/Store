@@ -33,19 +33,23 @@ useEffect(() => {
       )
       } else {
         return (
-          <div>PASTIKAN LANGKAH ANDA BENAR!</div>
+          <div className="text-center font-bold text-white mt-20">Tunggu Sebentar...
+          <div>
+            Jika Halaman Ini Tidak Muncul Apapun Dalam 10 Detik Maka Ulangi Proses Pembelian Dari Awal
+            </div>
+            </div>
         )
       }
     } else {
         return (
-            <div>VALIDASI GAGAL</div>
+            <div className="text-center font-bold text-white mt-20">VALIDASI GAGAL</div>
         )
         
     }
 
   } catch (error) {
     return (
-        <div>ERROR URL TIDAK VALID</div>
+        <div className="text-center font-bold text-white mt-20">ERROR URL TIDAK VALID</div>
     )
   }
 

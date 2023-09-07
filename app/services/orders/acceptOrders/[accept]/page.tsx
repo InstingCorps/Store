@@ -69,12 +69,12 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
   
     } else {
    return (
-    <div>PASTIKAN URL ANDA BENAR!</div>
+    <div className="text-center font-bold text-white mt-20">PASTIKAN URL ANDA BENAR!</div>
    )
     }  
   } catch (error) {
     return (
-      <div>ERROR URL TIDAK VALID</div>
+      <div className="text-center font-bold text-white mt-20">ERROR URL TIDAK VALID</div>
   )
   }
  

@@ -2,7 +2,7 @@
 
 import { Modal, Button } from 'flowbite-react';
 import {HiShoppingCart } from 'react-icons/hi';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { EncryptAutomated } from '@/crypto/encrypt';
 import { useEffect, useState } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
@@ -56,17 +56,18 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
 
   const encrypt = EncryptAutomated(data)
 
-    const router = useRouter()
+    // const router = useRouter()
     const accept  = () => {
 
         setIsProcessing(true);
-        router.push(`/checkout/${encrypt}`)
+        window.location.href = `/checkout/${encrypt}`
+        // router.push(`/checkout/${encrypt}`)
     
     }
 
   return (
     <Modal className="items-center justify-center" popup dismissible show={open} onClose={onClose}>
-      <Modal.Header className="font-bold mt-5">ORDER DETAIL</Modal.Header>
+      <Modal.Header className="font-bold mt-5">ORDER DETAIL!</Modal.Header>
       <Modal.Body>
         <div className="space-y-3">
         <p>ID: {PlayerID}</p>

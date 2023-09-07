@@ -1,5 +1,6 @@
 'use client'
 
+import { Card } from 'flowbite-react';
 import React, { useState, useEffect } from 'react';
 
 interface CountdownProps {
@@ -61,13 +62,16 @@ const Countdown: React.FC<CountdownProps> = ({ onHideCard }) => {
   };
 
   return (
-    <div>
-      <div className="flex gap-8 mt-10">
-        <div className="text-white w-3/5 text-center font-bold">Silakan selesaikan pembayaran Anda dalam :</div>
-        <div className="text-center text-white font-extrabold text-3xl mt-3">{formatTime(seconds)}</div>
+    <>
+    <Card className="mt-10 bg-slate-700 mx-5 rounded-3xl">
+      <div className="text-center text-white text-lg font-bold font-serif">Bayar Transaksi Kamu!</div>
+      <div className="flex justify-between px-6 border-b-4">
+        <div className="text-white text-center font-bold font-sans">Batas Waktu Bayar :</div>
+        <div className="text-center text-red-600 text-xl font-mono font-bold">{formatTime(seconds)}</div>
       </div>
       {renderEndText()}
-    </div>
+    </Card>
+    </>
   );
 };
 
