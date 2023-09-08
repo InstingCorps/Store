@@ -184,7 +184,7 @@ const countdownInterval = setInterval(() => {
       <ComponentNavbar />
       <Development />
       {alertMessage && (
-        <Alert className="inset-x-0 fixed z-30" color={alertColor} icon={HiInformationCircle}>
+        <Alert className="inset-x-0 fixed z-30 border-4 border-black rounded-2xl" color={alertColor} icon={HiInformationCircle}>
           <div className="font-sans font-extrabold text-center">INFORMATION!</div>
           <div className="font-bold">{alertMessage}</div>
           
