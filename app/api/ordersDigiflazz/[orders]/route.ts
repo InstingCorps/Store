@@ -27,7 +27,7 @@ export const POST = async (request : Request) => {
     const Verification = Decrypt.verify
     const CostumerData = Decrypt.id
     const skuCode = Decrypt.buyer_sku_code
-    
+
     const url = `${process.env.APP_URL_DIGIFLAZZ}/transaction`;
     const data = {
         username: process.env.APP_USERNAME_DIGIFLAZZ,
@@ -38,7 +38,7 @@ export const POST = async (request : Request) => {
         sign: hashing
     };
 
-    
+
     if (Verification === process.env.APP_VERIFICATION_ORDER) {
         let hasil = null;
         try {

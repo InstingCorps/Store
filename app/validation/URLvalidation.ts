@@ -15,4 +15,5 @@ export const ORDERvalidation = (validation : any) => {
         return false
     }
 }
+export const Validate = "25012006RoziStore_FahrurRozi_001"
 

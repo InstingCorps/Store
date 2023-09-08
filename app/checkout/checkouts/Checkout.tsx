@@ -9,6 +9,8 @@ import React, { useState, useEffect, SyntheticEvent } from 'react';
 import axios from 'axios';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { HiInformationCircle } from 'react-icons/hi';
+import { EncryptAutomated } from '@/crypto/encrypt';
+import { Validate } from '@/app/validation/URLvalidation';
 
 interface CardProps {
   isVisible: boolean; // Properti untuk mengontrol visibilitas card
@@ -91,14 +93,33 @@ const Checkout = () => {
         seller_price: checkoutData.seller_price,
       });
 
-       // Setelah permintaan Axios selesai, atur isProcessing kembali menjadi false
-       setIsProcessing(false);
-       setAlertMessage('Berhasil: ' + JSON.stringify(response.data));
-       setAlertColor('success')
+      const dataDecrypt: any = {
+        verify: Validate,
+        id: checkoutData.UserID,
+        zoneid: checkoutData.ZoneID,
+        brand: checkoutData.brand,
+        price: checkoutData.price,
+      }
 
-       setTimeout(() => {
-        setAlertMessage('');
-      }, 5000);
+      const encrypt = EncryptAutomated(dataDecrypt)
+      
+       // Setelah permintaan Axios selesai, atur isProcessing kembali menjadi false
+      setIsProcessing(false);
+      setAlertMessage('Berhasil: ' + JSON.stringify(response.data));
+      setAlertColor('success')
+
+      let countdown = 5;
+
+const countdownInterval = setInterval(() => {
+  if (countdown > 0) {
+    setAlertMessage(`Redirecting in ${countdown} seconds...`);
+    countdown--;
+  } else {
+    clearInterval(countdownInterval);
+    setAlertMessage('');
+    window.location.href = `/status-transaction/${encrypt}`;
+  }
+}, 1000);
 
     } catch (error: any) {
           // Handle kesalahan jika diperlukan
@@ -163,8 +184,10 @@ const Checkout = () => {
       <ComponentNavbar />
       <Development />
       {alertMessage && (
-        <Alert className="mt-5" color={alertColor} icon={HiInformationCircle}>
-          {alertMessage}
+        <Alert className="inset-x-0 fixed z-30" color={alertColor} icon={HiInformationCircle}>
+          <div className="font-sans font-extrabold text-center">INFORMATION!</div>
+          <div className="font-bold">{alertMessage}</div>
+          
         </Alert>
       )}
       <Countdown onHideCard={handleHideCard} />
