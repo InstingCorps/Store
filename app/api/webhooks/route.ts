@@ -1,8 +1,10 @@
 
 import nodemailer from 'nodemailer';
 import crypto from "crypto"
+import { NextResponse } from 'next/server';
+import { NextApiResponse } from 'next';
 
-export const POST = async (request :Request) => {
+export const POST = async (request : Request ) => {
     const secret = '8dd7478ce304558f';
     const response = await request.json()
     const post_data = JSON.stringify(response);
@@ -16,16 +18,30 @@ export const POST = async (request :Request) => {
       },
     });
 
-
     const hmac = crypto.createHmac('sha1', secret);
     const digest = Buffer.from('sha1=' + hmac.update(post_data).digest('hex'), 'utf8');
 
     const checksum = Buffer.from(signature, 'utf8');
 
-    // console.log(checksum);
+    const data = {
+      message: 'Hello, SSE!',
+      timestamp: new Date().toISOString(),
+    };
 
-    // console.log(signature);
-    // console.log(response);
+    const sendEvent = () => {
+      return NextResponse.json(`data: ${JSON.stringify(data)}\n\n`);
+    };
+
+    sendEvent();
+
+    const intervalId = setInterval(() => {
+      sendEvent();
+    }, 1000);
+
+    console.log(checksum);
+
+    console.log(signature);
+    console.log(response);
     
     if ((digest.length === checksum.length && crypto.timingSafeEqual(digest, checksum))) {
         console.log('Signature matched');
@@ -48,7 +64,9 @@ export const POST = async (request :Request) => {
             html: datas,
           };
           await transporter.sendMail(mailOptions);
+          return NextResponse.json('Signature matched')
       } else {
         console.log('Signature does not match');
+        return NextResponse.json('Signature does not match')
       }
-}
+  }
