@@ -78,9 +78,9 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
 
     return sortedData.map((product : any) => {
       // Menghitung harga baru dengan menambahkan 5%
-      const keuntungan = 0.09 // persen
+      const keuntungan = 0 // persen
 
-      const ProductPriceWithComma = product.price * (1 + keuntungan) + 2000
+      const ProductPriceWithComma = product.price * (1 + keuntungan) + 3000
       const ProductPrice = Math.ceil(ProductPriceWithComma)
       
       return (
