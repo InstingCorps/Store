@@ -80,12 +80,12 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
       // Menghitung harga baru dengan menambahkan 5%
       const keuntungan = 0 // persen
 
-      const ProductPriceWithComma = product.price * (1 + keuntungan) + 2000
+      const ProductPriceWithComma = product.price * (1 + keuntungan) + 3000
       const ProductPrice = Math.ceil(ProductPriceWithComma)
       
       return (
         <Card
-          imgSrc="https://iconlogovector.com/uploads/images/2023/02/lg-71eeecf62194036fbf9a882f16a3e67913.jpg"
+          imgSrc="https://i.pinimg.com/originals/c8/40/87/c84087e787b376b50c42915b00671799.png"
           className="hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
           key={product.product_name}
           color=""

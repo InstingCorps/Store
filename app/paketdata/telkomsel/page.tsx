@@ -10,9 +10,9 @@ import { GetApi } from "@/app/services/getproductDigiflazz";
 
 export const dynamic = "force-dynamic"
 
-export default async function FreeFire() {
+export default async function Telkomsel() {
 
-    const Category = "Pulsa"
+    const Category = "Data"
     const Games = "TELKOMSEL"
 
     const [data] = await Promise.all([

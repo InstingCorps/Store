@@ -1,14 +1,15 @@
 
 import nodemailer from 'nodemailer';
 import crypto from "crypto"
-import { NextResponse } from 'next/server';
-import { NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export const POST = async (request : Request ) => {
+export const POST = async (request : NextRequest , res: NextResponse ) => {
     const secret = '8dd7478ce304558f';
     const response = await request.json()
     const post_data = JSON.stringify(response);
     const signature = request.headers.get('x-hub-signature') || '';
+
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -28,18 +29,22 @@ export const POST = async (request : Request ) => {
       timestamp: new Date().toISOString(),
     };
 
+    const newHeaders = new Headers(request.headers)
+
+    newHeaders.set('Content-Type', 'text/event-stream')
+    newHeaders.set('Cache-Control', 'no-cache')
+    newHeaders.set('Connection', 'keep-alive')
+
     const sendEvent = () => {
-      return NextResponse.json(`data: ${JSON.stringify(data)}\n\n`);
+      console.log("OK!");
+      return NextResponse.next({
+        request: {
+          headers: newHeaders
+        }
+      })
     };
 
-    sendEvent();
-
-    const intervalId = setInterval(() => {
-      sendEvent();
-    }, 1000);
-
     console.log(checksum);
-
     console.log(signature);
     console.log(response);
     
@@ -64,9 +69,34 @@ export const POST = async (request : Request ) => {
             html: datas,
           };
           await transporter.sendMail(mailOptions);
-          return NextResponse.json('Signature matched')
+          const responseData = {
+            message: 'Signature matched',
+            data: parse,
+          };
+      
+          return NextResponse.json(responseData);
       } else {
+      sendEvent();
         console.log('Signature does not match');
-        return NextResponse.json('Signature does not match')
+        const responseData = {
+          message: 'Signature does not matched',
+          data: "ok",
+        };
+        return NextResponse.json(responseData);
       }
+  }
+
+
+  export const GET = (request: NextRequest , res: NextResponse) => {
+    const newHeaders = new Headers(request.headers)
+
+    newHeaders.set('Content-Type', 'text/event-stream')
+    newHeaders.set('Cache-Control', 'no-cache')
+    newHeaders.set('Connection', 'keep-alive')
+
+    console.log("OK!");
+
+      // return NextResponse.json("OK", {
+      //   headers: newHeaders
+      // })
   }

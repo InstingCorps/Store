@@ -12,8 +12,8 @@ export const dynamic = "force-dynamic"
 
 export default async function FreeFire() {
 
-    const Category = "Pulsa"
-    const Games = "TELKOMSEL"
+    const Category = "Data"
+    const Games = "AXIS"
 
     const [data] = await Promise.all([
         await GetApi(Category, Games),

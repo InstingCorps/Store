@@ -1,9 +1,9 @@
 
 import ComponentNavbar from "@/components/Navbar/Navbar";
-import DiamondsList from "./components/diamonds/Diamonds";
+import DiamondsList from "./Diamonds";
 import ComponentFooter from "@/components/footer/footer";
 import Development from "@/app/Text/Development";
-import InputID from "./components/inputID/InputID";
+import InputID from "../inputID/InputID";
 import DukunganPelanggan from "@/Contact/Callme";
 import React from "react";
 import { GetApi } from "@/app/services/getproductDigiflazz";
