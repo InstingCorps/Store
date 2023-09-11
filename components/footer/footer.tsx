@@ -43,10 +43,10 @@ export default function ComponentFooter() {
             <div>
               <Footer.Title title="Legal" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">
+                <Footer.Link href="/othersPage/PrivacyPolicy">
                   Privacy Policy
                 </Footer.Link>
-                <Footer.Link href="#">
+                <Footer.Link href="/othersPage/TermsConditions">
                   Terms & Conditions
                 </Footer.Link>
               </Footer.LinkGroup>

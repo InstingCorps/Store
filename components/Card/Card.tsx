@@ -37,7 +37,7 @@ export default function ComponentCard() {
 
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt="FreeFire"
-         href="/freefire"
+         href="/games/freefire"
          onClick={() => TypeGame("Free Fire")}
 
          imgSrc="https://cdn.unipin.com/images/icon_product_pages/1658817763-icon-200x200_icon%20ff.jpg"
@@ -87,7 +87,7 @@ export default function ComponentCard() {
 
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt="FreeFire"
-         href="/freefire"
+         href="/games/freefire"
          onClick={() => TypeGame("Free Fire")}
 
          imgSrc="https://cdn.unipin.com/images/icon_product_pages/1658817763-icon-200x200_icon%20ff.jpg"
@@ -179,7 +179,7 @@ export default function ComponentCard() {
 
         <Card className="h-auto max-w-sm rounded-xl ComCard"
             imgAlt="FreeFire"
-            href="/freefire"
+            href="/games/freefire"
             onClick={() => TypeGame("Free Fire")}
          imgSrc="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/ID_FF-tile-cb-sd100k.jpg"
          >
