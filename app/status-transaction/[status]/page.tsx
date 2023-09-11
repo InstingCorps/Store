@@ -38,7 +38,7 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
     // eventSource.onerror = (error) => {
     //   console.error("Kesalahan koneksi", error)
     // }
-    console.log(decrpyt);
+    // console.log(decrpyt);
     const verify = decrpyt.verify
     
     if (URLvalidation(verify)) {

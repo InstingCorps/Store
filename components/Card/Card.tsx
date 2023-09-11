@@ -18,7 +18,7 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
         
          imgAlt="Mobile Legends"
-         href="/mobile-legends"
+         href="/games/mobile-legends"
          onClick={() => TypeGame("Mobile Legends")}
          imgSrc="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/ID_MLBB-M4-Codacash-tile.jpg"
          >
@@ -78,7 +78,7 @@ export default function ComponentCard() {
         <div className="grid grid-cols-3 md:grid-cols-8 gap-4 m-3 btn-card ComCard mt-5">
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
-         href="/mobile-legends"
+         href="/games/mobile-legends"
          onClick={() => TypeGame("Mobile Legends")}
          imgSrc="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/ID_MLBB-M4-Codacash-tile.jpg"
          >
@@ -156,7 +156,7 @@ export default function ComponentCard() {
         <div className="grid grid-cols-3 md:grid-cols-8 gap-4 m-3 btn-card ComCard mt-5">
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
-         href="/mobile-legends"
+         href="/games/mobile-legends"
          onClick={() => TypeGame("Mobile Legends")}
          imgSrc="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/ID_MLBB-M4-Codacash-tile.jpg"
          >
@@ -170,7 +170,7 @@ export default function ComponentCard() {
         <div className="grid grid-cols-3 md:grid-cols-8 gap-4 m-3 btn-card ComCard mt-5">
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
-         href="/mobile-legends"
+         href="/games/mobile-legends"
          onClick={() => TypeGame("Mobile Legends")}
          imgSrc="https://cdn1.codashop.com/S/content/mobile/images/product-tiles/ID_MLBB-M4-Codacash-tile.jpg"
          >
@@ -234,6 +234,14 @@ export default function ComponentCard() {
         </Card>
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
+         href="/pulsa/XL"
+         onClick={() => TypeGame("XL")}
+         imgSrc="https://www.pe-we.com/wp-content/uploads/2017/07/logo-XL.jpg"
+         >
+         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
+        </Card>
+        <Card className="h-auto max-w-sm rounded-xl ComCard"
+         imgAlt=""
          href="/pulsa/tri"
          onClick={() => TypeGame("TRI")}
          imgSrc="https://i.pinimg.com/originals/c8/40/87/c84087e787b376b50c42915b00671799.png"
@@ -283,6 +291,14 @@ export default function ComponentCard() {
          href="/paketdata/axis"
          onClick={() => TypeGame("Axis")}
          imgSrc="https://iconlogovector.com/uploads/images/2023/02/lg-ab245e14c10da5c9ffb63f047c1b7fdc74.jpg"
+         >
+         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
+        </Card>
+        <Card className="h-auto max-w-sm rounded-xl ComCard"
+         imgAlt=""
+         href="/paketdata/XL"
+         onClick={() => TypeGame("XL")}
+         imgSrc="https://www.pe-we.com/wp-content/uploads/2017/07/logo-XL.jpg"
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>

@@ -1,13 +1,13 @@
 
 import ComponentNavbar from "@/components/Navbar/Navbar";
-import DiamondList from "@/app/mobile-legends/components/diamonds/Diamonds";
+import DiamondList from "@/app/games/mobile-legends/components/diamonds/Diamonds";
 import ComponentFooter from "@/components/footer/footer";
-import Test from "../Text/Development";
+import Test from "../../Text/Development";
 import InputID from "./components/inputID/InputID";
 import Cards from "./components/card/Card";
 import DukunganPelanggan from "@/Contact/Callme";
 import React from "react";
-import { GetApi } from "../services/getproductDigiflazz";
+import { GetApi } from "../../services/getproductDigiflazz";
 
 export const dynamic = "force-dynamic"
 

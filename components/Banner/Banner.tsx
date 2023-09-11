@@ -45,10 +45,15 @@ export default function ComponentBanner() {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
-        <SwiperSlide><img src="https://webtopup-3.vercel.app/img/1204924.jpg" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="https://webtopup-3.vercel.app/img/stretched-1920-1080-1149777.jpg" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="https://webtopup-3.vercel.app/img/slider-5.webp" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="https://webtopup-3.vercel.app/img/stretched-1920-1080-1123246.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/image/1204924.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/image/stretched-1920-1080-1149777.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/image/valo-cover.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/image/slider-5.webp" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/image/ff-cover.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/image/genshin-cover.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/image/lol-cover.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/image/codm-cover.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/image/stretched-1920-1080-1123246.jpg" alt="" /></SwiperSlide>
 
 
         
