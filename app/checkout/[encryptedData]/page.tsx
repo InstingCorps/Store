@@ -3,7 +3,7 @@ import Checkout from "@/app/checkout/checkouts/Checkout";
 import { URLvalidation } from "@/app/validation/URLvalidation";
 import ComponentFooter from "@/components/footer/footer";
 import DukunganPelanggan from "@/Contact/Callme";
-import { DecryptAutomated } from "@/crypto/encrypt";
+import { DecryptAutomated } from "@/encrypt/encrypt";
 import React, {useState , useEffect} from 'react'
 
 

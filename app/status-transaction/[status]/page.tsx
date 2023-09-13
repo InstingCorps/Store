@@ -1,7 +1,8 @@
 'use client'
 import { URLvalidation } from "@/app/validation/URLvalidation";
-import { DecryptAutomated } from "@/crypto/encrypt";
+import { DecryptAutomated } from "@/encrypt/encrypt";
 import { Button } from "flowbite-react";
+import { useEffect } from 'react';
 
 
 const StatusTransaction = ({params} : {params: {status: string}}) => {
@@ -9,35 +10,25 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
   const data = response.replace(/%3A/g, ':');
   const decrpyt = DecryptAutomated(data)
 
-  // try {
+  useEffect(() => {
+    const eventSource = new EventSource('/api/webhooks');
 
-  //   fetch('/api/webhooks', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({tes: "OK"})
-  //     // Kirim data ke server jika diperlukan
-  //     // body: JSON.stringify({ key: 'value' }),
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log(data); // Data dari server
-  //       // Lakukan apa pun yang perlu Anda lakukan dengan data di sini
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-    // const eventSource = new EventSource('/api/webhooks'); // Ganti dengan URL SSE endpoint Anda
-    // eventSource.onmessage = function (event) {
-    //   const eventData = JSON.parse(event.data);
-    //   // Lakukan apa pun yang perlu Anda lakukan dengan data yang diterima dari SSE di sini
-    //   console.log(eventData);
-    // };
+    eventSource.onmessage = (event) => {
+      const message = event.data;
+      console.log('Pesan dari server:', message);
+      // Lakukan sesuatu dengan pesan yang diterima dari server
+    };
 
-    // eventSource.onerror = (error) => {
-    //   console.error("Kesalahan koneksi", error)
-    // }
+    eventSource.onerror = (error) => {
+      console.error('Kesalahan SSE:', error);
+    };
+
+    return () => {
+      eventSource.close(); // Tutup koneksi SSE saat komponen unmount
+    };
+  }, []);
+
+
     // console.log(decrpyt);
     const verify = decrpyt.verify
     

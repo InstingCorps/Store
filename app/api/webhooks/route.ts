@@ -80,23 +80,42 @@ export const POST = async (request : NextRequest , res: NextResponse ) => {
         console.log('Signature does not match');
         const responseData = {
           message: 'Signature does not matched',
-          data: "ok",
+          data: null,
         };
         return NextResponse.json(responseData);
       }
   }
 
 
-  export const GET = (request: NextRequest , res: NextResponse) => {
-    const newHeaders = new Headers(request.headers)
+  // export const GET = (request: NextRequest) => {
+  //   const newHeaders = new Headers(request.headers)
 
-    newHeaders.set('Content-Type', 'text/event-stream')
-    newHeaders.set('Cache-Control', 'no-cache')
-    newHeaders.set('Connection', 'keep-alive')
+  
+  //   const generaterandomData = () => {
+  //     Math.floor(Math.random() * 100)
+  //   }
 
-    console.log("OK!");
+  //   newHeaders.set('Content-Type', 'text/event-stream')
+  //   newHeaders.set('Cache-Control', 'no-cache')
+  //   newHeaders.set('Connection', 'keep-alive')
 
-      // return NextResponse.json("OK", {
-      //   headers: newHeaders
-      // })
-  }
+  //   const res = new NextResponse('', {
+  //     status: 200,
+  //     headers: newHeaders
+  //   })
+
+    
+  //   const sendData = (res: NextResponse) => {
+
+  //   const data = generaterandomData()
+      
+  //     NextResponse.rewrite(`data: ${data}\n\n`)
+  //   }
+    
+  //   const intervalId = setInterval(() => {
+  //     sendData(res);
+  //   }, 1000);
+  //     // return NextResponse.json("OK", {
+  //     //   headers: newHeaders
+  //     // })
+  // }

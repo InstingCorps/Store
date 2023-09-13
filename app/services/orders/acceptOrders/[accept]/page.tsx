@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { OrderDigiflazz } from '../../ordersDigiflazz';
-import { DecryptAutomated } from '@/crypto/encrypt';
+import { DecryptAutomated } from '@/encrypt/encrypt';
 import { ORDERvalidation } from '@/app/validation/URLvalidation';
 import { Button, Label, Modal, TextInput } from 'flowbite-react';
 import { AiOutlineLoading } from 'react-icons/ai';

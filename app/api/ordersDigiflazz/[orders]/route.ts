@@ -3,7 +3,7 @@ import axios from "axios";
 import { hashData } from "@/app/services/data/dataToHash";
 import { ref_id } from "@/app/services/data/ref_idGenerator";
 import { config } from "dotenv";
-import { DecryptAutomated } from "@/crypto/encrypt";
+import { DecryptAutomated } from "@/encrypt/encrypt";
 import nodemailer from 'nodemailer';
 
 config();

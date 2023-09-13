@@ -3,7 +3,7 @@
 import { Modal, Button } from 'flowbite-react';
 import {HiShoppingCart } from 'react-icons/hi';
 // import { useRouter } from 'next/navigation';
-import { EncryptAutomated } from '@/crypto/encrypt';
+import { EncryptAutomated } from '@/encrypt/encrypt';
 import { useEffect, useState } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
 

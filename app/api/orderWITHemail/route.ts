@@ -1,6 +1,6 @@
 
 
-import { Decrypt, Encrypt } from '@/crypto/encrypt';
+import { Decrypt, Encrypt } from '@/encrypt/encrypt';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 

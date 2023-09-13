@@ -9,7 +9,7 @@ import React, { useState, useEffect, SyntheticEvent } from 'react';
 import axios from 'axios';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { HiInformationCircle } from 'react-icons/hi';
-import { EncryptAutomated } from '@/crypto/encrypt';
+import { EncryptAutomated } from '@/encrypt/encrypt';
 import { Validate } from '@/app/validation/URLvalidation';
 
 interface CardProps {
