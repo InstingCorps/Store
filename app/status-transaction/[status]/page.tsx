@@ -23,6 +23,7 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
           console.error("Terjadi kesalahan dalam permintaan:", error);
           window.location.reload()
         });
+        //ok
 
     
     // const eventSource = new EventSource('/api/webhooks');
