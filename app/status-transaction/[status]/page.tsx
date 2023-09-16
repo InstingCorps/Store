@@ -1,6 +1,7 @@
 'use client'
 import { URLvalidation } from "@/app/validation/URLvalidation";
 import { DecryptAutomated } from "@/encrypt/encrypt";
+import axios from "axios";
 import { Button } from "flowbite-react";
 import { useEffect } from 'react';
 
@@ -11,21 +12,34 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
   const decrpyt = DecryptAutomated(data)
 
   useEffect(() => {
-    const eventSource = new EventSource('/api/webhooks');
+        // Lakukan permintaan GET menggunakan Axios dalam useEffect
+        axios.get('/api/webhooks')
+        .then((response) => {
+            console.log(response.data);
+            console.log(response.data.data);
+            console.log(response.data.message);
+        })
+        .catch((error) => {
+          console.error("Terjadi kesalahan dalam permintaan:", error);
+          window.location.reload()
+        });
 
-    eventSource.onmessage = (event) => {
-      const message = event.data;
-      console.log('Pesan dari server:', message);
-      // Lakukan sesuatu dengan pesan yang diterima dari server
-    };
+    
+    // const eventSource = new EventSource('/api/webhooks');
 
-    eventSource.onerror = (error) => {
-      console.error('Kesalahan SSE:', error);
-    };
+    // eventSource.onmessage = (event) => {
+    //   const message = event.data;
+    //   console.log('Pesan dari server:', message);
+    //   // Lakukan sesuatu dengan pesan yang diterima dari server
+    // };
 
-    return () => {
-      eventSource.close(); // Tutup koneksi SSE saat komponen unmount
-    };
+    // eventSource.onerror = (error) => {
+    //   console.error('Kesalahan SSE:', error);
+    // };
+
+    // return () => {
+    //   eventSource.close(); // Tutup koneksi SSE saat komponen unmount
+    // };
   }, []);
 
 

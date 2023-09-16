@@ -4,6 +4,46 @@ import crypto from "crypto"
 import { NextRequest, NextResponse } from 'next/server';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+
+let responseData1: Object = Object;
+
+  // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
+  function iteratorToStream(iterator: any) {
+    return new ReadableStream({
+      async pull(controller) {
+        const { value, done } = await iterator.next()
+   
+        if (done) {
+          controller.close()
+        } else {
+          controller.enqueue(value)
+        }
+      },
+    })
+  }
+  const encoder = new TextEncoder()
+   
+  
+  
+  function sleep(time: number) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, time)
+    })
+  }
+  
+  async function* makeIterator() {
+      while (Object.keys(responseData1).length === 0) {
+      await sleep(5000);
+    }
+    yield encoder.encode(JSON.stringify(responseData1))
+    // if (responseData1 !== 'data') {
+      setTimeout(() => {
+        responseData1 = {};  // Mengubah responseData1 menjadi 'data' setelah 5 detik
+      }, 20000);
+    // }
+    
+  }
+
 export const POST = async (request : NextRequest , res: NextResponse ) => {
     const secret = '8dd7478ce304558f';
     const response = await request.json()
@@ -23,27 +63,7 @@ export const POST = async (request : NextRequest , res: NextResponse ) => {
     const digest = Buffer.from('sha1=' + hmac.update(post_data).digest('hex'), 'utf8');
 
     const checksum = Buffer.from(signature, 'utf8');
-
-    const data = {
-      message: 'Hello, SSE!',
-      timestamp: new Date().toISOString(),
-    };
-
-    const newHeaders = new Headers(request.headers)
-
-    newHeaders.set('Content-Type', 'text/event-stream')
-    newHeaders.set('Cache-Control', 'no-cache')
-    newHeaders.set('Connection', 'keep-alive')
-
-    const sendEvent = () => {
-      console.log("OK!");
-      return NextResponse.next({
-        request: {
-          headers: newHeaders
-        }
-      })
-    };
-
+    
     console.log(checksum);
     console.log(signature);
     console.log(response);
@@ -68,15 +88,23 @@ export const POST = async (request : NextRequest , res: NextResponse ) => {
             subject: "ORDER WEBHOOKS!",
             html: datas,
           };
+          responseData1 = {
+            message: 'Signature matched',
+            data: parse,
+          };
           await transporter.sendMail(mailOptions);
           const responseData = {
             message: 'Signature matched',
             data: parse,
           };
+          
       
           return NextResponse.json(responseData);
       } else {
-      sendEvent();
+        responseData1 = {
+          message: 'Signature not matched',
+          data: null,
+        };
         console.log('Signature does not match');
         const responseData = {
           message: 'Signature does not matched',
@@ -85,37 +113,11 @@ export const POST = async (request : NextRequest , res: NextResponse ) => {
         return NextResponse.json(responseData);
       }
   }
+ 
 
-
-  // export const GET = (request: NextRequest) => {
-  //   const newHeaders = new Headers(request.headers)
-
+export async function GET () {
   
-  //   const generaterandomData = () => {
-  //     Math.floor(Math.random() * 100)
-  //   }
-
-  //   newHeaders.set('Content-Type', 'text/event-stream')
-  //   newHeaders.set('Cache-Control', 'no-cache')
-  //   newHeaders.set('Connection', 'keep-alive')
-
-  //   const res = new NextResponse('', {
-  //     status: 200,
-  //     headers: newHeaders
-  //   })
-
-    
-  //   const sendData = (res: NextResponse) => {
-
-  //   const data = generaterandomData()
-      
-  //     NextResponse.rewrite(`data: ${data}\n\n`)
-  //   }
-    
-  //   const intervalId = setInterval(() => {
-  //     sendData(res);
-  //   }, 1000);
-  //     // return NextResponse.json("OK", {
-  //     //   headers: newHeaders
-  //     // })
-  // }
+  const Content = makeIterator();
+  const stream = iteratorToStream(Content);
+  return new Response(stream);
+}
