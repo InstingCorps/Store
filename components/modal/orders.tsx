@@ -25,6 +25,7 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
 
     const [PlayerID, setPlayerID] = useState('');
     const [ZoneID, setZoneID] = useState('');
+    const [Payments, setPayments] = useState('');
   
     useEffect(() => {
       const interval = setInterval(() => {
@@ -32,6 +33,7 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
           // Mengambil nilai dari sessionStorage dan menyimpannya dalam state saat komponen dimuat
           const userID = sessionStorage.getItem('PlayerID');
           const zoneID = sessionStorage.getItem('ZoneID');
+          const Payment = sessionStorage.getItem('Payment')
   
           // Memperbarui state dengan nilai-nilai dari sessionStorage
           if (userID) {
@@ -39,6 +41,9 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
           }
           if (zoneID) {
             setZoneID(zoneID || ''); // Gunakan default string kosong jika tidak ada nilai
+          }
+          if (Payment) {
+            setPayments(Payment || ''); // Gunakan default string kosong jika tidak ada nilai
           }
         }
       }, 1500); // Setiap 1000 milidetik (1 detik)
@@ -69,12 +74,13 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
     <Modal className="items-center justify-center" popup dismissible show={open} onClose={onClose}>
       <Modal.Header className="font-bold mt-5">ORDER DETAIL!</Modal.Header>
       <Modal.Body>
-        <div className="space-y-3">
+        <div className="space-y-3 font-bold">
         <p>ID: {PlayerID}</p>
         {ZoneID !== "" &&
       (<div>Zone ID = &#40; {ZoneID} &#41;</div>)}
         <p>Product Name: {product_name}</p>
         <p>Price: {Price}</p>
+        <p>Metode Pembayaran :{Payments}</p>
         </div>
       </Modal.Body>
       <Modal.Footer className="flex justify-between">

@@ -4,21 +4,27 @@ import BiayaPembayaran from "@/payment/BiayaPembayaran";
 import { Card } from "flowbite-react";
 import { useState , useEffect } from "react";
 import React from 'react';
-import BuyNow from "./Confirm";
 
 const PaymentMethod = (): JSX.Element => {
 
-  const WhatsApp = BiayaPembayaran(0)
+    const [activeCard, setActiveCard] = useState(null);
+
+    const WhatsApp = BiayaPembayaran(0)
     const Qris = BiayaPembayaran(1.5)
     const Gopay = BiayaPembayaran(1.8) //dalam hitungan persen
     const Dana = BiayaPembayaran(2.5)
     const OVO = BiayaPembayaran(1.9)
     const ShopeePay = BiayaPembayaran(1.7)
     
-    const handleClick = (value: string) => () => {
+    const handleClick = (value: any) => () => {
+        if (activeCard === value) {
+            // Jika card yang sama diklik kembali, nonaktifkan efek border
+            setActiveCard(null);
+          } else {
+            // Jika card yang berbeda diklik, aktifkan efek border pada card yang diklik dan nonaktifkan efek border pada card yang sebelumnya aktif
+            setActiveCard(value);
+          }
         sessionStorage.setItem('Payment', value);
-        console.log(value);
-        BuyNow()
         };
     return (
         <Card className="bg-gray-800 mt-10">
@@ -31,55 +37,97 @@ const PaymentMethod = (): JSX.Element => {
             <div className="text-center font-medium">untuk sementara waktu semua pembelian kamu akan di arahkan ke whatsapp admin!</div>
         
         </Card>
-        <Card className="mt-5" onClick={handleClick("WhatsApp")}>
+        <Card
+        className={`mt-5 p-4 cursor-pointer rounded-lg ${
+          activeCard === "WhatsApp"
+            ? "border-4 border-blue-500 rounded-xl"
+            : "border-gray-300"
+        } transition-all duration-300`}
+          onClick={handleClick("WhatsApp")}
+        >
             <div className="flex">
             <img src="https://www.citypng.com/public/uploads/preview/-41601346950a0kcvtszk3.png" alt="" style={{ width: '60%' }} />
                 <div className="ml-4">
                     <div className="ml-4 font-sans font-bold text-gray-700">Harga</div>
-                    <div className="font-semibold">Rp.{WhatsApp}</div>
+                    <div className="font-semibold">{WhatsApp}</div>
                 </div>
             </div>
         </Card>
 
-        <Card className="mt-5" onClick={handleClick("QRIS")}>
+        <Card
+        className={`mt-5 p-4 cursor-pointer ${
+          activeCard === "QRIS"
+            ? "border-4 border-blue-500 rounded-xl"
+            : "border-gray-300"
+        } transition-all duration-300`}
+        onClick={handleClick("QRIS")}
+      >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/QRIS_ID_CHNL_LOGO.png" alt="" style={{ width: '60%' }} />
-            <div className="font-semibold ml-4">Rp.{Qris}</div>
+            <div className="font-semibold ml-4">{Qris}</div>
             </div>
             
         </Card>
-        <Card className="mt-5">
+        <Card
+        className={`mt-5 p-4 cursor-pointer ${
+          activeCard === "GoPay"
+            ? "border-4 border-blue-500 rounded-xl"
+            : "border-gray-300"
+        } transition-all duration-300`}
+        onClick={handleClick("GoPay")}
+      >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/GO_PAY_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
             <div className="ml-4">
-                    <div className="font-semibold ml-6">Rp.{Gopay}</div>
+                    <div className="font-semibold ml-6">{Gopay}</div>
             </div>
             </div>
             
         </Card>
-        <Card className="mt-5">
+        <Card
+        className={`mt-5 p-4 cursor-pointer ${
+          activeCard === "Dana"
+            ? "border-4 border-blue-500 rounded-xl"
+            : "border-gray-300"
+        } transition-all duration-300`}
+        onClick={handleClick("Dana")}
+      >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/DANA_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
             <div className="ml-4">
-                    <div className="font-semibold ml-6">Rp.{Dana}</div>
+                    <div className="font-semibold ml-6">{Dana}</div>
             </div>
             </div>
             
         </Card>
-        <Card className="mt-5">
+        <Card
+        className={`mt-5 p-4 cursor-pointer ${
+          activeCard === "OVO"
+            ? "border-4 border-blue-500 rounded-xl"
+            : "border-gray-300"
+        } transition-all duration-300`}
+        onClick={handleClick("OVO")}
+      >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/OVO_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
             <div className="ml-4">
-                    <div className="font-semibold ml-6">Rp.{OVO}</div>
+                    <div className="font-semibold ml-6">{OVO}</div>
             </div>
             </div>
             
         </Card>
-        <Card className="mt-5">
+        <Card
+        className={`mt-5 p-4 cursor-pointer ${
+          activeCard === "Shopee Pay"
+            ? "border-4 border-blue-500 rounded-xl"
+            : "border-gray-300"
+        } transition-all duration-300`}
+        onClick={handleClick("Shopee Pay")}
+      >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/SHOPEE_PAY_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
             <div className="ml-4">
-                    <div className="font-semibold ml-6">Rp.{ShopeePay}</div>
+                    <div className="font-semibold ml-6">{ShopeePay}</div>
             </div>
             </div>
             

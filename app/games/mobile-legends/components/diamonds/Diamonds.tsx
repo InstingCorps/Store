@@ -23,13 +23,20 @@ function DiamondsList({data}:any) {
     buyer_sku_code: null,
   });
 
+  const formatter = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  });
+
   useEffect(() => {
-  const getPrice = sessionStorage.getItem('Price')
+  const getPrice = Number(sessionStorage.getItem('Price'))
 
   if (getPrice) {
-    setPrice(getPrice)
+    const formattedNumber = formatter.format(getPrice).replace(/,00$/, "");
+    setPrice(formattedNumber)
   }
   }, [Price]);
+
 
   const handleClick = (product_name: string , Price : any , buyer_sku_code: any , category:any , seller_name:any , seller_price: any) => () => {
     const verify: string = "25012006RoziStore_FahrurRozi_001"
@@ -104,7 +111,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
     <div>
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center font-extrabold'>Pilih Nominal Topup</div>
-    <div className="font-sans text-xl font-bold text-right mr-5">Harga : Rp.{Price}</div>
+    <div className="font-sans text-xl font-bold text-right mr-5">Harga :{Price}</div>
     <div className="grid grid-cols-2 md:grid-cols-8 gap-2 text-center">
       {Diamonds()}
     </div>
@@ -118,7 +125,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
             <div>
               <div></div>
                 <div>{Product}</div>
-                <div className="font-bold">Rp.{Price}</div>
+                <div className="font-bold">{Price}</div>
             </div>
           
         <Button className="ml-auto font-bold mt-4" pill color="success" size="md" onClick={OnClicks}
