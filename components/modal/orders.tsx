@@ -61,6 +61,14 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
 
   const encrypt = EncryptAutomated(data)
 
+  const formatter = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  });
+
+  const formattedPrice = formatter.format(Price).replace(/,00$/, "");
+
+
     // const router = useRouter()
     const accept  = () => {
 
@@ -79,7 +87,7 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
         {ZoneID !== "" &&
       (<div>Zone ID = &#40; {ZoneID} &#41;</div>)}
         <p>Product Name: {product_name}</p>
-        <p>Price: {Price}</p>
+        <p>Price: {formattedPrice}</p>
         <p>Metode Pembayaran :{Payments}</p>
         </div>
       </Modal.Body>

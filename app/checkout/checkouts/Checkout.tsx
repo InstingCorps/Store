@@ -35,6 +35,8 @@ const Checkout = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
   const [alertColor, setAlertColor] = useState('info');
+  const [Payments, setPayments] = useState('');
+  const [GetPPN, setPPN] = useState('');
 
   const [checkoutData, setCheckoutData] = useState<CheckoutData>({
     brand: '',
@@ -57,6 +59,8 @@ const Checkout = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      const Payment = sessionStorage.getItem('Payment')
+      const PPN = sessionStorage.getItem('PPN')
       const storedData: CheckoutData = {
         product_name: sessionStorage.getItem('product_name') || '',
         category: sessionStorage.getItem('category') || '',
@@ -69,11 +73,23 @@ const Checkout = () => {
         ZoneID: sessionStorage.getItem('ZoneID') || '',
         seller_price: sessionStorage.getItem('seller_price') || '',
       };
-  
+
+      if (Payment) {
+        setPayments(Payment || ''); // Gunakan default string kosong jika tidak ada nilai
+      }
+
+      if (PPN) {
+        setPPN(PPN); // Gunakan default string kosong jika tidak ada nilai
+      }
+
       setCheckoutData((prevData) => ({ ...prevData, ...storedData }));
     }
   }, []);
 
+  const formatter = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  });
 
 
   const RequestOrder = async (e:SyntheticEvent) => {
@@ -131,6 +147,17 @@ const countdownInterval = setInterval(() => {
 
     };
 
+    const formattedPrice = formatter.format(Number(checkoutData.price)).replace(/,00$/, "");
+
+    const HargaItems: number = Number(checkoutData.price); // Angka awal
+    const persentase: number = Number(GetPPN); // Persentase
+    const tambahan = (HargaItems * persentase) / 100;
+    const Ceil = Math.ceil(tambahan)
+    const PPN = formatter.format(Ceil).replace(/,00$/, "");
+
+    const Total = Number(checkoutData.price)+Ceil
+    const TotalPrice = formatter.format(Total).replace(/,00$/, "");
+
   const Cards: React.FC<CardProps>  = ({ isVisible }) => {
     return (
       <div>
@@ -148,13 +175,15 @@ const countdownInterval = setInterval(() => {
       </Card>
       <Card className="font-bold">
       <div>Produk : <p className="text-end">{checkoutData.product_name}</p></div>
-      <div className="flex justify-between">Harga : <p>Rp.{checkoutData.price}</p></div>
+      <div className="flex justify-between">Harga : <p>{formattedPrice}</p></div>
+      <div className="flex justify-between">Tax +({GetPPN}%Ppn). <p>{PPN}</p></div>
+      <div className="flex justify-between border-t-4 border-black">Total : <p>{TotalPrice}</p></div>
       </Card>
 
       <Card className="mt-10 font-bold rounded-2xl">
         <div className="font-extrabold font-sans text-xl border-b-4 border-blue-500 rounded-xl">Detail Pembayaran!</div>
       <div className="font-bold">Status transaksi : <div className=" border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">BELUM DI BAYAR</div></div>
-      <div>Metode Pembayaran: <div className=" border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">MEMBAYAR LANGSUNG</div></div>
+      <div>Metode Pembayaran: <div className=" border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">{Payments}</div></div>
       <div>klik tombol di bawah ini untuk lanjut!</div>
       <Button
       className='font-bold'

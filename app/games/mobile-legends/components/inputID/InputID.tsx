@@ -1,6 +1,6 @@
 
 'use client';
-import { Card , TextInput } from 'flowbite-react';
+import { Card , TextInput, Tooltip } from 'flowbite-react';
 import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 
@@ -41,7 +41,10 @@ export default function InputID() {
       <div>Masukkan User ID</div>
         <div className="flex gap-5">
           <FaUser className="mt-1" size="1.65em" />
-          <TextInput
+          <Tooltip 
+        content="Masukkan UserID Anda!"
+        placement="top"
+          ><TextInput
             id="email1"
             placeholder="User ID"
             required
@@ -49,9 +52,11 @@ export default function InputID() {
             type="text"
             value={PlayerID}
             onChange={SetPlayerID}
-
-          />
-          <TextInput
+          /></Tooltip>
+          <Tooltip 
+        content="Masukkan ZoneID Anda!"
+        placement="top">
+            <TextInput
             id="email1"
             placeholder="    ( Zone ID )"
             required
@@ -60,6 +65,8 @@ export default function InputID() {
             value={ZoneID}
             onChange={SetPlayerZoneID}
           />
+          </Tooltip>
+
         </div>
         {/* <div>
           <div>Pastikan Nickname Anda Benar!!</div>

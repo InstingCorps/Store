@@ -2,7 +2,7 @@
 
 import BiayaPembayaran from "@/payment/BiayaPembayaran";
 import { Card } from "flowbite-react";
-import { useState , useEffect } from "react";
+import { useState } from "react";
 import React from 'react';
 
 const PaymentMethod = (): JSX.Element => {
@@ -16,7 +16,7 @@ const PaymentMethod = (): JSX.Element => {
     const OVO = BiayaPembayaran(1.9)
     const ShopeePay = BiayaPembayaran(1.7)
     
-    const handleClick = (value: any) => () => {
+    const handleClick = (value: any , ppn : any) => () => {
         if (activeCard === value) {
             // Jika card yang sama diklik kembali, nonaktifkan efek border
             setActiveCard(null);
@@ -25,6 +25,7 @@ const PaymentMethod = (): JSX.Element => {
             setActiveCard(value);
           }
         sessionStorage.setItem('Payment', value);
+        sessionStorage.setItem('PPN' , ppn)
         };
     return (
         <Card className="bg-gray-800 mt-10">
@@ -43,7 +44,7 @@ const PaymentMethod = (): JSX.Element => {
             ? "border-4 border-blue-500 rounded-xl"
             : "border-gray-300"
         } transition-all duration-300`}
-          onClick={handleClick("WhatsApp")}
+          onClick={handleClick("WhatsApp" , 0)}
         >
             <div className="flex">
             <img src="https://www.citypng.com/public/uploads/preview/-41601346950a0kcvtszk3.png" alt="" style={{ width: '60%' }} />
@@ -60,7 +61,7 @@ const PaymentMethod = (): JSX.Element => {
             ? "border-4 border-blue-500 rounded-xl"
             : "border-gray-300"
         } transition-all duration-300`}
-        onClick={handleClick("QRIS")}
+        onClick={handleClick("QRIS" , 1.5)}
       >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/QRIS_ID_CHNL_LOGO.png" alt="" style={{ width: '60%' }} />
@@ -74,7 +75,7 @@ const PaymentMethod = (): JSX.Element => {
             ? "border-4 border-blue-500 rounded-xl"
             : "border-gray-300"
         } transition-all duration-300`}
-        onClick={handleClick("GoPay")}
+        onClick={handleClick("GoPay" , 1.8)}
       >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/GO_PAY_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
@@ -90,7 +91,7 @@ const PaymentMethod = (): JSX.Element => {
             ? "border-4 border-blue-500 rounded-xl"
             : "border-gray-300"
         } transition-all duration-300`}
-        onClick={handleClick("Dana")}
+        onClick={handleClick("Dana" , 2.5)}
       >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/DANA_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
@@ -106,7 +107,7 @@ const PaymentMethod = (): JSX.Element => {
             ? "border-4 border-blue-500 rounded-xl"
             : "border-gray-300"
         } transition-all duration-300`}
-        onClick={handleClick("OVO")}
+        onClick={handleClick("OVO" , 1.9)}
       >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/OVO_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />
@@ -122,7 +123,7 @@ const PaymentMethod = (): JSX.Element => {
             ? "border-4 border-blue-500 rounded-xl"
             : "border-gray-300"
         } transition-all duration-300`}
-        onClick={handleClick("Shopee Pay")}
+        onClick={handleClick("Shopee Pay" , 1.7)}
       >
             <div className="flex">
             <img src="https://cdn1.codashop.com/S/content/common/images/mno/SHOPEE_PAY_CHNL_LOGO.png" alt="Gopay" style={{ width: '50%' }} />

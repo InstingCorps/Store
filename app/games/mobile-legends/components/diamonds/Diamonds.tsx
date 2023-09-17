@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useRef } from 'react';
   import React, { useState, useEffect } from 'react';
   import { Button, Card } from 'flowbite-react';
   import { HiOutlineArrowRight } from 'react-icons/hi';
@@ -22,6 +23,7 @@ function DiamondsList({data}:any) {
     Price: null,
     buyer_sku_code: null,
   });
+  const errorRef = useRef<any>(null);
 
   const formatter = new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -61,11 +63,17 @@ function DiamondsList({data}:any) {
 
     const verifedID = sessionStorage.getItem("PlayerID")
     const verifedZoneID = sessionStorage.getItem("ZoneID")
+    const PaymentMethod = sessionStorage.getItem('Payment')
 
-    if (verifedID && verifedZoneID) {
+
+    if (verifedID && verifedZoneID && PaymentMethod) {
       setModalVisible(true);
     } else {
        setModalError(true)
+       if (errorRef.current) {
+        errorRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setShowPayment(true)
+      }
     }
   }
 
@@ -135,7 +143,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
         </div>
     </Card>}
   <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
-  <div className="flex justify-center items-center mt-10">
+  <div ref={errorRef} className="flex justify-center items-center mt-10">
   <Button onClick={ShowPayments()} size="lg" gradientDuoTone="greenToBlue">
     {showPayment ? 'Sembunyikan Metode Pembayaran' : 'Pilih Metode Pembayaran'}  <HiOutlineArrowRight className="ml-2 h-5 w-5" /></Button>
 
