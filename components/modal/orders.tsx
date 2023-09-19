@@ -6,6 +6,10 @@ import {HiShoppingCart } from 'react-icons/hi';
 import { EncryptAutomated } from '@/encrypt/encrypt';
 import { useEffect, useState } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
+import { generateTransactionID } from '@/app/services/data/createTransactionID';
+import Transaction from '@/app/api/database/models/transaction';
+import connectDB from '@/app/api/database/connectToDB';
+import axios from 'axios';
 
 
 interface ModalProps {
@@ -22,6 +26,7 @@ interface ModalProps {
 const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
 
     const [isProcessing, setIsProcessing] = useState(false);
+    const [redirectCountdown, setRedirectCountdown] = useState(0);
 
     const [PlayerID, setPlayerID] = useState('');
     const [ZoneID, setZoneID] = useState('');
@@ -69,15 +74,49 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
   const formattedPrice = formatter.format(Price).replace(/,00$/, "");
 
 
-    // const router = useRouter()
-    const accept  = () => {
+    const accept  = async () => {
 
-        setIsProcessing(true);
-        window.location.href = `/checkout/${encrypt}`
-        // router.push(`/checkout/${encrypt}`)
+      try {
+
+      setIsProcessing(true);
+
+      const transactionID = generateTransactionID();
+      sessionStorage.setItem('transactionID' , transactionID)
+      const datas = {
+        transaction_id: transactionID,
+        statusMetodePembayaran: "BELUM DI BAYAR",
+        metodePembayaran: Payments
+      }
+  
+      const res = await axios.post('/api/Transaction',datas)
+      console.log(datas);
+  
+      if (res.status === 201) {
+        // Jika respons tidak menghasilkan kesalahan (status 201), mulai countdown sebelum redirect
+        let countdown = 5;
+  
+        const countdownInterval = setInterval(() => {
+          if (countdown === 0) {
+            clearInterval(countdownInterval);
+            // Jika countdown selesai, maka arahkan pengguna ke `/checkout`
+            window.location.href = `/checkout/${encrypt}`;
+          } else {
+            setRedirectCountdown(countdown);
+            countdown--;
+          }
+        }, 1000); // 1000 milidetik = 1 detik
+      } else {
+        // Jika respons menghasilkan kesalahan, tangani sesuai kebutuhan Anda
+        console.log("Error: Redirecting failed.");
+      }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Terjadi kesalahan. Silakan coba lagi nanti.");
+        setIsProcessing(false)
+      }
+
+  };
     
-    }
-
   return (
     <Modal className="items-center justify-center" popup dismissible show={open} onClose={onClose}>
       <Modal.Header className="font-bold mt-5">ORDER DETAIL!</Modal.Header>
@@ -94,15 +133,24 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
       <Modal.Footer className="flex justify-between">
         <Button color="failure" onClick={onClose}>Decline</Button>
         <Button color="success" onClick={accept}
-        disabled={isProcessing} 
+        disabled={isProcessing}
         isProcessing={isProcessing}
         processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}
         >
             <HiShoppingCart className="mr-2 h-5 w-5" />
         <p>
-        {isProcessing ? 'Memproses...' : 'I accept'}
+      {isProcessing
+              ? 'Memproses...'
+              : 'I accept'}
       </p></Button>
       </Modal.Footer>
+      {redirectCountdown >= 1 && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <p className="text-white text-2xl font-bold">
+            Redirecting in {redirectCountdown}...
+          </p>
+        </div>
+      )}
     </Modal>
   );
 };

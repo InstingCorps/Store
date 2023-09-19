@@ -3,14 +3,16 @@
 import { Decrypt, Encrypt } from '@/encrypt/encrypt';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { updateExpirationTime } from '../database/models/updateTime';
 
 export async function POST (request : Request) {
 
   const verify = "25012006RoziStore_FahrurRozi_001_ORDERDISETUJUI"
 
-  const { id , zoneid , product_name , category , brand , price , seller_name , buyer_sku_code , seller_price} = await request.json()
+  const { transactionID , id , zoneid , product_name , category , brand , price , seller_name , buyer_sku_code , seller_price} = await request.json()
 
   const data: any = {
+    transactionID,
     verify,
     id: id+zoneid,
     buyer_sku_code,
@@ -40,6 +42,7 @@ export async function POST (request : Request) {
   <p>Hello,</p>
   <h1>Please take action on the order:</h1>
   <h2>With Order:</h2>
+  <p>ID : ${transactionID}</p>
   <p>ID : ${id}</p>
   <p>Zone ID :( ${zoneid} )</p>
   <p>category : ${category} </p>
@@ -77,6 +80,7 @@ export async function POST (request : Request) {
   };
 
   await transporter.sendMail(mailOptions);
+  await updateExpirationTime(transactionID);
   return NextResponse.json("Email Telah Terkirim , Tunggu Admin Untuk Memprosesnya..!")
 
 }

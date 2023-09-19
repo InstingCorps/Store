@@ -7,8 +7,6 @@ import Subscribe from "@/Contact/subscribe";
 import DukunganPelanggan from "@/Contact/Callme";
 
 
-
-
 export default function Home() {
   return (
    <>

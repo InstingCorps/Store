@@ -17,6 +17,7 @@ interface CardProps {
 }
 
 interface CheckoutData {
+  transactionID: String;
   product_name: string;
   category: string;
   brand: string;
@@ -39,6 +40,7 @@ const Checkout = () => {
   const [GetPPN, setPPN] = useState('');
 
   const [checkoutData, setCheckoutData] = useState<CheckoutData>({
+    transactionID: '',
     brand: '',
     product_name: '',
     category: '',
@@ -62,6 +64,7 @@ const Checkout = () => {
       const Payment = sessionStorage.getItem('Payment')
       const PPN = sessionStorage.getItem('PPN')
       const storedData: CheckoutData = {
+        transactionID: sessionStorage.getItem('transactionID') || '',
         product_name: sessionStorage.getItem('product_name') || '',
         category: sessionStorage.getItem('category') || '',
         brand: sessionStorage.getItem('TypeGame') || '',
@@ -98,6 +101,7 @@ const Checkout = () => {
 
     try {
       const response = await axios.post('/api/orderWITHemail' , {
+        transactionID: checkoutData.transactionID,
         id: checkoutData.UserID,
         zoneid: checkoutData.ZoneID,
         product_name: checkoutData.product_name,

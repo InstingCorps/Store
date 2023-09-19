@@ -12,8 +12,6 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
   const [enteredPassword, setEnteredPassword] = useState('');
   const [orderResult, setOrderResult] = useState('');
   const [openModal, setOpenModal] = useState(false)
-  // const [openModal, setOpenModal] = useState<string | undefined>();
-  // const props = { openModal, setOpenModal };
 
   const response = params.accept;
   
