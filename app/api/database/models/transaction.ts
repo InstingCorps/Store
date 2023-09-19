@@ -24,6 +24,10 @@ const TransactionSchema = new mongoose.Schema({
     sn: {
         type: String
     },
+    customer_no: {
+        type: String
+    },
+    telegram: String,
     createdAt: {
         type: Date,
         default: Date.now,

@@ -54,6 +54,8 @@ export const POST = async (request : Request) => {
                 transaction.status = resData.status;
                 transaction.message = resData.message;
                 transaction.sn = resData.sn;
+                transaction.customer_no = resData.customer_no;
+                transaction.telegram = resData.tele;
                 
                 // Simpan perubahan dokumen ke dalam database
                 await transaction.save();
