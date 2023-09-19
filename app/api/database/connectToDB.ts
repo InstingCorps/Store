@@ -1,8 +1,11 @@
 import mongoose from 'mongoose';
+import { config } from "dotenv";
+
+config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://Fahrur:OJdg3sy2HFzHtOnx@cluster0.ybhonk4.mongodb.net/RoziStore')
+    await mongoose.connect(process.env.MongoDB_URI as string)
     
     console.log('Terhubung ke MongoDB');
   } catch (error: any) {
