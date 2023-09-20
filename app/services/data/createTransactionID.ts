@@ -7,7 +7,7 @@ export function generateTransactionID() {
     const randomNum = Math.floor(Math.random() * 9000) + 1000;
   
     // Menggabungkan tanggal dan nomor acak untuk membuat transaksi ID
-    const transactionID = `#${currentDate}${randomNum}`;
+    const transactionID = `TRX_ID${currentDate}${randomNum}`;
   
     return transactionID;
   }

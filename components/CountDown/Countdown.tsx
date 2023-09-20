@@ -15,16 +15,18 @@ const Countdown: React.FC<CountdownProps> = ({ onHideCard }) => {
     // Fungsi untuk mengupdate countdown
     const updateCountdown = () => {
       setSeconds((prevSeconds) => {
-        if (prevSeconds <= 1) {
+        if (prevSeconds <= 0) {
           clearInterval(countdownInterval);
           localStorage.removeItem('countdownSeconds'); // Hapus nilai dari localStorage saat countdown selesai
-          onHideCard()
+          onHideCard();
+          return 0; // Pastikan waktu tidak menjadi negatif
         } else {
           localStorage.setItem('countdownSeconds', (prevSeconds - 1).toString()); // Simpan nilai di localStorage
+          return prevSeconds - 1;
         }
-        return prevSeconds - 1;
       });
     };
+    
 
     // Jalankan updateCountdown setiap 1 detik
     const countdownInterval = setInterval(updateCountdown, 1000);

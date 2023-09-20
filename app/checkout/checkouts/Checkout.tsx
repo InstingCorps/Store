@@ -32,6 +32,7 @@ interface CheckoutData {
 
 
 const Checkout = () => {
+  
   const [isCardVisible, setIsCardVisible] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
@@ -167,6 +168,11 @@ const countdownInterval = setInterval(() => {
       <div>
         {isVisible && (
       <div>
+
+      <Card className="mt-5 rounded-xl">
+        <div>TRANSACTION ID : {checkoutData.transactionID}</div>
+      </Card>
+
       <Card className="mt-5 mx-7 rounded-xl">
       <div className='text-center font-bold border-b-4 border-blue-500 rounded-xl'>Category : {checkoutData.brand}</div>
       </Card>

@@ -7,8 +7,6 @@ import { EncryptAutomated } from '@/encrypt/encrypt';
 import { useEffect, useState } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { generateTransactionID } from '@/app/services/data/createTransactionID';
-import Transaction from '@/app/api/database/models/transaction';
-import connectDB from '@/app/api/database/connectToDB';
 import axios from 'axios';
 
 
@@ -75,9 +73,9 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
 
 
     const accept  = async () => {
-
+      
       try {
-
+      localStorage.removeItem('countdownSeconds');
       setIsProcessing(true);
 
       const transactionID = generateTransactionID();
