@@ -33,6 +33,8 @@ export async function POST (request : Request) {
   });
 
   const orderId = encrypt;
+
+  const IDuser = id+zoneid
   
 
   const confirmOrderLink = `https://webtopup.vercel.app/services/orders/acceptOrders/${orderId}`;
@@ -80,7 +82,7 @@ export async function POST (request : Request) {
   };
 
   await transporter.sendMail(mailOptions);
-  await updateExpirationTime(transactionID , category , brand , price , seller_price);
+  await updateExpirationTime(transactionID , IDuser , category , brand , price , seller_price);
   return NextResponse.json("Email Telah Terkirim , Tunggu Admin Untuk Memprosesnya..!")
 
 }

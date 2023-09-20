@@ -9,6 +9,7 @@ const TransactionSchema = new mongoose.Schema({
     ref_id: {
         type: String
     },
+    userID: String,
     metodePembayaran: {
         type: String
     },
