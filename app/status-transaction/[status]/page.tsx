@@ -40,8 +40,8 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
             isPolling = false
           } else if (data.transaction.status === 'Sukses' || data.transaction.status === 'Gagal') {
             isPolling = false
+            setData(data.transaction);
           } else {
-            setIsError(false);
             setData(data.transaction);
           }
         }
