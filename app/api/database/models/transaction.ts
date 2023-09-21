@@ -29,6 +29,7 @@ const TransactionSchema = new mongoose.Schema({
         type: String
     },
     category: String,
+    orderTime: String,
     brand: String,
     buyerPrice: String,
     sellerPrice: String,

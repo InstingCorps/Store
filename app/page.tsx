@@ -2,7 +2,7 @@ import ComponentBanner from "@/components/Banner/Banner";
 import ComponentCard from "@/components/Card/Card";
 import ComponentNavbar from "@/components/Navbar/Navbar";
 import ComponentFooter from "@/components/footer/footer";
-import Development from "./Text/Development";
+import Development from "../components/Text/Development";
 import Subscribe from "@/Contact/subscribe";
 import DukunganPelanggan from "@/Contact/Callme";
 

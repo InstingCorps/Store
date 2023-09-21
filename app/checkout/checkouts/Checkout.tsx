@@ -1,7 +1,7 @@
 
 'use client'
 
-import Development from '@/app/Text/Development';
+import Development from '@/components/Text/Development';
 import Countdown from '@/components/CountDown/Countdown';
 import ComponentNavbar from '@/components/Navbar/Navbar';
 import { Alert, Button, Card } from 'flowbite-react';
@@ -10,7 +10,7 @@ import axios from 'axios';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { HiInformationCircle } from 'react-icons/hi';
 import { EncryptAutomated } from '@/encrypt/encrypt';
-import { Validate } from '@/app/validation/URLvalidation';
+import { Validate } from '@/components/validation/URLvalidation';
 
 interface CardProps {
   isVisible: boolean; // Properti untuk mengontrol visibilitas card
@@ -192,8 +192,8 @@ const countdownInterval = setInterval(() => {
 
       <Card className="mt-10 font-bold rounded-2xl">
         <div className="font-extrabold font-sans text-xl border-b-4 border-blue-500 rounded-xl">Detail Pembayaran!</div>
-      <div className="font-bold">Status transaksi : <div className=" border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">BELUM DI BAYAR</div></div>
-      <div>Metode Pembayaran: <div className=" border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">{Payments}</div></div>
+      <div className="font-bold">Status transaksi : <div className="border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">BELUM DI BAYAR</div></div>
+      <div>Metode Pembayaran: <div className="border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">{Payments}</div></div>
       <div>klik tombol di bawah ini untuk lanjut!</div>
       <Button
       className='font-bold'

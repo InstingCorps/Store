@@ -1,6 +1,6 @@
 'use client'
 import Checkout from "@/app/checkout/checkouts/Checkout";
-import { URLvalidation } from "@/app/validation/URLvalidation";
+import { URLvalidation } from "@/components/validation/URLvalidation";
 import ComponentFooter from "@/components/footer/footer";
 import DukunganPelanggan from "@/Contact/Callme";
 import { DecryptAutomated } from "@/encrypt/encrypt";
@@ -19,7 +19,7 @@ const EncryptedData = ({params} : {params: {encryptedData: string}}) => {
         const getTypeGame = sessionStorage.getItem('TypeGame');
         const getTRX_ID = sessionStorage.getItem('transactionID');
         
-        if (getTypeGame && getTRX_ID) {
+        if (getTypeGame) {
           setTypeGame(getTypeGame);
           
           // Pastikan TRX_ID memiliki nilai yang valid sebelum membuat URL
@@ -57,7 +57,6 @@ const EncryptedData = ({params} : {params: {encryptedData: string}}) => {
       <div>
         <div className="text-center font-bold text-white mt-20">AXIOS VALIDASI GAGAL</div>
         <div className="text-center font-bold text-white mt-20">SESSION TELAH BERAKHIR SILAHKAN BUAT TRANSAKSI BARU</div>
-
       </div>
     );
   }
