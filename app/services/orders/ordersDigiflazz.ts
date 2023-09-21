@@ -1,7 +1,5 @@
 
 import axios from "axios";
-import { config } from "dotenv";
-config();
 
 export const OrderDigiflazz = async (encryptedData: string, password: string , urls:any): Promise<any> => {
 
