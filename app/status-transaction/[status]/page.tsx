@@ -55,6 +55,10 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
 
     poll(); // Mulai polling pertama kali
 
+      // Membersihkan polling jika komponen unmount
+  return () => {
+    isPolling = false;
+  };
   }, []); 
 
   console.log(Data);
