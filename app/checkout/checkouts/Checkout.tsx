@@ -34,6 +34,8 @@ interface CheckoutData {
 const Checkout = () => {
   
   const [isCardVisible, setIsCardVisible] = useState(true);
+  const [transactionStatus, setTransactionStatus] = useState('BELUM DI BAYAR');
+const [borderColor, setBorderColor] = useState('orange');
   const [isProcessing, setIsProcessing] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
   const [alertColor, setAlertColor] = useState('info');
@@ -125,9 +127,13 @@ const Checkout = () => {
       const encrypt = EncryptAutomated(dataDecrypt)
       
        // Setelah permintaan Axios selesai, atur isProcessing kembali menjadi false
-      setIsProcessing(false);
+      // setIsProcessing(false);
       setAlertMessage('Berhasil: ' + JSON.stringify(response.data));
       setAlertColor('success')
+      // Set status transaksi menjadi SUKSES DI BAYAR
+      setTransactionStatus('SUKSES DI BAYAR');
+      // Set warna border menjadi success
+      setBorderColor('green');
 
       let countdown = 5;
 
@@ -192,8 +198,8 @@ const countdownInterval = setInterval(() => {
 
       <Card className="mt-10 font-bold rounded-2xl">
         <div className="font-extrabold font-sans text-xl border-b-4 border-blue-500 rounded-xl">Detail Pembayaran!</div>
-      <div className="font-bold">Status transaksi : <div className="border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">BELUM DI BAYAR</div></div>
-      <div>Metode Pembayaran: <div className="border border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">{Payments}</div></div>
+        <div className="font-bold">Status transaksi : <div className={`border-2 border-${borderColor}-500 rounded-2xl p-2 text-${borderColor}-500 text-sm text-center`}>{transactionStatus}</div></div>
+      <div>Metode Pembayaran: <div className="border-2 border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">{Payments}</div></div>
       <div>klik tombol di bawah ini untuk lanjut!</div>
       <Button
       className='font-bold'

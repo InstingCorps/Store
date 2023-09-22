@@ -23,7 +23,7 @@ const CopyButton: React.FC<{ textToCopy: string }> = ({ textToCopy }) => {
   return (
     <div
     className={`font-bold border rounded-2xl p-2 text-sm text-center cursor-pointer
-    ${copied ? 'bg-orange-500 text-white border-orange-500' : 'border-orange-500 text-orange-500'}`}
+    ${copied ? 'bg-orange-500 text-white border-orange-500' : 'border-2 border-orange-500 text-orange-500'}`}
     onClick={handleCopyClick}
   >
     {copied ? 'Teks Telah Disalin!' : 'Salin'}

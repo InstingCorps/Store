@@ -84,14 +84,14 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
       <Card className="text-center rounded-3xl mt-5">
         <div className="font-extrabold font-sans text-xl">Transaction ID:</div>
         <div className="font-extrabold">{Data.transaction_id}<CopyButton textToCopy={Data.transaction_id} /></div>
-        <div className="text-xs">Transaction ID adalah identifikasi unik yang digunakan untuk melacak dan memverifikasi transaksi salin kode ini untuk mengecek transaksi anda suatu saat</div>
+        <div className="text-xs">Transaction ID adalah identifikasi unik yang digunakan untuk melacak dan memverifikasi transaksi, salin kode ini untuk mengecek transaksi anda suatu saat.</div>
         
       </Card>
 
       <Card className="mt-5 rounded-xl">
         <div className="font-extrabold">Waktu Pembelian: <div className="border-4 border-green-500 rounded-2xl text-center p-2">{Data.orderTime}</div></div>
       </Card>
-        <div className="text-center font-bold text-white mt-20">OK PESANAN AKAN SEGERA DI PROSESCaC</div>
+        <div className="text-center font-bold text-white mt-20">OK PESANAN AKAN SEGERA DI PROSES</div>
         <div>
         <div>Kembali Ke Home!</div>
         <Button href={"/"}>HOME</Button>
