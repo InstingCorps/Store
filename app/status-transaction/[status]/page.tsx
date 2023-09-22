@@ -7,6 +7,9 @@ import axios from "axios";
 import { Button, Card } from "flowbite-react";
 import { useEffect, useState } from "react";
 import CopyButton from "@/components/Text/copyText";
+import Subscribe from "@/Contact/subscribe";
+import DukunganPelanggan from "@/Contact/Callme";
+import ComponentFooter from "@/components/footer/footer";
 
 
 const StatusTransaction = ({params} : {params: {status: string}}) => {
@@ -62,6 +65,16 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
   }, []); 
 
   console.log(Data);
+
+  let borderColor;
+
+  if (Data.status === 'Pending') {
+    borderColor = 'bg-orange-500';
+  } else if (Data.status === 'Gagal') {
+    borderColor = 'bg-red-600';
+  } else if (Data.status === 'Sukses') {
+    borderColor = 'bg-green-600';
+  }
   
   if (isError) {
     // Tampilkan elemen JSX ini jika respons gagal
@@ -91,11 +104,32 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
       <Card className="mt-5 rounded-xl">
         <div className="font-extrabold">Waktu Pembelian: <div className="border-4 border-green-500 rounded-2xl text-center p-2">{Data.orderTime}</div></div>
       </Card>
-        <div className="text-center font-bold text-white mt-20">OK PESANAN AKAN SEGERA DI PROSES</div>
-        <div>
-        <div>Kembali Ke Home!</div>
-        <Button href={"/"}>HOME</Button>
-        </div>
+
+      <Card className="mt-5 rounded-xl font-bold font-sans">
+        <div>Detail Pembelian!</div>
+        <div>Type : <div>{Data.category}</div></div>
+        <div>Brand : </div>
+        <div>Produk : </div>
+        <div>Customer No : <div>{Data.userID}</div></div>
+        <div className="flex justify-between">StatusTransaksi : <div className={`border-2 border-black p-2 px-5 ${borderColor} text-white rounded-3xl`}>{Data.status.toUpperCase()}</div></div>
+        <div>SN : <div>{Data.sn}</div></div>
+        <div>Pesan : <div>{Data.message}</div></div>
+      </Card>
+      <Card>
+        <div>Detail Pembayaran!</div>
+        <div>Status Pembayaran : </div>
+        <div>Metode Pembayaran : </div>
+        <div>Total Pembayaran : </div>
+      </Card>
+
+      <Card>
+        <div>Catatan!</div>
+      </Card>
+
+      <Subscribe />
+      <DukunganPelanggan />
+      <ComponentFooter />
+
         </div>
 
       )

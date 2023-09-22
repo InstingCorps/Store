@@ -82,7 +82,7 @@ export async function POST (request : Request) {
   };
 
   await transporter.sendMail(mailOptions);
-  await updateExpirationTime(transactionID , IDuser , category , brand , price , seller_price);
+  await updateExpirationTime(transactionID , IDuser , product_name , category , brand , price , seller_price);
   return NextResponse.json("Email Telah Terkirim , Tunggu Admin Untuk Memprosesnya..!")
 
 }

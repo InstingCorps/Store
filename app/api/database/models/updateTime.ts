@@ -1,7 +1,7 @@
 import Transaction from "./transaction";
 
 
-export async function updateExpirationTime(transactionId: any , ID: any , category: any , brand: any , price: any , seller_price: any) {
+export async function updateExpirationTime(transactionId: any , ID: any , Product: any , category: any , brand: any , price: any , seller_price: any) {
     try {
       // Cari dokumen berdasarkan transactionId
       const transaction = await Transaction.findOne({ transaction_id: transactionId });
@@ -13,7 +13,8 @@ export async function updateExpirationTime(transactionId: any , ID: any , catego
         transaction.brand = brand
         transaction.buyerPrice = price
         transaction.sellerPrice = seller_price
-        transaction.status = "BELUM DI PROCCESS"
+        transaction.status = "Pending"
+        transaction.product = Product
         transaction.statusMetodePembayaran = "SUCCESS DI BAYAR"
 
         // Perbarui waktu penghapusan menjadi 7 hari dari sekarang

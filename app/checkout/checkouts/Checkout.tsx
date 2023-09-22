@@ -11,6 +11,7 @@ import { AiOutlineLoading } from 'react-icons/ai';
 import { HiInformationCircle } from 'react-icons/hi';
 import { EncryptAutomated } from '@/encrypt/encrypt';
 import { Validate } from '@/components/validation/URLvalidation';
+import CopyButton from '@/components/Text/copyText';
 
 interface CardProps {
   isVisible: boolean; // Properti untuk mengontrol visibilitas card
@@ -175,8 +176,11 @@ const countdownInterval = setInterval(() => {
         {isVisible && (
       <div>
 
-      <Card className="mt-5 rounded-xl">
-        <div>TRANSACTION ID : {checkoutData.transactionID}</div>
+<Card className="text-center rounded-3xl mt-5">
+        <div className="font-extrabold font-sans text-xl">Transaction ID:</div>
+        <div className="font-extrabold">{checkoutData.transactionID}<CopyButton textToCopy={checkoutData.transactionID as string} /></div>
+        <div className="text-xs">Transaction ID adalah identifikasi unik yang digunakan untuk melacak dan memverifikasi transaksi, salin kode ini untuk mengecek transaksi anda suatu saat.</div>
+        
       </Card>
 
       <Card className="mt-5 mx-7 rounded-xl">
