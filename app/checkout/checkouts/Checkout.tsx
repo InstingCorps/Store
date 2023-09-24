@@ -103,6 +103,7 @@ const [borderColor, setBorderColor] = useState('orange');
     setIsProcessing(true);
     e.preventDefault()
 
+    
     try {
       const response = await axios.post('/api/orderWITHemail' , {
         transactionID: checkoutData.transactionID,
@@ -176,7 +177,7 @@ const countdownInterval = setInterval(() => {
         {isVisible && (
       <div>
 
-<Card className="text-center rounded-3xl mt-5">
+      <Card className="text-center rounded-3xl mt-5">
         <div className="font-extrabold font-sans text-xl">Transaction ID:</div>
         <div className="font-extrabold">{checkoutData.transactionID}<CopyButton textToCopy={checkoutData.transactionID as string} /></div>
         <div className="text-xs">Transaction ID adalah identifikasi unik yang digunakan untuk melacak dan memverifikasi transaksi, salin kode ini untuk mengecek transaksi anda suatu saat.</div>
@@ -229,16 +230,15 @@ const countdownInterval = setInterval(() => {
 
   return (
     <div>
-      
       <ComponentNavbar />
-      <Development />
       {alertMessage && (
-        <Alert className="inset-x-0 fixed z-30 border-4 border-black rounded-2xl" color={alertColor} icon={HiInformationCircle}>
+        <Alert className="inset-x-0 fixed z-40 border-4 my-6 border-black rounded-2xl" color={alertColor} icon={HiInformationCircle}>
           <div className="font-sans font-extrabold text-center">INFORMATION!</div>
           <div className="font-bold">{alertMessage}</div>
           
         </Alert>
       )}
+      <Development />
       <Countdown onHideCard={handleHideCard} />
       <Cards isVisible={isCardVisible} />
 

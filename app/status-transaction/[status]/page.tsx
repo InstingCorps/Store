@@ -34,7 +34,7 @@ if (!getTRX_ID) {
     getTRX_ID = localTRX_ID;
   }
 } else {
-  Cookies.set('transactionID',getTRX_ID , { expires: 1, path: '/' })
+  Cookies.set('transactionID',getTRX_ID , { expires: 2, path: '/' })
 }
 
     let isPolling = true; // Gunakan ini untuk mengendalikan apakah polling harus terus berlanjut
@@ -99,7 +99,6 @@ if (!getTRX_ID) {
     );
   }
   try {
-
     const verify = decrpyt.verify
     if (URLvalidation(verify)) {
       return (
@@ -112,7 +111,7 @@ if (!getTRX_ID) {
         <div className="text-xs">Transaction ID adalah identifikasi unik yang digunakan untuk melacak dan memverifikasi transaksi, salin kode ini untuk mengecek transaksi anda suatu saat.</div>
         
       </Card>
-
+      
       <Card className="mt-5 rounded-xl">
         <div className="font-extrabold">Waktu Pembelian: <div className="border-4 border-green-500 rounded-2xl text-center p-2">{Data.orderTime}</div></div>
       </Card>
