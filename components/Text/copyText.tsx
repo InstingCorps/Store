@@ -2,7 +2,6 @@
 
 // components/CopyButton.tsx
 import React, { useState } from 'react';
-import CopyTextAlert from '../Alert/CopyTextAlert';
 import { Alert } from 'flowbite-react';
 
 const CopyButton: React.FC<{ textToCopy: string }> = ({ textToCopy }) => {
