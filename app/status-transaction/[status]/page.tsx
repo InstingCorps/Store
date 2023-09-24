@@ -4,12 +4,13 @@ import { URLvalidation } from "@/components/validation/URLvalidation";
 import ComponentNavbar from "@/components/Navbar/Navbar";
 import { DecryptAutomated } from "@/encrypt/encrypt";
 import axios from "axios";
-import { Button, Card } from "flowbite-react";
+import { Card } from "flowbite-react";
 import { useEffect, useState } from "react";
 import CopyButton from "@/components/Text/copyText";
 import Subscribe from "@/Contact/subscribe";
 import DukunganPelanggan from "@/Contact/Callme";
 import ComponentFooter from "@/components/footer/footer";
+import Cookies from 'js-cookie';
 
 
 const StatusTransaction = ({params} : {params: {status: string}}) => {
@@ -24,7 +25,18 @@ const StatusTransaction = ({params} : {params: {status: string}}) => {
   useEffect(() => {
 
     const pollingInterval = 7000; // Interval polling dalam milidetik (misalnya, 5 detik)
-    const getTRX_ID = sessionStorage.getItem('transactionID');
+    // Cek sessionStorage
+let getTRX_ID = sessionStorage.getItem('transactionID');
+// Jika sessionStorage kosong, cek localStorage
+if (!getTRX_ID) {
+  const localTRX_ID = Cookies.get('transactionID')
+  if (localTRX_ID) {
+    getTRX_ID = localTRX_ID;
+  }
+} else {
+  Cookies.set('transactionID',getTRX_ID , { expires: 1, path: '/' })
+}
+
     let isPolling = true; // Gunakan ini untuk mengendalikan apakah polling harus terus berlanjut
 
     const poll = async () => {
