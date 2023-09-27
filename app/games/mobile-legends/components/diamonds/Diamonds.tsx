@@ -1,8 +1,7 @@
 
 'use client';
 
-import { useRef } from 'react';
-  import React, { useState, useEffect } from 'react';
+  import React, { useState, useEffect , useRef } from 'react';
   import { Button, Card } from 'flowbite-react';
   import { HiOutlineArrowRight } from 'react-icons/hi';
   import PaymentMethod from '@/payment/paymentsMethod';

@@ -2,7 +2,7 @@
 import Checkout from "@/app/checkout/checkouts/Checkout";
 import { URLvalidation } from "@/components/validation/URLvalidation";
 import ComponentFooter from "@/components/footer/footer";
-import DukunganPelanggan from "@/Contact/Callme";
+import DukunganPelanggan from "@/Contact/contactUs";
 import { DecryptAutomated } from "@/encrypt/encrypt";
 import axios from "axios";
 import { Button } from "flowbite-react";

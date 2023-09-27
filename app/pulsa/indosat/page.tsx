@@ -4,7 +4,7 @@ import DiamondsList from "./Diamonds";
 import ComponentFooter from "@/components/footer/footer";
 import Development from "@/components/Text/Development";
 import InputID from "../inputID/InputID";
-import DukunganPelanggan from "@/Contact/Callme";
+import DukunganPelanggan from "@/Contact/contactUs";
 import React from "react";
 import { GetApi } from "@/app/services/getproductDigiflazz";
 

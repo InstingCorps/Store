@@ -4,7 +4,7 @@ import ComponentNavbar from "@/components/Navbar/Navbar";
 import ComponentFooter from "@/components/footer/footer";
 import Development from "../components/Text/Development";
 import Subscribe from "@/Contact/subscribe";
-import DukunganPelanggan from "@/Contact/Callme";
+import DukunganPelanggan from "@/Contact/contactUs";
 
 
 export default function Home() {

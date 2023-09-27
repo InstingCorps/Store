@@ -8,7 +8,7 @@ import { Card } from "flowbite-react";
 import { useEffect, useState } from "react";
 import CopyButton from "@/components/Text/copyText";
 import Subscribe from "@/Contact/subscribe";
-import DukunganPelanggan from "@/Contact/Callme";
+import DukunganPelanggan from "@/Contact/contactUs";
 import ComponentFooter from "@/components/footer/footer";
 import Cookies from 'js-cookie';
 

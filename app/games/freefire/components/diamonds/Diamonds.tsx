@@ -1,7 +1,7 @@
 
 'use client';
 
-  import React, { useState, useEffect } from 'react';
+  import React, { useState, useEffect, useRef } from 'react';
   import { Button, Card } from 'flowbite-react';
   import { HiOutlineArrowRight } from 'react-icons/hi';
   import PaymentMethod from '@/payment/paymentsMethod';
@@ -22,14 +22,22 @@ function DiamondsList({data}:any) {
     Price: null,
     buyer_sku_code: null,
   });
+  const errorRef = useRef<any>(null);
+
+  const formatter = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  });
 
   useEffect(() => {
-  const getPrice = sessionStorage.getItem('Price')
-
-  if (getPrice) {
-    setPrice(getPrice)
-  }
-  }, [Price]);
+    const getPrice = Number(sessionStorage.getItem('Price'))
+  
+    if (getPrice) {
+      const formattedNumber = formatter.format(getPrice).replace(/,00$/, "");
+      setPrice(formattedNumber)
+    }
+    }, [Price]);
+  
 
   const handleClick = (product_name: string , Price : any , buyer_sku_code: any , category:any , seller_name:any , seller_price: any) => () => {
     const verify: string = "25012006RoziStore_FahrurRozi_001"
@@ -53,12 +61,17 @@ function DiamondsList({data}:any) {
   const OnClicks = () => {
 
     const verifedID = sessionStorage.getItem("PlayerID")
+    const PaymentMethod = sessionStorage.getItem('Payment')
 
-    if (verifedID) {
+    if (verifedID && PaymentMethod) {
       setModalVisible(true);
     } else {
       setModalError(true)
-    }
+      if (errorRef.current) {
+       errorRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+       setShowPayment(true)
+     }
+   }
   }
 
   const ShowPayments = () => () => {
@@ -103,7 +116,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
     <div>
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center font-extrabold'>Pilih Nominal Topup</div>
-    <div className="font-sans text-xl font-bold text-right mr-5">Harga : Rp.{Price}</div>
+    <div className="font-sans text-xl font-bold text-right mr-5">Harga : {Price}</div>
     <div className="grid grid-cols-2 md:grid-cols-8 gap-2 text-center">
       {Diamonds()}
     </div>
@@ -117,7 +130,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
             <div>
               <div></div>
                 <div>{Product}</div>
-                <div className="font-bold">Rp.{Price}</div>
+                <div className="font-bold">{Price}</div>
             </div>
           
         <Button className="ml-auto font-bold mt-4" pill color="success" size="md" onClick={OnClicks}
@@ -129,7 +142,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
     </Card>}
   <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
   <div className="flex justify-center items-center mt-10">
-  <Button onClick={ShowPayments()} size="lg" gradientDuoTone="greenToBlue">
+  <Button ref={errorRef} onClick={ShowPayments()} size="lg" gradientDuoTone="greenToBlue">
     {showPayment ? 'Sembunyikan Metode Pembayaran' : 'Pilih Metode Pembayaran'}  <HiOutlineArrowRight className="ml-2 h-5 w-5" /></Button>
 
   </div>

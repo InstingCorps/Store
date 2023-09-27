@@ -5,7 +5,7 @@ import ComponentFooter from "@/components/footer/footer";
 import Test from "../../../components/Text/Development";
 import InputID from "./components/inputID/InputID";
 import Cards from "./components/card/Card";
-import DukunganPelanggan from "@/Contact/Callme";
+import DukunganPelanggan from "@/Contact/contactUs";
 import React from "react";
 import { GetApi } from "../../services/getproductDigiflazz";
 

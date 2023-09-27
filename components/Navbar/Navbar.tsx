@@ -39,7 +39,7 @@ export default function ComponentNavbar() {
         <Navbar.Link className="border-b-slate-800 hover:bg-black hover:text-white md:text-white" href="/check-transaction">
           Cek Transaksi
         </Navbar.Link>
-        <Navbar.Link className="border-b-slate-800 hover:bg-black hover:text-white md:text-white" href="#">
+        <Navbar.Link className="border-b-slate-800 hover:bg-black hover:text-white md:text-white" href="http://wa.me/6288221574494?">
           Contact Admin
         </Navbar.Link>
       </Navbar.Collapse>
