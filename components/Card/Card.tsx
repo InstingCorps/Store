@@ -270,7 +270,31 @@ export default function ComponentCard() {
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
         </div>
-        
+
+                {/* elemen selanjutnya */}
+
+        <div className="ml-4 text-orange-400 text-xl font-serif mt-10 font-bold">E-Wallet</div>
+        <div className="text-2xl font-extrabold text-white ml-5 mb-10">Isi Ulang Saldo Mu Di Sini!</div>
+        <div className="grid grid-cols-3 md:grid-cols-8 gap-4 m-3 btn-card ComCard mt-5">
+        <Card className="h-auto max-w-sm rounded-xl ComCard"
+         imgAlt=""
+         href="/e-wallet/DANA"
+         onClick={() => TypeGame("DANA")}
+         imgSrc="https://rb.gy/dtmie1"
+         >
+         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
+        </Card>
+
+        <Card className="h-auto max-w-sm rounded-xl ComCard"
+         imgAlt=""
+         href="/e-wallet/GoPay"
+         onClick={() => TypeGame("GoPay")}
+         imgSrc="https://jabarekspres.com/wp-content/uploads/2022/10/GOPAY-1.png"
+         >
+         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
+        </Card>
+
+        </div>
       
         
         </div>
