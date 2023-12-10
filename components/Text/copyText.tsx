@@ -22,21 +22,6 @@ const CopyButton: React.FC<{ textToCopy: string }> = ({ textToCopy }) => {
 
   return (
     <div>
-      {copied && (
-              <Alert
-              color="success"
-              onDismiss={()=>alert("Alert dismissed!")}
-            >
-              <span>
-                <p>
-                  <span className="font-extrabold">
-                    Info!
-                  </span>
-                  Text Berhasil Di Salin!
-                </p>
-              </span>
-            </Alert>
-      )}
     <div
     className={`font-bold border rounded-2xl p-2 text-sm text-center cursor-pointer
     ${copied ? 'bg-orange-500 text-white border-orange-500' : 'border-2 border-orange-500 text-orange-500'}`}

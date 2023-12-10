@@ -4,7 +4,7 @@ import { URLvalidation } from "@/components/validation/URLvalidation";
 import ComponentNavbar from "@/components/Navbar/Navbar";
 import { DecryptAutomated } from "@/encrypt/encrypt";
 import axios from "axios";
-import { Card } from "flowbite-react";
+import { Badge, Card } from "flowbite-react";
 import { useEffect, useState } from "react";
 import CopyButton from "@/components/Text/copyText";
 import Subscribe from "@/Contact/subscribe";
@@ -81,11 +81,11 @@ if (!getTRX_ID) {
   let borderColor;
 
   if (Data.status === 'Pending') {
-    borderColor = 'bg-orange-500';
+    borderColor = 'warning';
   } else if (Data.status === 'Gagal') {
-    borderColor = 'bg-red-600';
+    borderColor = 'failure';
   } else if (Data.status === 'Sukses') {
-    borderColor = 'bg-green-600';
+    borderColor = 'success';
   }
   
   if (isError) {
@@ -118,11 +118,12 @@ if (!getTRX_ID) {
 
       <Card className="mt-5 rounded-xl font-bold font-sans">
         <div>Detail Pembelian!</div>
-        <div>Type : <div>{Data.category}</div></div>
+        <div className="flex text-lg">Type : <div className="ml-7">{Data.category}</div></div>
         <div>Brand : </div>
         <div>Produk : </div>
         <div>Customer No : <div>{Data.userID}</div></div>
-        <div className="flex justify-between">StatusTransaksi : <div className={`border-2 border-black p-2 px-5 ${borderColor} text-white rounded-3xl`}>{Data.status.toUpperCase()}</div></div>
+        <div className="flex">StatusTransaksi : <Badge color={borderColor} size="sm" className="rounded ml-7 font-extrabold">{Data.status.toUpperCase()}</Badge></div>
+        {/* <div className={`border-2 border-black p-2 px-5 ${borderColor} text-white rounded-3xl`}>{Data.status.toUpperCase()}</div> */}
         <div>SN : <div>{Data.sn}</div></div>
         <div>Pesan : <div>{Data.message}</div></div>
       </Card>

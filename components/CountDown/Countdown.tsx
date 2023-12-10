@@ -53,7 +53,7 @@ const Countdown: React.FC<CountdownProps> = ({ onHideCard }) => {
   const renderEndText = () => {
     if (seconds <= 0) {
       return (
-        <div className="text-center font-bold text-white mt-10">
+        <div className="text-center font-bold mt-10">
           <p>Maaf, sesi Anda telah berakhir.</p>
           <p>Kami belum menerima pembayaran Anda. Harap selesaikan pembayaran di aplikasi Tersebut dalam Waktu Yang Ditentukan.</p>
           <p>Butuh bantuan? Kunjungi Pusat Bantuan kami. (error: 213)</p>
@@ -65,10 +65,10 @@ const Countdown: React.FC<CountdownProps> = ({ onHideCard }) => {
 
   return (
     <>
-    <Card className="mt-10 bg-slate-700 mx-5 rounded-3xl">
-      <div className="text-center text-white text-lg font-bold font-serif">Bayar Transaksi Kamu!</div>
-      <div className="flex justify-between px-6 border-b-4">
-        <div className="text-white text-center font-bold font-sans">Batas Waktu Bayar :</div>
+    <Card className="mt-10 mx-5 rounded-3xl border-4 border-blue-500" style={{ backgroundColor: '#FFF2E0' }}>
+      <div className="text-center text-lg font-bold font-serif">Bayar Transaksi Kamu!</div>
+      <div className="flex justify-between px-6 border-b-4 border-black">
+        <div className="text-center font-bold font-sans">Batas Waktu Bayar :</div>
         <div className="text-center text-red-600 text-xl font-mono font-bold">{formatTime(seconds)}</div>
       </div>
       {renderEndText()}

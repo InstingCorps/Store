@@ -221,10 +221,21 @@ const countdownInterval = setInterval(() => {
     </Button>
       </Card>
 
-    </div>
+      <Card className='my-10'>
+        <div className="font-bold">CATATAN !!</div>
+        <div className="font-light font-sans">1. Salin no. transaksi jika transaksi tanpa login.<br />
+          2. Halaman tidak perlu kamu refresh, status transaksi akan update otomatis.<br />
+          3. Selesaikan pembayaran sebelum batas waktu.<br />
+          4. Bayar sesuai nominal yang diminta, termasuk kode unik jika ada.<br/>
+          5. Proses konfirmasi pembayaran otomatis 1-5 menit setelah kamu membayar.
+        </div>
+      </Card>
 
+
+    </div>
         )}
     </div>
+
     )
   }
 
@@ -241,9 +252,8 @@ const countdownInterval = setInterval(() => {
       <Development />
       <Countdown onHideCard={handleHideCard} />
       <Cards isVisible={isCardVisible} />
-
     </div>
-  ) ;
+  );
 };
 
 export default Checkout;
