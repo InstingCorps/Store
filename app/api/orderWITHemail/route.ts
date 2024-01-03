@@ -75,7 +75,7 @@ export async function POST (request : Request) {
 `;
 
   const mailOptions = {
-    from: 'rozistoreemail@gmail.com',
+    from: 'games25legends@gmail.com',
     to: 'akungamesaya123456@gmail.com', // Ganti dengan alamat admin yang sesuai
     subject: "ORDER DETAIL",
     html: emailContent,
