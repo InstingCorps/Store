@@ -1,3 +1,5 @@
+'use client'
+import { useEffect } from 'react';
 import ComponentBanner from "@/components/Banner/Banner";
 import ComponentCard from "@/components/Card/Card";
 import ComponentNavbar from "@/components/Navbar/Navbar";
@@ -8,6 +10,17 @@ import DukunganPelanggan from "@/Contact/contactUs";
 
 
 export default function Home() {
+
+  useEffect(() => {
+    // Mendapatkan lebar layar
+    const lebarLayar = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+    // Mengecek apakah lebar layar lebih dari 700 piksel
+    if (lebarLayar > 700) {
+      // Redirect atau pindahkan pengguna ke halaman lain
+      window.location.href = '/othersPage/supportedDevice' // Ganti dengan path halaman lain
+    }
+  }, []); // Efek ini hanya dijalankan saat komponen dipasang
   return (
    <>
     <ComponentNavbar />
