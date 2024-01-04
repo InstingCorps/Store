@@ -10,11 +10,11 @@ import { GetApi } from "@/app/services/getproductDigiflazz";
 
 export const dynamic = "force-dynamic"
 
-export default async function DANA() {
+export default async function ShopeePay() {
 
     const Category = "E-Money"
-    const Brand = "DANA"
-    const imgUrl = 'https://rb.gy/dtmie1';
+    const Brand = "SHOPEE PAY"
+    const imgUrl = 'https://rb.gy/323duc';
 
     const [data] = await Promise.all([
         await GetApi(Category, Brand),

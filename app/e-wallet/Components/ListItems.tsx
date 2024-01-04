@@ -8,9 +8,15 @@
   import OrdersModal from '@/components/modal/orders';
   import ErrorID from '@/components/modal/errorID';
 
+  interface ListItemsProps {
+    data: any; // Change 'any' to the actual type of your data if possible
+    ImgSrc: string; // 'ImgSrc' instead of 'ImgSrc: String'
+  }
 
-function DiamondsList({data}:any) {
+  function ListItems({ data, ImgSrc }: ListItemsProps) {
   const [Price , setPrice] = useState('')
+  const [productTypes, setProductTypes] = useState<string[]>([]);
+  const [selectedType, setSelectedType] = useState<string | null>(null);
   const [Product , setProduct] = useState('')
   const [showFooter, setShowFooter] = useState(false);
   const [showPayment , setShowPayment] = useState(false);
@@ -66,15 +72,27 @@ function DiamondsList({data}:any) {
   }
 
   const Diamonds = () => {
+// Diamonds.tsx
+useEffect(() => {
+  // Mendapatkan daftar unik jenis produk dari data
+  const uniqueTypes = Array.from(new Set((data as { type: string }[]).map((product) => product.type)));
+  setProductTypes(uniqueTypes);
+}, [data]);
 
+    
     // Fungsi untuk mengambil angka dari string
 const extractNumber = (str : any) => {
   const matches = str.match(/\d+/);
   return matches ? parseInt(matches[0]) : 0;
 };
 
+  // Fungsi untuk menyaring data berdasarkan jenis produk
+  const filteredData = selectedType
+    ? data.filter((product: any) => product.type === selectedType)
+    : data;
+
 // Urutkan data berdasarkan product_name yang mengandung angka
-const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) - extractNumber(b.product_name));
+const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product_name) - extractNumber(b.product_name));
 
     return sortedData.map((product : any) => {
       // Menghitung harga baru dengan menambahkan 5%
@@ -85,7 +103,7 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
       
       return (
         <Card
-          imgSrc="https://rb.gy/dtmie1"
+          imgSrc= {ImgSrc}
           className="hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
           key={product.product_name}
           color=""
@@ -100,9 +118,22 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
   };
 
   return (
-    <div>
+    <>
+
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center font-extrabold'>Pilih Nominal Pengisian</div>
+    <div className="flex space-x-2">
+      <p>Type:</p>
+        {productTypes.map((type) => (
+          <button
+            key={type}
+            onClick={() => setSelectedType(type)}
+            className={`bg-blue-500 text-white px-2 py-1 rounded ${selectedType === type ? 'opacity-50 border-2 border-white' : ''}`}
+          >
+            {type}
+          </button>
+        ))}
+</div>
     <div className="font-sans text-xl font-bold text-right mr-5">Harga : Rp.{Price}</div>
     <div className="grid grid-cols-2 md:grid-cols-8 gap-2 text-center">
       {Diamonds()}
@@ -134,10 +165,10 @@ const sortedData = data.sort((a: any, b: any) => extractNumber(a.product_name) -
 
   </div>
   {showPayment && <PaymentMethod />}
-  </div>
+  </>
   )
 }
 
-export default DiamondsList;
+export default ListItems;
 
 

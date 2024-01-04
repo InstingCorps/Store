@@ -294,6 +294,15 @@ export default function ComponentCard() {
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
 
+        <Card className="h-auto max-w-sm rounded-xl ComCard"
+         imgAlt=""
+         href="/e-wallet/ShopeePay"
+         onClick={() => TypeGame("GoPay")}
+         imgSrc="https://rb.gy/323duc"
+         >
+         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
+        </Card>
+
         </div>
       
         

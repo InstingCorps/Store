@@ -5,6 +5,7 @@ interface Product {
     product_name: string;
     category: string;
     brand: string;
+    type: string;
     // ... informasi lainnya
   }
 
@@ -20,7 +21,7 @@ export async function GetApi(category: string , brand: string) {
         // console.log(dataRes); 
         
         const FilterData = dataRes.filter(product => 
-            product.category === category && product.brand === brand)
+            product.category === category && product.brand === brand && product.type)
             return FilterData
         
     } catch (error) {
