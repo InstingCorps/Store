@@ -4,7 +4,7 @@ import axios from "axios";
 export const OrderDigiflazz = async (encryptedData: string, password: string , urls:any): Promise<any> => {
 
     // const url = `/api/ordersDigiflazz/${urls}`;
-    const url = `//47.245.86.240:3000/senddataorder`;
+    const url = `https://rozistorebe.tokorozy.my.id/senddataorder`;
 
     const data = {
         data: encryptedData ,
