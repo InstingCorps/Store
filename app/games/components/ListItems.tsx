@@ -135,18 +135,20 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
 
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center font-extrabold'>Pilih Nominal Topup</div>
-    <div className="flex space-x-2">
     <p className="font-bold">Type:</p>
-        {productTypes.map((type) => (
-          <button
-            key={type}
-            onClick={() => setSelectedType(type)}
-            className={`bg-blue-500 text-white px-2 py-1 rounded-lg font-bold ${selectedType === type ? 'opacity-50 border-2 border-white' : ''}`}
-          >
-            {type}
-          </button>
-        ))}
-</div>
+    <div className="flex flex-col items-center space-y-2 overflow-auto max-h-96">
+    <div className="flex space-x-2">
+      {productTypes.map((type) => (
+        <button
+          key={type}
+          onClick={() => setSelectedType(type)}
+          className={`bg-blue-500 text-white px-2 py-1 rounded-lg font-bold ${selectedType === type ? 'opacity-50 border-2 border-white' : ''}`}
+        >
+          {type}
+        </button>
+      ))}
+    </div>
+  </div>
     <div className="font-sans text-xl font-bold text-right mr-5">Harga :{Price}</div>
     <div className="grid grid-cols-2 md:grid-cols-8 gap-2 text-center">
       {Diamonds()}
