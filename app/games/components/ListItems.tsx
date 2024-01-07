@@ -136,13 +136,13 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
     <div className='text-center font-extrabold'>Pilih Nominal Topup</div>
     <p className="font-bold">Type:</p>
-    <div className="flex flex-col items-center space-y-2 overflow-auto max-h-96">
-    <div className="flex space-x-2">
+    <div className="flex flex-col items-center space-y-2 overflow-auto max-h-96 rounded-lg">
+    <div className="flex space-x-2 ml-auto">
       {productTypes.map((type) => (
         <button
           key={type}
           onClick={() => setSelectedType(type)}
-          className={`bg-blue-500 text-white px-2 py-1 rounded-lg font-bold ${selectedType === type ? 'opacity-50 border-2 border-white' : ''}`}
+          className={`bg-blue-500 text-white px-4 py-1 rounded-lg font-bold ${selectedType === type ? 'opacity-50 border-2 border-white' : ''}`}
         >
           {type}
         </button>
