@@ -3,15 +3,21 @@
 'use client';
 import { Card } from 'flowbite-react';
 
-export default function Cards() {
+interface CardComponents{
+  img: string,
+  headers: string,
+  body: string
+}
+
+export default function Cards({img, headers, body}:CardComponents) {
   return (
     <div>
     <Card className='m-9 h-20px rounded-xl'
-      imgSrc="https://cdn.unipin.com/images/icon_product_pages/1658817763-icon-200x200_icon%20ff.jpg"
+      imgSrc= {img}
     >
-      <div>Tentang Free Fire
+      <div>Tentang {headers}
     <br /> <br />
-    Mobile Legends: Bang Bang Dirilis pada tahun 2016, Mobile Legends: Bang Bang merupakan Mobile Multiplayer Online Battle Arena yang dikembangkan oleh Moonton. Game ini sangat populer terutama di Asia Tenggara dan menjadi salah satu game terpilih untuk kompetisi e-sport pertama di ASEAN Games Filipina, 2019 lalu.</div>
+    {body}</div>
     </Card>
 
     <Card>

@@ -27,7 +27,6 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
     const [redirectCountdown, setRedirectCountdown] = useState(0);
 
     const [PlayerID, setPlayerID] = useState('');
-    const [ZoneID, setZoneID] = useState('');
     const [Payments, setPayments] = useState('');
   
     useEffect(() => {
@@ -35,15 +34,11 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
         if (typeof window !== 'undefined') {
           // Mengambil nilai dari sessionStorage dan menyimpannya dalam state saat komponen dimuat
           const userID = sessionStorage.getItem('PlayerID');
-          const zoneID = sessionStorage.getItem('ZoneID');
           const Payment = sessionStorage.getItem('Payment')
   
           // Memperbarui state dengan nilai-nilai dari sessionStorage
           if (userID) {
             setPlayerID(userID || ''); // Gunakan default string kosong jika tidak ada nilai
-          }
-          if (zoneID) {
-            setZoneID(zoneID || ''); // Gunakan default string kosong jika tidak ada nilai
           }
           if (Payment) {
             setPayments(Payment || ''); // Gunakan default string kosong jika tidak ada nilai
@@ -121,8 +116,6 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
       <Modal.Body>
         <div className="space-y-3 font-bold">
         <p>ID: {PlayerID}</p>
-        {ZoneID !== "" &&
-      (<div>Zone ID = &#40; {ZoneID} &#41;</div>)}
         <p>Product Name: {product_name}</p>
         <p>Price: {formattedPrice}</p>
         <p>Metode Pembayaran :{Payments}</p>

@@ -22,13 +22,13 @@ export default function InputID() {
 
     const SetPlayerID = (event :any) => {
         const { value } = event.target;
-        sessionStorage.setItem('PlayerID', value)
         setID([value]); // Anda mengasumsikan menggunakan state hook React
       };
 
     const SetPlayerZoneID = (event :any) => {
         const { value } = event.target;
-        sessionStorage.setItem('ZoneID', value)
+        const values = PlayerID + value
+        sessionStorage.setItem('PlayerID', values)
         setZoneID([value]);
     };
 

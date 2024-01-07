@@ -9,12 +9,12 @@ export async function POST (request : Request) {
 
   const verify = "25012006RoziStore_FahrurRozi_001_ORDERDISETUJUI"
 
-  const { transactionID , id , zoneid , product_name , category , brand , price , seller_name , buyer_sku_code , seller_price} = await request.json()
+  const { transactionID , id , product_name , category , brand , price , seller_name , buyer_sku_code , seller_price} = await request.json()
 
   const data: any = {
     transactionID,
     verify,
-    id: id+zoneid,
+    id: id,
     buyer_sku_code,
   };
 
@@ -34,7 +34,7 @@ export async function POST (request : Request) {
 
   const orderId = encrypt;
 
-  const IDuser = id+zoneid
+  const IDuser = id
   
 
   const confirmOrderLink = `https://webtopup.vercel.app/services/orders/acceptOrders/${orderId}`;
@@ -46,7 +46,6 @@ export async function POST (request : Request) {
   <h2>With Order:</h2>
   <p>ID : ${transactionID}</p>
   <p>ID : ${id}</p>
-  <p>Zone ID :( ${zoneid} )</p>
   <p>category : ${category} </p>
   <p>Brand : ${brand} </p>
   <p>Product : ${product_name} </p>
@@ -54,7 +53,7 @@ export async function POST (request : Request) {
   <p>Seller Price : ${seller_price} </p>
   <p>Seller : ${seller_name} </p>
   <p>SKU Code : ${buyer_sku_code} </p>
-  <p>Decrypted Data: ${JSON.stringify(decryptedData)}</p>
+  <p>Decrypted Data : ${JSON.stringify(decryptedData)}</p>
   <p>Nama : ${decryptedData.name}</p>
   
   <a href="${confirmOrderLink}">
@@ -77,7 +76,7 @@ export async function POST (request : Request) {
   const mailOptions = {
     from: 'games25legends@gmail.com',
     to: 'akungamesaya123456@gmail.com', // Ganti dengan alamat admin yang sesuai
-    subject: "ORDER DETAIL",
+    subject: "ORDER CONFIRM!",
     html: emailContent,
   };
 

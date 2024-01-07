@@ -27,7 +27,6 @@ interface CheckoutData {
   price: string;
   Orders: string;
   UserID: string;
-  ZoneID: string;
   seller_price: string;
 }
 
@@ -53,7 +52,6 @@ const [borderColor, setBorderColor] = useState('orange');
     buyer_sku_code: '',
     Orders: '',
     UserID: '',
-    ZoneID: '',
     seller_price: '',
   });
 
@@ -77,7 +75,6 @@ const [borderColor, setBorderColor] = useState('orange');
         buyer_sku_code: sessionStorage.getItem('buyer_sku_code') || '',
         Orders: sessionStorage.getItem('Orders') || '',
         UserID: sessionStorage.getItem('PlayerID') || '',
-        ZoneID: sessionStorage.getItem('ZoneID') || '',
         seller_price: sessionStorage.getItem('seller_price') || '',
       };
 
@@ -108,7 +105,6 @@ const [borderColor, setBorderColor] = useState('orange');
       const response = await axios.post('/api/orderWITHemail' , {
         transactionID: checkoutData.transactionID,
         id: checkoutData.UserID,
-        zoneid: checkoutData.ZoneID,
         product_name: checkoutData.product_name,
         category: checkoutData.category,
         brand: checkoutData.brand,
@@ -121,7 +117,6 @@ const [borderColor, setBorderColor] = useState('orange');
       const dataDecrypt: any = {
         verify: Validate,
         id: checkoutData.UserID,
-        zoneid: checkoutData.ZoneID,
         brand: checkoutData.brand,
         price: checkoutData.price,
       }
@@ -191,8 +186,6 @@ const countdownInterval = setInterval(() => {
       <Card className='mt-6 font-bold text-center mx-12 rounded-3xl'>
         <div className="font-extrabold font-sans text-xl border-b-4 border-blue-500 rounded-xl">Detail Produk!</div>
       <div>User ID =  {checkoutData.UserID}</div>
-      {checkoutData.ZoneID !== "" &&
-      (<div>Zone ID = &#40; {checkoutData.ZoneID} &#41;</div>)}
       </Card>
       <Card className="font-bold">
       <div>Produk : <p className="text-end">{checkoutData.product_name}</p></div>
