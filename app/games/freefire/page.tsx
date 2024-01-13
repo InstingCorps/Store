@@ -1,6 +1,6 @@
 
 import ComponentNavbar from "@/components/Navbar/Navbar";
-import DiamondList from "@/app/games/components/ListItems";
+import DiamondList from "@/components/ListItems/GamesListItems";
 import ComponentFooter from "@/components/footer/footer";
 import Test from "../../../components/Text/Development";
 import InputID from "../components/InputID";

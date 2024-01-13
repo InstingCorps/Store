@@ -1,19 +1,18 @@
 
 'use client';
-
-  import React, { useState, useEffect, useRef } from 'react';
-  import { Button, Card } from 'flowbite-react';
+  import React, { useState, useEffect , useRef } from 'react';
+  import { Button, Card, Spinner } from 'flowbite-react';
   import { HiOutlineArrowRight } from 'react-icons/hi';
   import PaymentMethod from '@/payment/paymentsMethod';
   import OrdersModal from '@/components/modal/orders';
   import ErrorID from '@/components/modal/errorID';
+  import { v4 as uuidv4 } from 'uuid';
 
-  interface ListItems {
-    data: any; // Change 'any' to the actual type of your data if possible
-    ImgSrc: string; // 'ImgSrc' instead of 'ImgSrc: String'
-  }
-
-  function ListItems({ data, ImgSrc }: ListItems) {
+interface Components{
+  data: any,
+  ImgSrc: string
+}
+function DiamondsList({data, ImgSrc}:Components) {
   const [Price , setPrice] = useState('')
   const [productTypes, setProductTypes] = useState<string[]>([]);
   const [selectedType, setSelectedType] = useState<string | null>(null);
@@ -36,13 +35,14 @@
   });
 
   useEffect(() => {
-    const getPrice = Number(sessionStorage.getItem('Price'))
+  const getPrice = Number(sessionStorage.getItem('Price'))
 
-    if (getPrice) {
-      const formattedNumber = formatter.format(getPrice).replace(/,00$/, "");
-      setPrice(formattedNumber)
-    }
-    }, [Price]);
+  if (getPrice) {
+    const formattedNumber = formatter.format(getPrice).replace(/,00$/, "");
+    setPrice(formattedNumber)
+  }
+  }, [Price]);
+
 
   const handleClick = (product_name: string , Price : any , buyer_sku_code: any , category:any , seller_name:any , seller_price: any) => () => {
     const verify: string = "25012006RoziStore_FahrurRozi_001"
@@ -85,14 +85,16 @@
   }
 
   const Diamonds = () => {
-// Diamonds.tsx
-useEffect(() => {
-  // Mendapatkan daftar unik jenis produk dari data
-  const uniqueTypes = Array.from(new Set((data as { type: string }[]).map((product) => product.type)));
-  setProductTypes(uniqueTypes);
-}, [data]);
+  const [loading, setLoading] = useState(true);
 
-    
+    useEffect(() => {
+      setLoading(true);
+      // Mendapatkan daftar unik jenis produk dari data
+      const uniqueTypes = Array.from(new Set((data as { type: string }[]).map((product) => product.type)));
+      setProductTypes(uniqueTypes);
+      setLoading(false)
+    }, [data]);
+
     // Fungsi untuk mengambil angka dari string
 const extractNumber = (str : any) => {
   const matches = str.match(/\d+/);
@@ -104,28 +106,39 @@ const extractNumber = (str : any) => {
     ? data.filter((product: any) => product.type === selectedType)
     : data;
 
+
 // Urutkan data berdasarkan product_name yang mengandung angka
 const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product_name) - extractNumber(b.product_name));
 
     return sortedData.map((product : any) => {
       // Menghitung harga baru dengan menambahkan 5%
-      const keuntungan = 0 // persen
+      const keuntungan = 0.13 // persen
 
-      const ProductPriceWithComma = product.price * (1 + keuntungan) + 3000
+      const ProductPriceWithComma = product.price * (1 + keuntungan) + 1000
       const ProductPrice = Math.ceil(ProductPriceWithComma)
       
-      return (
-        <Card
-          imgSrc= {ImgSrc}
-          className="hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
-          key={product.product_name}
-          color=""
-          onClick={
-            handleClick(product.product_name, ProductPrice, product.buyer_sku_code , product.category , product.seller_name , product.price)
-          }
-        >
-          {product.product_name}
-        </Card>
+      return loading ? (
+        // Display a loading indicator while data is being fetched
+        <Card key={uuidv4()}>
+          <Spinner />
+      </Card>
+      ) : (
+            <Card
+              imgSrc={ImgSrc}
+              className="hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
+              key={product.product_name}
+              color=""
+              onClick={handleClick(
+                product.product_name,
+                ProductPrice,
+                product.buyer_sku_code,
+                product.category,
+                product.seller_name,
+                product.price
+              )}
+            >
+              {product.product_name}
+            </Card>
       );
     });
   };
@@ -134,7 +147,7 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
     <>
 
   <Card className='m-2 rounded-3xl bg-gray-800 text-white'>
-    <div className='text-center font-extrabold'>Pilih Nominal Pengisian</div>
+    <div className='text-center font-extrabold'>Pilih Nominal Topup</div>
     <p className="font-bold">Type:</p>
     <div className="flex flex-col items-center space-y-2 overflow-auto max-h-96 rounded-lg">
     <div className="flex space-x-2 ml-auto">
@@ -149,7 +162,7 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
       ))}
     </div>
   </div>
-    <div className="font-sans text-xl font-bold text-right mr-5">Harga : {Price}</div>
+    <div className="font-sans text-xl font-bold text-right mr-5">Harga :{Price}</div>
     <div className="grid grid-cols-2 md:grid-cols-8 gap-2 text-center">
       {Diamonds()}
     </div>
@@ -170,7 +183,6 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
         >Bayar Sekarang</Button>
           <OrdersModal open={modalVisible} onClose={() => setModalVisible(false)} productInfo={productInfo} />
           <ErrorID open={modalError} onClose={() => setModalError(false)}/>
-
         </div>
     </Card>}
   <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
@@ -184,6 +196,6 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
   )
 }
 
-export default ListItems;
+export default DiamondsList;
 
 

@@ -1,6 +1,6 @@
 
 import ComponentNavbar from "@/components/Navbar/Navbar";
-import ListItems from "../Components/ListItems";
+import ListItems from "../../../components/ListItems/OthersListItems";
 import ComponentFooter from "@/components/footer/footer";
 import Development from "@/components/Text/Development";
 import InputID from "../Components/InputID";

@@ -6,9 +6,6 @@ import { FaUser } from 'react-icons/fa';
 
 export default function InputID() {
 
-  const uid = 6651977708650
-  const link = `https://v1.apigames.id/merchant/M230331TXQU1280OR/cek-username/mobilelegend?user_id=${uid}&signature=6081e07e665cde449d954de3ed05e71b` 
-
     const [PlayerID , setID ] = useState<string[]>([]);
     const SetPlayerID = (event :any) => {
         const { value } = event.target;
@@ -16,7 +13,6 @@ export default function InputID() {
         setID([value]); // Anda mengasumsikan menggunakan state hook React
       };
 
-  // const Nickname = `Your NickName : ${ID}`
   return (
     <div>
     <Card className="font-bold ml-2 m-5 mt-10">Langkah 1. Masukkan ID Game Anda.</Card>

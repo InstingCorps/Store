@@ -22,15 +22,26 @@ export default function InputID() {
 
     const SetPlayerID = (event :any) => {
         const { value } = event.target;
-        setID([value]); // Anda mengasumsikan menggunakan state hook React
+        const trimmedValue = value.trim();
+        const cleanedValue = trimmedValue.replace(/\D/g, '');
+        setID([cleanedValue]); // Anda mengasumsikan menggunakan state hook React
       };
 
-    const SetPlayerZoneID = (event :any) => {
+      const SetPlayerZoneID = (event: any) => {
         const { value } = event.target;
-        const values = PlayerID + value
-        sessionStorage.setItem('PlayerID', values)
-        setZoneID([value]);
-    };
+      
+        // Menghapus spasi di awal dan akhir string
+        const trimmedValue = value.trim();
+      
+        // Menghapus karakter selain angka
+        const cleanedValue = trimmedValue.replace(/\D/g, '');
+      
+        // Update sessionStorage dan state
+        const combinedValues = PlayerID + cleanedValue;
+        sessionStorage.setItem('PlayerID', combinedValues);
+        setZoneID([cleanedValue]);
+      };
+      
 
   // const Nickname = `Your NickName : ${ID}`
   return (
