@@ -1,13 +1,14 @@
 
 import ComponentNavbar from "@/components/Navbar/Navbar";
-import DiamondList from "@/components/ListItems/GamesListItems";
+const DiamondList = React.lazy(() => import("@/components/ListItems/GamesListItems"));
 import ComponentFooter from "@/components/footer/footer";
 import Test from "../../../components/Text/Development";
 import InputID from "./inputID/InputID";
 import Cards from "../components/Card";
 import DukunganPelanggan from "@/Contact/contactUs";
-import React from "react";
+import React, { Suspense } from "react";
 import { GetApi } from "../../services/getproductDigiflazz";
+import Loader from "@/components/Loading/Loader";
 
 export const dynamic = "force-dynamic"
 
@@ -30,8 +31,9 @@ return (
         <div className="text-center text-white mt-10 text-4xl font-extrabold font-sans">{Games}</div>
         <Cards img={imgCards} headers={Games} body= {Description}/>
         <InputID />
-
+        <Suspense fallback={<Loader />}>
         <DiamondList data = {data} ImgSrc= {imgList}/>
+        </Suspense>
         <DukunganPelanggan />
 
         <footer>
