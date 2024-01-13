@@ -166,8 +166,6 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
     <div className="grid grid-cols-2 md:grid-cols-8 gap-2 text-center">
       {Diamonds()}
     </div>
-    <div className="text-center font-bold">!!  HARAP DI BACA  !!</div>
-    <div className="text-center font-bold">JIKA JUMLAH DI ATAS TIDAK SESUAI DENGAN PILIHAN ANDA. SILAHKAN CONTACT ADMIN UNTUK MENAMBAHKAN LAGI!</div>
   </Card>
 
  { showFooter && 

@@ -58,7 +58,7 @@ export default function ComponentFooter() {
           <Footer.Copyright
             by="RoziStore™"
             href="#"
-            year={2023}
+            year={2024}
           />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <Footer.Icon
