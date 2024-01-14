@@ -7,8 +7,6 @@ import InputID from "../Components/InputID";
 import DukunganPelanggan from "@/Contact/contactUs";
 import React, { Suspense } from "react";
 import { GetApi } from "@/app/services/getproductDigiflazz";
-const Loading = React.lazy(() => import ("./loading")) 
-const Client = React.lazy(() => import ("./client"))
 
 export const dynamic = "force-dynamic"
 
@@ -26,12 +24,10 @@ return (
     <main>
         <ComponentNavbar />
         <Development />
-        <Suspense fallback={<Loading />}>
         <div className="text-center text-white mt-10 text-4xl font-extrabold font-sans">{Brand}</div>
         <InputID />
-        <Client data = {data} url={imgUrl}/>
+        <ListItems data={data} ImgSrc={imgUrl} />
         <DukunganPelanggan />
-        </Suspense>
 
         <footer>
             <ComponentFooter />
