@@ -5,8 +5,9 @@ import ComponentFooter from "@/components/footer/footer";
 import Development from "@/components/Text/Development";
 import InputID from "../Components/InputID";
 import DukunganPelanggan from "@/Contact/contactUs";
-import React from "react";
+import React, { Suspense } from "react";
 import { GetApi } from "@/app/services/getproductDigiflazz";
+import Loading from "./loading";
 
 export const dynamic = "force-dynamic"
 
@@ -24,11 +25,13 @@ return (
     <main>
         <ComponentNavbar />
         <Development />
+        <Suspense fallback={<Loading />}>
         <div className="text-center text-white mt-10 text-4xl font-extrabold font-sans">{Brand}</div>
         <InputID />
 
         <ListItems data = {data} ImgSrc={imgUrl}/>
         <DukunganPelanggan />
+        </Suspense>
 
         <footer>
             <ComponentFooter />
