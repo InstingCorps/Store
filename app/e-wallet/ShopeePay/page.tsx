@@ -8,6 +8,7 @@ import DukunganPelanggan from "@/Contact/contactUs";
 import React, { Suspense } from "react";
 import { GetApi } from "@/app/services/getproductDigiflazz";
 import Loading from "./loading";
+import Client from "./client";
 
 export const dynamic = "force-dynamic"
 
@@ -28,8 +29,7 @@ return (
         <Suspense fallback={<Loading />}>
         <div className="text-center text-white mt-10 text-4xl font-extrabold font-sans">{Brand}</div>
         <InputID />
-
-        <ListItems data = {data} ImgSrc={imgUrl}/>
+        <Client data = {data} url={imgUrl}/>
         <DukunganPelanggan />
         </Suspense>
 
