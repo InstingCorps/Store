@@ -7,8 +7,8 @@ import InputID from "../Components/InputID";
 import DukunganPelanggan from "@/Contact/contactUs";
 import React, { Suspense } from "react";
 import { GetApi } from "@/app/services/getproductDigiflazz";
-import Loading from "./loading";
-import Client from "./client";
+const Loading = React.lazy(() => import ("./loading")) 
+const Client = React.lazy(() => import ("./client"))
 
 export const dynamic = "force-dynamic"
 
