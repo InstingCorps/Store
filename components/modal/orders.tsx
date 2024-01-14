@@ -119,11 +119,13 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
         <p>Product Name: {product_name}</p>
         <p>Price: {formattedPrice}</p>
         <p>Metode Pembayaran :{Payments}</p>
+        <p className='mt-3'>Note!</p>
+        <p className='font-thin italic'>*pastikan harga dan item anda sesuai dengan apa yang anda pesan!</p>
         </div>
       </Modal.Body>
       <Modal.Footer className="flex justify-between">
         <Button color="failure" onClick={onClose}>Decline</Button>
-        <Button color="success" onClick={accept}
+        <Button className="bg-color-accent" onClick={accept}
         disabled={isProcessing}
         isProcessing={isProcessing}
         processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}

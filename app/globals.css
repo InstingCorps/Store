@@ -4,7 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&family=League+Spartan:wght@300;800&family=Quicksand:wght@300;500;700&family=Righteous&display=swap");
 
 html {
-    background-color: #1a2130;
     scroll-behavior: smooth;
 }
 
@@ -15,12 +14,23 @@ html {
     scroll-behavior: smooth;
   }
   
-  h1,
-  h2,
-  h3 {
-    font-family: "League Spartan", sans-serif;
-  }
   
   .bg-unipin {
-    background-color: #ff962d;
+    background-color: #ff962D;
   }
+
+  .LoadingCSS {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: radial-gradient(farthest-side,#ff962D 94%,#0000) top/11.5px 11.5px no-repeat,
+           conic-gradient(#0000 30%,#ff962D);
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 11.5px),#000 0);
+    animation: spinner-c7wet2 1.2s infinite linear;
+ }
+ 
+ @keyframes spinner-c7wet2 {
+    100% {
+       transform: rotate(1turn);
+    }
+ }

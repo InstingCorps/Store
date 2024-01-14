@@ -7,6 +7,7 @@ import { DecryptAutomated } from "@/encrypt/encrypt";
 import axios from "axios";
 import { Button } from "flowbite-react";
 import React, {useState , useEffect} from 'react'
+import Loading from "@/app/loading";
 
 
 const EncryptedData = ({params} : {params: {encryptedData: string}}) => {
@@ -64,7 +65,7 @@ const EncryptedData = ({params} : {params: {encryptedData: string}}) => {
   try {
     const verify = decrpyt.verify
     if (URLvalidation(verify)) {
-      if (TypeGame !== "" || null) {
+      if (TypeGame !== "") {
         return (
           <div>
               <Checkout />
@@ -73,13 +74,16 @@ const EncryptedData = ({params} : {params: {encryptedData: string}}) => {
           </div>
       )
       } else {
+        // if (typeof window !== 'undefined') {
+        //   setTimeout(() => {
+        //     if (TypeGame == "" || null) {
+        //       window.location.href = '/';
+        //     }
+        //   }, 10000);
+        // }
         return (
           <>
-          <div className="text-center font-bold text-white mt-20">Tunggu Sebentar...
-          <div>Jika Halaman Ini Tidak Muncul Apapun Dalam 10 Detik Maka Ulangi Proses Pembelian Dari Awal</div>
-            </div>
-            <br />
-            <Button href={"/"}>HOME</Button>
+          <Loading />
           </>
 
         )

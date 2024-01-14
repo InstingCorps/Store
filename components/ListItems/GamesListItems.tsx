@@ -125,7 +125,7 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
       ) : (
             <Card
               imgSrc={ImgSrc}
-              className="hover:bg-slate-800 font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
+              className="hover:bg-color-secondary font-bold hover:text-white focus:bg-slate-800 focus:text-white text-black bg-white"
               key={product.product_name}
               color=""
               onClick={handleClick(
@@ -155,7 +155,7 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
         <button
           key={type}
           onClick={() => setSelectedType(type)}
-          className={`bg-blue-500 text-white px-4 py-1 rounded-lg font-bold ${selectedType === type ? 'opacity-50 border-2 border-white' : ''}`}
+          className={`bg-color-accent text-white px-4 py-1 rounded-lg font-bold ${selectedType === type ? 'opacity-50 border-2 border-white' : ''}`}
         >
           {type}
         </button>
@@ -177,7 +177,7 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
                 <div className="font-bold">{Price}</div>
             </div>
           
-        <Button className="ml-auto font-bold mt-4" pill color="success" size="md" onClick={OnClicks}
+        <Button className="bg-color-accent ml-auto font-bold mt-4" pill size="md" onClick={OnClicks}
         >Bayar Sekarang</Button>
           <OrdersModal open={modalVisible} onClose={() => setModalVisible(false)} productInfo={productInfo} />
           <ErrorID open={modalError} onClose={() => setModalError(false)}/>
@@ -185,7 +185,7 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
     </Card>}
   <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
   <div ref={errorRef} className="flex justify-center items-center mt-10">
-  <Button onClick={ShowPayments()} size="lg" gradientDuoTone="greenToBlue">
+  <Button onClick={ShowPayments()} size="lg" className="bg-color-accent">
     {showPayment ? 'Sembunyikan Metode Pembayaran' : 'Pilih Metode Pembayaran'}  <HiOutlineArrowRight className="ml-2 h-5 w-5" /></Button>
 
   </div>

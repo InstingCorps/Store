@@ -28,10 +28,24 @@ export default function RootLayout({
           content="X0udyrnZV8QGYUrrJzz55Ow5OZI9KTUPRU_Hvss_8J8"
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-color-primary`}>
         <Suspense fallback={<DummyComponent />}>
           {children}
         </Suspense>
+        <div className="area" >
+            <ul className="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
         <Analytics />
       </body>
     </html>
