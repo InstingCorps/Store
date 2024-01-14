@@ -20,7 +20,7 @@ export default function ComponentNavbar() {
         </span>
       </Navbar.Brand>
       <div className='flex justify-between gap-8'>
-      <Button href="/Login" className='pl-2 bg-color-accent font-bold'>Log In</Button>
+      <Button href="/Login" size="sm" className='pl-2 bg-color-accent font-bold'>Log In</Button>
       <div className="flex md:order-2 bg-white rounded-lg">
         <Navbar.Toggle />
       </div>
