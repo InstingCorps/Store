@@ -37,7 +37,7 @@ export async function POST (request : Request) {
   const IDuser = id
   
 
-  const confirmOrderLink = `https://webtopup.vercel.app/services/orders/acceptOrders/${orderId}`;
+  const confirmOrderLink = `https://tokorozy.my.id/services/orders/acceptOrders/${orderId}`;
   const declineOrderLink = `https://example.com/order/${orderId}/decline`;
 
   const emailContent = `

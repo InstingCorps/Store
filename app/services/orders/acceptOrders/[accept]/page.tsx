@@ -38,7 +38,7 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
     
       return (
         <div className="">
-         <Button onClick={() => setOpenModal(true)}>ORDER</Button>
+         <Button className="bg-color-accent" onClick={() => setOpenModal(true)}>ORDER</Button>
          <Modal show={openModal === true} size="md" popup onClose={() => setOpenModal(false)}>
         <Modal.Header />
         <Modal.Body>
@@ -53,6 +53,7 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
             </div>
             <div className="w-full">
               <Button
+        className="bg-color-accent"
         disabled={isProcessing} 
         isProcessing={isProcessing}
         processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />} 

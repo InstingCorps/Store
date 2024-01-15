@@ -185,7 +185,7 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
     </Card>}
   <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
   <div ref={errorRef} className="flex justify-center items-center mt-10">
-  <Button onClick={ShowPayments()} size="lg" classname="bg-color-accent">
+  <Button onClick={ShowPayments()} size="lg" className="bg-color-accent">
     {showPayment ? 'Sembunyikan Metode Pembayaran' : 'Pilih Metode Pembayaran'}  <HiOutlineArrowRight className="ml-2 h-5 w-5" /></Button>
 
   </div>
