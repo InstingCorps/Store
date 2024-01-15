@@ -11,6 +11,7 @@ import Subscribe from "@/Contact/subscribe";
 import DukunganPelanggan from "@/Contact/contactUs";
 import ComponentFooter from "@/components/footer/footer";
 import Cookies from 'js-cookie';
+import Loading from "@/app/loading";
 
 
 const StatusTransaction = ({params} : {params: {status: string}}) => {
@@ -152,7 +153,7 @@ if (!getTRX_ID) {
   }
   } catch (error) {
     return (
-      <div className="text-center font-bold text-white mt-20">ERROR URL TIDAK VALID</div>
+      <Loading />
   )
   }
 }

@@ -2,7 +2,7 @@
 'use client'
 
 import Development from '@/components/Text/Development';
-import Countdown from '@/components/CountDown/Countdown';
+import Countdown from '@/components/SessionTime/Countdown';
 import ComponentNavbar from '@/components/Navbar/Navbar';
 import { Alert, Button, Card } from 'flowbite-react';
 import React, { useState, useEffect, SyntheticEvent } from 'react';
