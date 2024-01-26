@@ -14,6 +14,10 @@ export async function POST (request : Request) {
   const data: any = {
     transactionID,
     verify,
+    product_name,
+    price,
+    seller_name,
+    seller_price,
     id: id,
     buyer_sku_code,
   };

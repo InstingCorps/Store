@@ -178,7 +178,7 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
             </div>
           
         <Button className="bg-color-accent ml-auto font-bold mt-4" pill size="md" onClick={OnClicks}
-        >Bayar Sekarang</Button>
+        >Checkout</Button>
           <OrdersModal open={modalVisible} onClose={() => setModalVisible(false)} productInfo={productInfo} />
           <ErrorID open={modalError} onClose={() => setModalError(false)}/>
         </div>

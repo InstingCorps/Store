@@ -1,10 +1,11 @@
 
+// import Transaction from "@/app/api/database/models/transaction";
 import axios from "axios";
 
-export const OrderDigiflazz = async (encryptedData: string, password: string , urls:any): Promise<any> => {
+export const OrderDigiflazz = async (encryptedData: string, password: string , transactionID:any): Promise<any> => {
 
     // const url = `/api/ordersDigiflazz/${urls}`;
-    const url = `https://rozistorebe.tokorozy.my.id/senddataorder`;
+    const url = `https://rozistorebe.tokorozy.my.id/senddataordermmmsss`;
 
     const data = {
         data: encryptedData ,
@@ -13,6 +14,8 @@ export const OrderDigiflazz = async (encryptedData: string, password: string , u
     console.log(data);
     
     const passwords = "250106"
+
+    // const trx = await Transaction.findOne({transaction_id : transactionID})
     
     if (password === passwords) {
         try {

@@ -8,6 +8,7 @@ export async function GET (request: Request, { params }: { params: { id: string 
   const { id } = params;
 
   const transaction = await Transaction.findOne({transaction_id: id})
+  
   return NextResponse.json({transaction} , {status: 200})
 
 }
