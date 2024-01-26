@@ -46,7 +46,7 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
         const API = await GetAPI()
         if (API) {
           console.log("OK");
-            // await OrderDigiflazz(data, enteredPassword , response);
+            await OrderDigiflazz(data, enteredPassword , response);
             setStep(0)
         } else {
           console.log("NOT");
