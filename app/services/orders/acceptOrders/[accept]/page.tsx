@@ -163,10 +163,8 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
       <div>
         <div>silahkan isi nama Pembeli.</div>
         <div className='flex gap-5'><p>nama Pembeli :</p><p>{NameBuyer}</p></div>
-        <div className='flex gap-5'>
         <input type="text" ref={inputRef} />
-      <Button className="bg-color-accent" type='submit' onClick={handleEnterClick}>Enter</Button>
-        </div>
+      <Button className="bg-color-accent mt-3" type='submit' onClick={handleEnterClick}>Enter</Button>
       </div>
       {/* )} */}
       <div className='flex justify-between'>
