@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-export const OrderDigiflazz = async (encryptedData: string, password: string , transactionID:any): Promise<any> => {
+export const OrderDigiflazz = async (encryptedData: any, password: string , Debt:any): Promise<any> => {
 
     // const url = `/api/ordersDigiflazz/${urls}`;
     const url = `https://rozistorebe.tokorozy.my.id/senddataorder`;

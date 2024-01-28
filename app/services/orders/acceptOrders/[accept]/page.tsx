@@ -1,30 +1,40 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState , useRef } from 'react';
 import { OrderDigiflazz } from '../../ordersDigiflazz';
-import { DecryptAutomated } from '@/encrypt/encrypt';
+import { DecryptAutomated, EncryptAutomated } from '@/encrypt/encrypt';
 import { ORDERvalidation } from '@/components/validation/URLvalidation';
-import { Button, Label, Modal, TextInput } from 'flowbite-react';
+import { Button, Dropdown, Label, Modal, TextInput } from 'flowbite-react';
 import { AiOutlineLoading } from 'react-icons/ai';
 import axios from 'axios';
 
 const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [step, setStep] = useState<number>(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [enteredPassword, setEnteredPassword] = useState('');
   const [orderResult, setOrderResult] = useState('');
   const [openModal, setOpenModal] = useState(false)
-  const [enteredUsername, setEnteredUsername] = useState<string>('');
+  const [Debt, setDebt] = useState<string>("silahkan pilih status pembayaran!");
+  const [NameBuyer, setNameBuyer] = useState<string>('');
 
   const response = params.accept;
   
   const data = response.replace(/%3A/g, ':');
   const DataUser = DecryptAutomated(data)
+  const sendData = {
+    buyer_sku_code: DataUser.buyer_sku_code,
+    transactionID: DataUser.transactionID,
+    id: DataUser.id,
+    verify: DataUser.verify,
+    statusPembayaran: Debt,
+    buyerName: NameBuyer
+  };
 
+  
 
-  async function GetAPI () {
+  async function getTRX () {
     const res: any = await axios.get(`/api/Transaction/${DataUser.transactionID}`);
     if (res.data.transaction) {
-      console.log(res.data.transaction.transaction_id)
       return true
     }else {
       console.log("waduh datanya hilang!");
@@ -40,13 +50,24 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
       };
 
 
+      const handleEnterClick = () => {
+        // Menggunakan conditional chaining untuk mengakses properti .value dengan aman
+        const inputValue = inputRef.current?.value;
+    
+        // Lakukan sesuatu dengan nilai inputValue, misalnya, menyimpannya dalam state Debt
+        if (inputValue !== undefined) {
+          setNameBuyer(inputValue);
+        }
+      };
+    
     
       const handleOrderClick = async () => {
         setIsProcessing(true);
-        const API = await GetAPI()
+        const API = await getTRX()
         if (API) {
           console.log("OK");
-            await OrderDigiflazz(data, enteredPassword , response);
+        const DataSend = EncryptAutomated(sendData)
+            await OrderDigiflazz(DataSend, enteredPassword, response);
             setStep(0)
         } else {
           console.log("NOT");
@@ -61,7 +82,7 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
           setIsProcessing(false);
         }
       };
-      console.log(DataUser);
+      
       
       const handleNextStep = async () => {
         
@@ -71,12 +92,12 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
     
           if (Passwords) {
             setIsProcessing(true);
-            const API = await GetAPI()
+            const API = await getTRX()
             setOpenModal(API)
             setIsProcessing(false);
             setStep(2); // Pindah ke langkah berikutnya (password)
           } else {
-            setOrderResult('Username incorrect. Please try again.');
+            setOrderResult('Password incorrect. Please try again.');
           }
         } else if (step === 2) {
           // Logika verifikasi password, gantilah dengan logika validasi yang sesuai
@@ -137,6 +158,27 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
         <div className='flex justify-between'>seller_price : <p>{DataUser.seller_price}</p></div>
         <div className='flex justify-between'>seller_name : <p>{DataUser.seller_name}</p></div>
         {/* <TextInput value={enteredPassword} type="password" placeholder="Masukkan password" onChange={(e) => handleInputChange(e, setEnteredPassword)} required /> */}
+      </div>
+      {/* {Debt === "utang" && ( */}
+      <div>
+        <div>silahkan isi nama Pembeli.</div>
+        <div className='flex gap-5'><p>nama Pembeli :</p><p>{NameBuyer}</p></div>
+        <div className='flex gap-5'>
+        <input type="text" ref={inputRef} />
+      <Button className="bg-color-accent" type='submit' onClick={handleEnterClick}>Enter</Button>
+        </div>
+      </div>
+      {/* )} */}
+      <div className='flex justify-between'>
+      <div>Status Pembayaran : </div>
+      <div>{Debt}</div>
+      </div>
+
+      <div className='bg-color-primary flex justify-end rounded'>
+      <Dropdown className='font-bold' label="Pilih Status Pembayaran" dismissOnClick={true}>
+      <Dropdown.Item onClick={() => setDebt("utang")}>Utang</Dropdown.Item>
+      <Dropdown.Item onClick={() => setDebt("lunas")}>Lunas</Dropdown.Item>
+    </Dropdown>
       </div>
       <div className="w-full">
         <Button

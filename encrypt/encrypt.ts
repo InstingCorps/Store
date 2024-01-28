@@ -41,7 +41,7 @@ export function Encrypt(data: any, key: string): string {
 
   }
 
-  export const EncryptAutomated = (Data: string) => {
+  export const EncryptAutomated = (Data: any) => {
     try {
       const encryptionKey = 'fahrurrozi25012006Rozistore25126'
       const response = Encrypt(Data , encryptionKey)
