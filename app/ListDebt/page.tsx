@@ -28,6 +28,8 @@ import { Badge } from 'flowbite-react';
       setSelectedBuyer(buyerName);
       filterTransactions(buyerName);
     };
+
+    
   
     const filterTransactions = (buyerName: string) => {
       // Filter transactions based on the selected buyerName
@@ -69,9 +71,9 @@ import { Badge } from 'flowbite-react';
 
           <td className="m-1 p-1">{transaction.buyerName}</td>
           <td className="m-1 p-1">{transaction.product}</td>
-          <td className="bg-color-secondary items-center align-middle text-center">
+          <td className="m-1 p-1 align-middle text-center">
             <Badge className='' color={`${
-          transaction.statusMetodePembayaran === 'LUNAS'
+          transaction.statusMetodePembayaran.toUpperCase() === 'LUNAS'
             ? 'success'
             : 'failure'
         }`}>{transaction.statusMetodePembayaran.toUpperCase()}</Badge></td>
