@@ -71,7 +71,7 @@ import { Badge } from 'flowbite-react';
           <td className="m-1 p-1">{transaction.product}</td>
           <td className="bg-color-secondary items-center align-middle text-center">
             <Badge className='' color={`${
-          transaction.statusMetodePembayaran === 'lunas'
+          transaction.statusMetodePembayaran === 'LUNAS'
             ? 'success'
             : 'failure'
         }`}>{transaction.statusMetodePembayaran.toUpperCase()}</Badge></td>
