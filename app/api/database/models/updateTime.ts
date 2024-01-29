@@ -17,8 +17,8 @@ export async function updateExpirationTime(transactionId: any , ID: any , Produc
         transaction.product = Product
         transaction.statusMetodePembayaran = "SUCCESS DI BAYAR"
 
-        // Perbarui waktu penghapusan menjadi 7 hari dari sekarang
-        transaction.createdAt = new Date(Date.now() + 604800 * 1000); // 60 detik * 1000 milidetik
+        // Perbarui waktu penghapusan menjadi 60 hari dari sekarang
+        transaction.createdAt = new Date(Date.now() + 60 * 24 * 60 * 60 * 1000);
         await transaction.save();
       }
     } catch (error) {

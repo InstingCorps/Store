@@ -1,9 +1,10 @@
 'use client'
 import React, { useState , useRef } from 'react';
 import { OrderDigiflazz } from '../../ordersDigiflazz';
+import { HiInformationCircle } from 'react-icons/hi';
 import { DecryptAutomated, EncryptAutomated } from '@/encrypt/encrypt';
 import { ORDERvalidation } from '@/components/validation/URLvalidation';
-import { Button, Dropdown, Label, Modal, TextInput } from 'flowbite-react';
+import { Alert, Button, Dropdown, Label, Modal, TextInput } from 'flowbite-react';
 import { AiOutlineLoading } from 'react-icons/ai';
 import axios from 'axios';
 
@@ -12,10 +13,10 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
   const [step, setStep] = useState<number>(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [enteredPassword, setEnteredPassword] = useState('');
-  const [orderResult, setOrderResult] = useState('');
+  const [Error, setError] = useState<string>();
   const [openModal, setOpenModal] = useState(false)
   const [Debt, setDebt] = useState<string>("silahkan pilih status pembayaran!");
-  const [NameBuyer, setNameBuyer] = useState<string>('');
+  const [NameBuyer, setNameBuyer] = useState<string>();
 
   const response = params.accept;
   
@@ -52,8 +53,8 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
 
       const handleEnterClick = () => {
         // Menggunakan conditional chaining untuk mengakses properti .value dengan aman
-        const inputValue = inputRef.current?.value;
-    
+        const inputValue = inputRef.current?.value.toLowerCase();
+
         // Lakukan sesuatu dengan nilai inputValue, misalnya, menyimpannya dalam state Debt
         if (inputValue !== undefined) {
           setNameBuyer(inputValue);
@@ -64,22 +65,16 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
       const handleOrderClick = async () => {
         setIsProcessing(true);
         const API = await getTRX()
-        if (API) {
+        if (API && NameBuyer !== undefined && Debt !== "silahkan pilih status pembayaran!") {
           console.log("OK");
         const DataSend = EncryptAutomated(sendData)
             await OrderDigiflazz(DataSend, enteredPassword, response);
             setStep(0)
         } else {
           console.log("NOT");
+          setIsProcessing(false);
+          setError("Silahkan Isi Nama Pembeli Dan Status!")
           
-        }
-        if (enteredPassword === correctPassword) {
-      // await OrderDigiflazz(data, enteredPassword , DataUser.transactionID);
-          setOrderResult("SUKSESS , ORDER SEDANG DI PROSSES");
-          setIsProcessing(false);
-        } else {
-          setOrderResult('Password salah. Silakan coba lagi.');
-          setIsProcessing(false);
         }
       };
       
@@ -97,7 +92,7 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
             setIsProcessing(false);
             setStep(2); // Pindah ke langkah berikutnya (password)
           } else {
-            setOrderResult('Password incorrect. Please try again.');
+            setError('Password incorrect. Please try again.');
           }
         } else if (step === 2) {
           // Logika verifikasi password, gantilah dengan logika validasi yang sesuai
@@ -106,7 +101,7 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
           if (sssss) {
             setStep(3); // Pindah ke langkah berikutnya (additional info)
           } else {
-            setOrderResult('Password incorrect. Please try again.');
+            setError('Password incorrect. Please try again.');
           }
         }
       };
@@ -115,6 +110,7 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
     
       return (
         <>
+
         <Button className="bg-color-accent" onClick={() => setStep(1)}>ORDER</Button>
 
         {step === 1 && (
@@ -123,7 +119,11 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
           <Modal.Body>
             <div className="space-y-6">
               <h3 className="text-xl font-medium text-gray-900 dark:text-white">Enter Password!</h3>
-              {orderResult && <div>{orderResult}</div>}
+        {Error && (
+        <Alert color="failure" onDismiss={() => setError('')} icon={HiInformationCircle}>
+          <div>{Error}</div>
+        </Alert>
+      )}
               <div>
                 <div className="mb-2 block">
                   <Label htmlFor="password" value="Enter an admin password!" />
@@ -151,15 +151,17 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
   <Modal.Body>
     <div className="space-y-6">
       <h3 className="text-xl font-medium text-gray-900 dark:text-white">Accept The Order</h3>
-      {orderResult && <div>{orderResult}</div>}
+      {Error && (
+        <Alert color="failure" onDismiss={() => setError('')} icon={HiInformationCircle}>
+          <div>{Error}</div>
+        </Alert>
+      )}
       <div>
         <div className='flex justify-between'>Product Name : <p>{DataUser.product_name}</p></div>
         <div className='flex justify-between'>Price : <p>{DataUser.price}</p></div>
         <div className='flex justify-between'>seller_price : <p>{DataUser.seller_price}</p></div>
         <div className='flex justify-between'>seller_name : <p>{DataUser.seller_name}</p></div>
-        {/* <TextInput value={enteredPassword} type="password" placeholder="Masukkan password" onChange={(e) => handleInputChange(e, setEnteredPassword)} required /> */}
       </div>
-      {/* {Debt === "utang" && ( */}
       <div>
         <div>silahkan isi nama Pembeli.</div>
         <div className='flex gap-5'><p>nama Pembeli :</p><p>{NameBuyer}</p></div>
@@ -174,8 +176,8 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
 
       <div className='bg-color-primary flex justify-end rounded'>
       <Dropdown className='font-bold' label="Pilih Status Pembayaran" dismissOnClick={true}>
-      <Dropdown.Item onClick={() => setDebt("utang")}>Utang</Dropdown.Item>
-      <Dropdown.Item onClick={() => setDebt("lunas")}>Lunas</Dropdown.Item>
+      <Dropdown.Item onClick={() => setDebt("Utang")}>Utang</Dropdown.Item>
+      <Dropdown.Item onClick={() => setDebt("Lunas")}>Lunas</Dropdown.Item>
     </Dropdown>
       </div>
       <div className="w-full">
