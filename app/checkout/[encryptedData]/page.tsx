@@ -5,7 +5,6 @@ import ComponentFooter from "@/components/footer/footer";
 import DukunganPelanggan from "@/Contact/contactUs";
 import { DecryptAutomated } from "@/encrypt/encrypt";
 import axios from "axios";
-import { Button } from "flowbite-react";
 import React, {useState , useEffect} from 'react'
 import Loading from "@/app/loading";
 

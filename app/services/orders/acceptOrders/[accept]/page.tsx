@@ -22,6 +22,7 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
   
   const data = response.replace(/%3A/g, ':');
   const DataUser = DecryptAutomated(data)
+
   const sendData = {
     buyer_sku_code: DataUser.buyer_sku_code,
     transactionID: DataUser.transactionID,
@@ -67,7 +68,7 @@ const AcceptOrder: React.FC<{ params: { accept: string } }> = ({ params }) => {
         const API = await getTRX()
         if (API && NameBuyer !== undefined && Debt !== "silahkan pilih status pembayaran!") {
           console.log("OK");
-        const DataSend = EncryptAutomated(sendData)
+        const DataSend: any = EncryptAutomated(sendData)
             await OrderDigiflazz(DataSend, enteredPassword, response);
             setStep(0)
         } else {

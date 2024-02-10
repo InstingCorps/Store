@@ -5,6 +5,7 @@ export const OrderDigiflazz = async (encryptedData: any, password: string , Debt
 
     // const url = `/api/ordersDigiflazz/${urls}`;
     const url = `https://rozistorebe.tokorozy.my.id/senddataorder`;
+    // const url = `http://localhost:3000/senddataorder`;
 
     const data = {
         data: encryptedData ,

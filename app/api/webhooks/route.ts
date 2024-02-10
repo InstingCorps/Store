@@ -4,6 +4,7 @@ import crypto from "crypto"
 import { NextRequest, NextResponse } from 'next/server';
 import Transaction from '../database/models/transaction';
 import connectDB from '../database/connectToDB';
+import Order from '../database/models/orderSchema';
 
 export const POST = async (request : NextRequest) => {
     const secret = '8dd7478ce304558f';
@@ -44,6 +45,7 @@ export const POST = async (request : NextRequest) => {
             transaction = await Transaction.findOne({ ref_id: parse.data.ref_id });
         
             if (transaction) {
+              await Order.deleteOne({ ref_id: parse.data.ref_id })
               transaction.status = parse.data.status;
               transaction.message = parse.data.message;
               transaction.sn = parse.data.sn;

@@ -23,6 +23,7 @@ function DiamondsList({data, ImgSrc}:Components) {
   const [modalError, setModalError] = useState<boolean>(false);
   const [productInfo, setProductInfo] = useState({
     verify: "",
+    seller_name:'',
     product_name: '',
     Price: null,
     buyer_sku_code: null,
@@ -49,6 +50,7 @@ function DiamondsList({data, ImgSrc}:Components) {
     setProductInfo({
       verify,
       product_name,
+      seller_name,
       Price,
       buyer_sku_code,
     });

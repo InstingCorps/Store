@@ -2,7 +2,6 @@
 
 import { Modal, Button } from 'flowbite-react';
 import {HiShoppingCart } from 'react-icons/hi';
-// import { useRouter } from 'next/navigation';
 import { EncryptAutomated } from '@/encrypt/encrypt';
 import { useEffect, useState } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
@@ -14,6 +13,7 @@ interface ModalProps {
   open: boolean;
   onClose: () => void;
   productInfo: {
+    seller_name: any
     verify: any
     product_name: string;
     Price: any;
@@ -77,7 +77,12 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
       sessionStorage.setItem('transactionID' , transactionID)
       const datas = {
         transaction_id: transactionID,
-        statusMetodePembayaran: "BELUM DI BAYAR",
+        id: PlayerID,
+        seller_name: productInfo.seller_name,
+        product_name: productInfo.product_name,
+        price: productInfo.Price,
+        buyer_sku_code: productInfo.buyer_sku_code,
+        statusMetodePembayaran: "Dalam Antrian.",
         metodePembayaran: Payments
       }
   
