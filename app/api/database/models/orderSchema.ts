@@ -8,6 +8,8 @@ const OrderSchema = new mongoose.Schema({
     },
     product_name: String,
     price: String,
+    orderTime: String,
+    seller_price: String,
     seller_name: String,
     buyer_sku_code: String,
     userId: String,

@@ -14,6 +14,7 @@ interface ModalProps {
   onClose: () => void;
   productInfo: {
     seller_name: any
+    seller_price: string
     verify: any
     product_name: string;
     Price: any;
@@ -22,6 +23,7 @@ interface ModalProps {
 }
 
 const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
+
 
     const [isProcessing, setIsProcessing] = useState(false);
     const [redirectCountdown, setRedirectCountdown] = useState(0);
@@ -79,6 +81,7 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
         transaction_id: transactionID,
         id: PlayerID,
         seller_name: productInfo.seller_name,
+        seller_price: productInfo.seller_price,
         product_name: productInfo.product_name,
         price: productInfo.Price,
         buyer_sku_code: productInfo.buyer_sku_code,
@@ -90,7 +93,6 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
       console.log(datas);
   
       if (res.status === 201) {
-        // Jika respons tidak menghasilkan kesalahan (status 201), mulai countdown sebelum redirect
         let countdown = 5;
   
         const countdownInterval = setInterval(() => {
@@ -104,7 +106,6 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
           }
         }, 1000); // 1000 milidetik = 1 detik
       } else {
-        // Jika respons menghasilkan kesalahan, tangani sesuai kebutuhan Anda
         console.log("Error: Redirecting failed.");
       }
       } catch (error) {

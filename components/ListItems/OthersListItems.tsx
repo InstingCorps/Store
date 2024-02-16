@@ -23,6 +23,7 @@ function DiamondsList({data, ImgSrc}:Components) {
   const [modalError, setModalError] = useState<boolean>(false);
   const [productInfo, setProductInfo] = useState({
     verify: "",
+    seller_price: '',
     seller_name:'',
     product_name: '',
     Price: null,
@@ -48,6 +49,7 @@ function DiamondsList({data, ImgSrc}:Components) {
   const handleClick = (product_name: string , Price : any , buyer_sku_code: any , category:any , seller_name:any , seller_price: any) => () => {
     const verify: string = "25012006RoziStore_FahrurRozi_001"
     setProductInfo({
+      seller_price,
       verify,
       product_name,
       seller_name,
