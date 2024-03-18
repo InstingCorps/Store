@@ -38,7 +38,6 @@ export function Encrypt(data: any, key: string): string {
       console.error('Error: unable to decrypt data', error);
       return null
     }
-
   }
 
   export const EncryptAutomated = (Data: any) => {

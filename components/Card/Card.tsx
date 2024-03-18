@@ -5,7 +5,7 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import "./styles.css"
 import { useState } from "react";
 import { GameCards } from "./dataCard";
-
+import { Badge } from 'flowbite-react';
 
 export default function ComponentCard() {
     const [showAllCards, setShowAllCards] = useState(false);
@@ -297,15 +297,25 @@ export default function ComponentCard() {
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/e-wallet/ShopeePay"
-         onClick={() => TypeGame("GoPay")}
+         onClick={() => TypeGame("ShopeePay")}
          imgSrc="https://rb.gy/323duc"
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
 
+        <div className="relative">
+        <span className="absolute top-0 right-0 bg-red-500 text-white font-semibold px-2 py-1 rounded-l-md border border-white">New !</span>
+        <Card className="h-auto max-w-sm rounded-xl ComCard"
+         imgAlt=""
+         href="/e-wallet/OVO"
+         onClick={() => TypeGame("OVO")}
+         imgSrc="https://asset.brandfetch.io/idMmz4KlYN/idDtqcTT5v.jpeg"
+         >
+         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
+        </Card>
         </div>
-      
-        
+
+        </div>
         </div>
     )
 }

@@ -82,9 +82,9 @@ const [borderColor, setBorderColor] = useState('orange');
         setPayments(Payment || ''); // Gunakan default string kosong jika tidak ada nilai
       }
 
-      if (PPN) {
-        setPPN(PPN); // Gunakan default string kosong jika tidak ada nilai
-      }
+      // if (PPN) {
+      //   setPPN(PPN); // Gunakan default string kosong jika tidak ada nilai
+      // }
 
       setCheckoutData((prevData) => ({ ...prevData, ...storedData }));
     }
@@ -102,30 +102,23 @@ const [borderColor, setBorderColor] = useState('orange');
 
     
     try {
-      const response = await axios.post('/api/orderWITHemail' , {
+      const response = await axios.post('/api/verificationOrder' , {
         transactionID: checkoutData.transactionID,
         id: checkoutData.UserID,
         product_name: checkoutData.product_name,
         category: checkoutData.category,
         brand: checkoutData.brand,
-        price: checkoutData.price,
+        price: Total,
         seller_name: checkoutData.seller_name,
         buyer_sku_code: checkoutData.buyer_sku_code,
         seller_price: checkoutData.seller_price,
       });
 
-      const dataDecrypt: any = {
-        verify: Validate,
-        id: checkoutData.UserID,
-        brand: checkoutData.brand,
-        price: checkoutData.price,
-      }
-
-      const encrypt = EncryptAutomated(dataDecrypt)
-      
-       // Setelah permintaan Axios selesai, atur isProcessing kembali menjadi false
+      if (response.status === 200) {
+      window.location.href = response.data;
+  }
       // setIsProcessing(false);
-      setAlertMessage('Berhasil: ' + JSON.stringify(response.data));
+      setAlertMessage('Berhasil');
       setAlertColor('success')
       // Set status transaksi menjadi SUKSES DI BAYAR
       setTransactionStatus('SUKSES DI BAYAR');
@@ -141,7 +134,7 @@ const countdownInterval = setInterval(() => {
   } else {
     clearInterval(countdownInterval);
     setAlertMessage('');
-    window.location.href = `/status-transaction/${encrypt}`;
+    // window.location.href = `/status-transaction/${encrypt}`;
   }
 }, 1000);
 
@@ -159,13 +152,13 @@ const countdownInterval = setInterval(() => {
 
     const HargaItems: number = Number(checkoutData.price); // Angka awal
     const persentase: number = Number(GetPPN); // Persentase
-    const tambahan = (HargaItems * persentase) / 100;
+    const tambahan = (HargaItems * 11) / 100; //ganti 11 dengan presentase
     const Ceil = Math.ceil(tambahan)
     const PPN = formatter.format(Ceil).replace(/,00$/, "");
 
     const Total = Number(checkoutData.price)+Ceil
     const TotalPrice = formatter.format(Total).replace(/,00$/, "");
-
+    
   const Cards: React.FC<CardProps>  = ({ isVisible }) => {
     return (
       <div>
@@ -190,14 +183,14 @@ const countdownInterval = setInterval(() => {
       <Card className="font-bold">
       <div>Produk : <p className="text-end">{checkoutData.product_name}</p></div>
       <div className="flex justify-between">Harga : <p>{formattedPrice}</p></div>
-      <div className="flex justify-between">Tax +({GetPPN}%Ppn). <p>{PPN}</p></div>
+      <div className="flex justify-between">Tax +(11%Ppn). <p>{PPN}</p></div>
       <div className="flex justify-between border-t-4 border-black">Total : <p>{TotalPrice}</p></div>
       </Card>
 
       <Card className="mt-10 font-bold rounded-2xl">
         <div className="font-extrabold font-sans text-xl border-b-4 border-blue-500 rounded-xl">Detail Pembayaran!</div>
         <div className="font-bold">Status transaksi : <div className={`border-2 border-${borderColor}-500 rounded-2xl p-2 text-${borderColor}-500 text-sm text-center`}>{transactionStatus}</div></div>
-      <div>Metode Pembayaran: <div className="border-2 border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">{Payments}</div></div>
+      {/* <div>Metode Pembayaran: <div className="border-2 border-orange-500 rounded-2xl p-2 text-orange-500 text-sm text-center">{Payments}</div></div> */}
       <div>klik tombol di bawah ini untuk lanjut!</div>
       <Button
       className='font-bold'

@@ -14,6 +14,8 @@ interface Components{
 }
 function DiamondsList({data, ImgSrc}:Components) {
   const [Price , setPrice] = useState('')
+  const [DummyPrice , setDummyPrice] = useState('')
+  const [Discount , setDiscount] = useState('')
   const [productTypes, setProductTypes] = useState<string[]>([]);
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [Product , setProduct] = useState('')
@@ -42,6 +44,14 @@ function DiamondsList({data, ImgSrc}:Components) {
   if (getPrice) {
     const formattedNumber = formatter.format(getPrice).replace(/,00$/, "");
     setPrice(formattedNumber)
+    const newPrice = getPrice * 1.07;
+    const RemoveComma = Math.ceil(newPrice)
+    const formatttedDummyPrice = formatter.format(RemoveComma).replace(/,00$/, "");
+    const Discount = RemoveComma - getPrice
+    const formatttedDiscount = formatter.format(Discount).replace(/,00$/, "");
+
+  setDiscount(formatttedDiscount)
+  setDummyPrice(formatttedDummyPrice);
   }
   }, [Price]);
 
@@ -70,10 +80,10 @@ function DiamondsList({data, ImgSrc}:Components) {
   const OnClicks = () => {
 
     const verifedID = sessionStorage.getItem("PlayerID")
-    const PaymentMethod = sessionStorage.getItem('Payment')
+    // const PaymentMethod = sessionStorage.getItem('Payment')
 
 
-    if (verifedID && PaymentMethod) {
+    if (verifedID) {
       setModalVisible(true);
     } else {
        setModalError(true)
@@ -116,9 +126,9 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
 
     return sortedData.map((product : any) => {
       // Menghitung harga baru dengan menambahkan 5%
-      const keuntungan = 0.13 // persen
+      const keuntungan = 0.05 // persen
 
-      const ProductPriceWithComma = product.price * (1 + keuntungan) + 1000
+      const ProductPriceWithComma = product.price * (1 + keuntungan) + 100
       const ProductPrice = Math.ceil(ProductPriceWithComma)
       
       return loading ? (
@@ -173,27 +183,32 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
   </Card>
 
  { showFooter && 
- <Card className="fixed bottom-0 w-full text-center z-40 rounded-xl" horizontal>
+ <Card className="fixed bottom-0 w-full text-center z-40 rounded-xl border-2 border-black" horizontal>
         <div className="flex">
             <div>
               <div></div>
-                <div>{Product}</div>
-                <div className="font-bold">{Price}</div>
+                <div className='text-color-primary font-bold'>{Product}</div>
+                <div className='flex justify-around'>
+                <del className="font-bold text-sm italic pt-2">{DummyPrice}</del>
+                <span className='bg-green-200 p-2 rounded-full font-bold'>Hemat: {Discount}</span>
+                </div>
+                <div className="font-bold text-red-400">{Price}</div>
+                <div className='text-sm italic font-thin'>pajak akan di terapkan saat checkout</div>
             </div>
           
-        <Button className="bg-color-accent ml-auto font-bold mt-4" pill size="md" onClick={OnClicks}
-        >Checkout</Button>
+        <Button className="bg-color-accent ml-auto font-bold mt-4 border-2 border-black" pill size="lg" onClick={OnClicks}
+        >Bayar Sekarang.</Button>
           <OrdersModal open={modalVisible} onClose={() => setModalVisible(false)} productInfo={productInfo} />
           <ErrorID open={modalError} onClose={() => setModalError(false)}/>
         </div>
     </Card>}
-  <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
+  {/* <Card className="font-bold ml-2 m-5">Langkah 3. Pilih Methode Pembayaran.</Card>
   <div ref={errorRef} className="flex justify-center items-center mt-10">
   <Button onClick={ShowPayments()} size="lg" className="bg-color-accent">
     {showPayment ? 'Sembunyikan Metode Pembayaran' : 'Pilih Metode Pembayaran'}  <HiOutlineArrowRight className="ml-2 h-5 w-5" /></Button>
 
   </div>
-  {showPayment && <PaymentMethod />}
+  {showPayment && <PaymentMethod />} */}
   </>
   )
 }

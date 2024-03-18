@@ -41,7 +41,7 @@ export default function InputID() {
         </div>
       
     </Card>
-    <Card className="font-bold ml-2 m-5">Langkah 2. Pilih Jumlah Diamond.</Card>
+    <Card className="font-bold ml-2 m-5">Langkah 2. Pilih Jumlah Pengisian.</Card>
 
     </div>
   )

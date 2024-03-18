@@ -124,6 +124,7 @@ const OrdersModal: React.FC<ModalProps> = ({ open, onClose , productInfo }) => {
         <p>ID: {PlayerID}</p>
         <p>Product Name: {product_name}</p>
         <p>Price: {formattedPrice}</p>
+        <span className="text-sm italic">*belum termasuk ppn</span>
         <p>Metode Pembayaran :{Payments}</p>
         <p className='mt-3'>Note!</p>
         <p className='font-thin italic'>*pastikan harga dan item anda sesuai dengan apa yang anda pesan!</p>
