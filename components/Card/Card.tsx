@@ -24,8 +24,10 @@ export default function ComponentCard() {
             <div className="ml-4 text-orange-400 text-xl font-serif font-bold">Game Populer</div>
             <div className="text-2xl font-extrabold text-white ml-5 mb-10">Trending Sekarang</div>
         <div className="grid grid-cols-3 md:grid-cols-8 gap-4 m-3 btn-card ComCard mt-5">
+
+          <div className="relative">
+        <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-l-md border border-white">Disc -5%</span>
         <Card className="h-auto max-w-sm rounded-xl ComCard"
-        
          imgAlt="Mobile Legends"
          href="/games/mobile-legends"
          onClick={() => TypeGame("Mobile Legends")}
@@ -33,6 +35,7 @@ export default function ComponentCard() {
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
+          </div>
 
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt="Genshin Impact"
@@ -44,15 +47,17 @@ export default function ComponentCard() {
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
 
+        <div className="relative">
+        <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-l-md border border-white">New!</span>
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt="FreeFire"
          href="/games/freefire"
          onClick={() => TypeGame("Free Fire")}
-
          imgSrc="https://cdn.unipin.com/images/icon_product_pages/1658817763-icon-200x200_icon%20ff.jpg"
          >
         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
+        </div>
 
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
@@ -99,7 +104,7 @@ export default function ComponentCard() {
         ))}
       </div>
 
-      <div className="flex flex-col items-center bg-white rounded-xl mt-5">
+      <div className="flex flex-col items-center rounded-xl mt-5">
       <Button
         className="btn-card font-extrabold ComCard"
         onClick={() => setShowAllCards(!showAllCards)}
@@ -294,6 +299,8 @@ export default function ComponentCard() {
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
 
+          <div className="relative">
+        <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-l-md border border-white">Promo!</span>
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/e-wallet/ShopeePay"
@@ -302,9 +309,10 @@ export default function ComponentCard() {
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
+          </div>
 
         <div className="relative">
-        <span className="absolute top-0 right-0 bg-red-500 text-white font-semibold px-2 py-1 rounded-l-md border border-white">New !</span>
+        <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-l-md border border-white">New!</span>
         <Card className="h-auto max-w-sm rounded-xl ComCard"
          imgAlt=""
          href="/e-wallet/OVO"

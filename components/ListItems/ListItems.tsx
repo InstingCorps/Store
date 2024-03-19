@@ -2,8 +2,8 @@
 'use client';
   import React, { useState, useEffect , useRef } from 'react';
   import { Button, Card, Spinner } from 'flowbite-react';
-  import { HiOutlineArrowRight } from 'react-icons/hi';
-  import PaymentMethod from '@/payment/paymentsMethod';
+  // import { HiOutlineArrowRight } from 'react-icons/hi';
+  // import PaymentMethod from '@/payment/paymentsMethod';
   import OrdersModal from '@/components/modal/orders';
   import ErrorID from '@/components/modal/errorID';
   import { v4 as uuidv4 } from 'uuid';
@@ -25,10 +25,10 @@ function DiamondsList({data, ImgSrc}:Components) {
   const [modalError, setModalError] = useState<boolean>(false);
   const [productInfo, setProductInfo] = useState({
     verify: "",
-    seller_price: '',
     seller_name:'',
     product_name: '',
     Price: null,
+    seller_price: '',
     buyer_sku_code: null,
   });
   const errorRef = useRef<any>(null);
@@ -61,8 +61,8 @@ function DiamondsList({data, ImgSrc}:Components) {
     setProductInfo({
       seller_price,
       verify,
-      product_name,
       seller_name,
+      product_name,
       Price,
       buyer_sku_code,
     });
@@ -182,22 +182,22 @@ const sortedData = filteredData.sort((a: any, b: any) => extractNumber(a.product
     </div>
   </Card>
 
-  { showFooter && 
- <Card className="fixed bottom-0 w-full text-center z-40 rounded-xl border-2 border-black" horizontal>
-        <div className="flex">
+ { showFooter && 
+ <Card className="fixed bottom-0 w-full z-40 rounded-xl border-2 border-black" horizontal>
+        <div>
             <div>
-              <div></div>
-                <div className='text-color-primary font-bold'>{Product}</div>
+                <div className='text-color-primary font-bold text-center'>{Product}</div>
+                <span className='bg-green-200 p-1 rounded-xl font-bold text-sm ml-5'>Hemat: {Discount}</span>
                 <div className='flex justify-around'>
-                <del className="font-bold text-sm italic pt-2">{DummyPrice}</del>
-                <span className='bg-green-200 p-2 rounded-full font-bold'>Hemat: {Discount}</span>
-                </div>
+                <del className="font-bold text-sm italic pt-2">{DummyPrice} .</del>
                 <div className="font-bold text-red-400">{Price}</div>
-                <div className='text-sm italic font-thin'>pajak akan di terapkan saat checkout</div>
+                </div>
             </div>
-          
-        <Button className="bg-color-accent ml-auto font-bold mt-4 border-2 border-black" pill size="lg" onClick={OnClicks}
-        >Bayar Sekarang.</Button>
+
+            <div className='flex items-center'>
+              <div className='w-1/2 text-xs italic font-thin'>*pajak akan di terapkan saat checkout</div>
+              <Button className="w-1/2 bg-color-accent ml-auto font-bold border-2 border-black" pill size="md" onClick={OnClicks}>Bayar Sekarang.</Button>
+            </div>
           <OrdersModal open={modalVisible} onClose={() => setModalVisible(false)} productInfo={productInfo} />
           <ErrorID open={modalError} onClose={() => setModalError(false)}/>
         </div>

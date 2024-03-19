@@ -1,6 +1,6 @@
 
 import ComponentNavbar from "@/components/Navbar/Navbar";
-const DiamondList = React.lazy(() => import("@/components/ListItems/GamesListItems"));
+const DiamondList = React.lazy(() => import("@/components/ListItems/ListItems"));
 import ComponentFooter from "@/components/footer/footer";
 import Test from "../../../components/Text/Development";
 import InputID from "./inputID/InputID";
