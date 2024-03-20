@@ -14,7 +14,7 @@ export default async function DANA() {
 
     const Category = "E-Money"
     const Brand = "DANA"
-    const imgUrl = 'https://rb.gy/dtmie1';
+    const imgUrl = '/assets/logoItems/DANALOGORS.webp';
 
     const [data] = await Promise.all([
         await GetApi(Category, Brand),

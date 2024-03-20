@@ -14,7 +14,7 @@ export default async function XL() {
 
     const Category = "Data"
     const Brand = "XL"
-    const img = "https://www.pe-we.com/wp-content/uploads/2017/07/logo-XL.jpg"
+    const img = "/assets/logoItems/logo-XL-RS.jpg"
 
     const [data] = await Promise.all([
         await GetApi(Category, Brand),

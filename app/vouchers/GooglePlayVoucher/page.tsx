@@ -10,11 +10,11 @@ import { GetApi } from "@/app/services/getproductDigiflazz";
 
 export const dynamic = "force-dynamic"
 
-export default async function XL() {
+export default async function GooglePlayVoucher() {
 
-    const Category = "Pulsa"
-    const Brand = "XL"
-    const img = "/assets/logoItems/logo-XL-RS.jpg"
+    const Category = "Voucher"
+    const Brand = "GOOGLE PLAY INDONESIA"
+    const img = "/assets/logoItems/GooglePlayLOGORS.png"
 
     const [data] = await Promise.all([
         await GetApi(Category, Brand),

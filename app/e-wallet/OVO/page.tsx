@@ -14,7 +14,7 @@ export default async function ShopeePay() {
 
     const Category = "E-Money"
     const Brand = "OVO"
-    const imgUrl = 'https://asset.brandfetch.io/idMmz4KlYN/idDtqcTT5v.jpeg';
+    const imgUrl = '/assets/logoItems/ovologors.jpeg';
 
     const [data] = await Promise.all([
         await GetApi(Category, Brand),

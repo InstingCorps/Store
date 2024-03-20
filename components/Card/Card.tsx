@@ -5,7 +5,6 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import "./styles.css"
 import { useState } from "react";
 import { GameCards } from "./dataCard";
-import { Badge } from 'flowbite-react';
 
 export default function ComponentCard() {
     const [showAllCards, setShowAllCards] = useState(false);
@@ -208,7 +207,7 @@ export default function ComponentCard() {
          imgAlt=""
          href="/pulsa/XL"
          onClick={() => TypeGame("XL")}
-         imgSrc="https://www.pe-we.com/wp-content/uploads/2017/07/logo-XL.jpg"
+         imgSrc="/assets/logoItems/logo-XL-RS.jpg"
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
@@ -267,10 +266,10 @@ export default function ComponentCard() {
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
         <Card className="h-auto max-w-sm rounded-xl ComCard"
-         imgAlt=""
+         imgAlt="XL"
          href="/paketdata/XL"
          onClick={() => TypeGame("XL")}
-         imgSrc="https://www.pe-we.com/wp-content/uploads/2017/07/logo-XL.jpg"
+         imgSrc="/assets/logoItems/logo-XL-RS.jpg"
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
@@ -282,19 +281,19 @@ export default function ComponentCard() {
         <div className="text-2xl font-extrabold text-white ml-5 mb-10">Isi Ulang Saldo Mu Di Sini!</div>
         <div className="grid grid-cols-3 md:grid-cols-8 gap-4 m-3 btn-card ComCard mt-5">
         <Card className="h-auto max-w-sm rounded-xl ComCard"
-         imgAlt=""
+         imgAlt="DANA"
          href="/e-wallet/DANA"
          onClick={() => TypeGame("DANA")}
-         imgSrc="https://rb.gy/dtmie1"
+         imgSrc="/assets/logoItems/DANALOGORS.webp"
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
 
         <Card className="h-auto max-w-sm rounded-xl ComCard"
-         imgAlt=""
+         imgAlt="GoPay"
          href="/e-wallet/GoPay"
          onClick={() => TypeGame("GoPay")}
-         imgSrc="https://jabarekspres.com/wp-content/uploads/2022/10/GOPAY-1.png"
+         imgSrc="/assets/logoItems/GOPAYLOGORS.png"
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
@@ -302,10 +301,10 @@ export default function ComponentCard() {
           <div className="relative">
         <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-l-md border border-white">Promo!</span>
         <Card className="h-auto max-w-sm rounded-xl ComCard"
-         imgAlt=""
+         imgAlt="Shopee Pay"
          href="/e-wallet/ShopeePay"
          onClick={() => TypeGame("ShopeePay")}
-         imgSrc="https://rb.gy/323duc"
+         imgSrc="/assets/logoItems/SpayLogoRS.png"
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
@@ -314,16 +313,38 @@ export default function ComponentCard() {
         <div className="relative">
         <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-l-md border border-white">New!</span>
         <Card className="h-auto max-w-sm rounded-xl ComCard"
-         imgAlt=""
+         imgAlt="OVO"
          href="/e-wallet/OVO"
          onClick={() => TypeGame("OVO")}
-         imgSrc="https://asset.brandfetch.io/idMmz4KlYN/idDtqcTT5v.jpeg"
+         imgSrc="/assets/logoItems/ovologors.jpeg"
          >
          <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
         </Card>
         </div>
 
         </div>
+
+        {/* elemen selanjutnya */}
+
+        <div className="ml-4 text-orange-400 text-xl font-serif mt-10 font-bold">Vouchers</div>
+        <div className="text-2xl font-extrabold text-white ml-5 mb-10">Isi Voucher Di Sini</div>
+        <div className="grid grid-cols-3 md:grid-cols-8 gap-4 m-3 btn-card ComCard mt-5">
+
+          <div className="relative">
+        <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-l-md border border-white">New!</span>
+        <Card className="h-auto max-w-sm rounded-xl ComCard"
+         imgAlt="google play voucher"
+         href="/vouchers/GooglePlayVoucher"
+         onClick={() => TypeGame("GooglePlayVoucher")}
+         imgSrc="/assets/logoItems/GooglePlayLOGORS.png"
+         >
+         <Button className="btn-card font-extrabold ComCard" color="gray">Topup</Button>
+        </Card>
+          </div>
+
+
+        </div>
+
         </div>
     )
 }

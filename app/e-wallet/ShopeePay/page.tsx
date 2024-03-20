@@ -14,7 +14,7 @@ export default async function ShopeePay() {
 
     const Category = "E-Money"
     const Brand = "SHOPEE PAY"
-    const imgUrl = 'https://rb.gy/323duc';
+    const imgUrl = '/assets/logoItems/SpayLogoRS.png';
 
     const [data] = await Promise.all([
         await GetApi(Category, Brand),

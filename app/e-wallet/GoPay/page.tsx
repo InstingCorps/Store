@@ -14,7 +14,7 @@ export default async function GoPay() {
 
     const Category = "E-Money"
     const Brand = "GO PAY"
-    const imgUrl = 'https://jabarekspres.com/wp-content/uploads/2022/10/GOPAY-1.png';
+    const imgUrl = '/assets/logoItems/GOPAYLOGORS.png';
 
     const [data] = await Promise.all([
         await GetApi(Category, Brand),

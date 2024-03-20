@@ -45,16 +45,15 @@ export default function ComponentBanner() {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
-        <SwiperSlide><img src="/image/1204924.jpg" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="/image/stretched-1920-1080-1149777.jpg" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="/image/valo-cover.png" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="/image/slider-5.webp" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="/image/ff-cover.jpg" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="/image/genshin-cover.png" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="/image/lol-cover.png" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="/image/codm-cover.png" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="/image/stretched-1920-1080-1123246.jpg" alt="" /></SwiperSlide>
-
+        <SwiperSlide><img src="/assets/image/1204924.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/assets/image/stretched-1920-1080-1149777.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/assets/image/valo-cover.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/assets/image/slider-5.webp" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/assets/image/ff-cover.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/assets/image/genshin-cover.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/assets/image/lol-cover.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/assets/image/codm-cover.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img src="/assets/image/stretched-1920-1080-1123246.jpg" alt="" /></SwiperSlide>
 
         
         <div className="autoplay-progress" slot="container-end">

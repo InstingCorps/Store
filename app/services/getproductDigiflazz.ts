@@ -24,6 +24,9 @@ export async function GetApi(category: string, brand: string, maxRetries = 5) {
       );
       const dataRes: Product[] = await response.data.data;
 
+      // console.log(dataRes);
+      
+
       // Filter the data based on category, brand, and type
       const filteredData = dataRes.filter(
         (product) =>
