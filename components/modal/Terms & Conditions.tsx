@@ -29,7 +29,7 @@ const TermsConditions = () => {
         </section>
     </main>
     <footer>
-        <p>Dengan menggunakan layanan kami, Anda mengakui bahwa Anda telah membaca, memahami, dan menyetujui semua syarat dan ketentuan yang tercantum di atas. Jika Anda memiliki pertanyaan atau kekhawatiran, jangan ragu untuk menghubungi kami. Terima kasih telah memilih WEBTOPUP ROZISTORE!</p>
+        <p>Dengan menggunakan layanan kami, Anda mengakui bahwa Anda telah membaca, memahami, dan menyetujui semua syarat dan ketentuan yang tercantum di atas. Jika Anda memiliki pertanyaan atau kekhawatiran, jangan ragu untuk menghubungi kami. Terima kasih telah memilih WEBTOPUP INSTING STORE!</p>
     </footer>
 </div>
   )
