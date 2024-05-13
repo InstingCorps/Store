@@ -12,8 +12,8 @@ export default function ComponentFooter() {
             <Footer.Brand
               alt="Flowbite Logo"
               href="#"
-              name="RoziStore"
-              src="/logoRS.png"
+              name="INSTING STORE"
+              src="/logoIS.png"
             />
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
@@ -23,7 +23,7 @@ export default function ComponentFooter() {
                 <Footer.Link href="#">
                   About US
                 </Footer.Link>
-                <Footer.Link href="https://fahrurrozi.vercel.app/">
+                <Footer.Link href="https://store.insting.co.id/">
                   My Portfolio
                 </Footer.Link>
               </Footer.LinkGroup>
