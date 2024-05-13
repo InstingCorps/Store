@@ -13,10 +13,10 @@ export default function ComponentNavbar() {
         <img
           alt="Flowbite React Logo"
           className="mr-3 h-6 sm:h-9 rounded-md"
-          src="/logoRS.png"
+          src="/logoIS.png"
         />
         <span className="self-center whitespace-nowrap text-2xl font-extrabold text-color-accent">
-          RoziStore
+          INSTING STORE
         </span>
       </Navbar.Brand>
       <div className='flex justify-between gap-8'>
